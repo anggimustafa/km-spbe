@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('main', function () {
+    return view('layouts.mainPage');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
