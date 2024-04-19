@@ -4,10 +4,10 @@
             <div class="d-flex">
                 <img src="img/akcaya2.png" width="20%" class="mx-5">
                 <div class="col-md-8 text-light fs-5 lh-1 mt-3">
-                    <p><b>Manajemen Pengetahuan</b></p>
-                    <p>Sistem Pemerintahan</p>
-                    <p>Berbasis Elektronik</p>
-                    <p>(SPBE)</p>
+                    <p class="text-light"><b>Manajemen Pengetahuan</b></p>
+                    <p class="text-light">Sistem Pemerintahan</p>
+                    <p class="text-light">Berbasis Elektronik</p>
+                    <p class="text-light">(SPBE)</p>
                 </div>
             </div>
             <br><br><br>
@@ -17,9 +17,11 @@
         <div class="col-md-6 mt-3">
             <div class="text-end text-light">
                 <p class="fs-5 text-light"><span class="border-bottom border-light ">WEBSITE TERKAIT</span></p>
-                <p><a href="" class="text-reset text-decoration-none text-light">SIKEDIP</a></p>
-                <p><a href="" class="text-reset text-decoration-none text-light">FLLAJ KAL-BAR</a></p>
-                <p><a href="" class="text-reset text-decoration-none text-light">SIRUP</a></p>
+                <p class="text-light"><a href="" class="text-reset text-decoration-none">SIKEDIP</a>
+                </p>
+                <p class="text-light"><a href="" class="text-reset text-decoration-none">FLLAJ
+                        KAL-BAR</a></p>
+                <p class="text-light"><a href="" class="text-reset text-decoration-none">SIRUP</a></p>
             </div>
             <br><br><br>
             <div class="bg-transparent d-flex justify-content-end"
