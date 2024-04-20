@@ -18,6 +18,14 @@ Route::get('main', function () {
     return view('layouts.containerPage');
 });
 
+Route::get('/dash', function () {
+    return view('html.index');
+});
+
+Route::get('/dash/button', function () {
+    return view('html.ui-buttons');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
