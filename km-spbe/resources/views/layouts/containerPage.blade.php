@@ -31,10 +31,7 @@
     @include('partials.navbar')
 
     <div class="container mt-0 mb-0">
-        {{-- @yield('container') --}}
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A libero voluptate itaque explicabo molestias porro
-            assumenda provident aperiam praesentium illum minima aliquid corporis repellendus, atque sequi labore velit
-            quasi aspernatur?</p>
+        @yield('container')
     </div>
 
     @include('partials.footer')

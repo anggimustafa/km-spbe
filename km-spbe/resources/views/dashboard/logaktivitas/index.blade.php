@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
                             <div class="mb-3 mb-sm-0">
-                                <h2 class="card-title fw-semibold">Sales Overview</h2>
+                                <h5 class="card-title fw-semibold">Sales Overview</h5>
                             </div>
                             <div>
                                 <select class="form-select">

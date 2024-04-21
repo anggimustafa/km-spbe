@@ -15,23 +15,24 @@
         </div>
 
         <div class="flex">
-            <!-- Logo -->
+            {{-- <!-- Logo -->
             <div class="shrink-0 flex items-center">
                 <a href="{{ route('dashboard') }}">
                     <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                 </a>
-            </div>
+            </div> --}}
 
             <!-- Navigation Links -->
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
-                </x-nav-link>
+                <div class="h5 pt-2"><strong>{{ $rute }}</strong></div>
             </div>
         </div>
 
         <!-- Settings Dropdown -->
         <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div>
+                <a class="btn btn-outline-warning me-3" href="/">Beranda</a>
+            </div>
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <button

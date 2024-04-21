@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Manajemen Pengetahuan</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    {{-- <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" /> --}}
 
     {{-- Template Dashboard --}}
     <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
@@ -29,6 +29,12 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <style>
+        * {
+            font-family: 'Nunito';
+        }
+    </style>
 </head>
 
 <body>
@@ -41,7 +47,7 @@
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
                     <a href="./index.html" class="text-nowrap logo-img">
-                        <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+                        <img src="/img/spbeDash.png" width="300" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -56,7 +62,7 @@
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="/dashboard" aria-expanded="false">
-                                <span>
+                                <span style="width: 30px">
                                     <i class="ti ti-layout-dashboard"></i>
                                 </span>
                                 <span class="hide-menu">Dashboard</span>
@@ -67,48 +73,48 @@
                             <span class="hide-menu">Artikel</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('create') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-regular fa-square-plus fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Create Post</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('update') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-regular fa-pen-to-square fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Update Post</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('delete') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-solid fa-trash-can fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Delete Post</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('unverify') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-solid fa-clock-rotate-left fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Unverify Post</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('indiscussion') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-regular fa-comments fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">In Discussion</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('verified') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-solid fa-square-check fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Verified Post</span>
@@ -119,16 +125,16 @@
                             <span class="hide-menu">Users</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('dataauthor') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-solid fa-users fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Data Auhtor</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('kelolarole') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-solid fa-user-gear fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Kelola Role</span>
@@ -139,16 +145,16 @@
                             <span class="hide-menu">History</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('logusers') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-regular fa-address-book fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Log Users</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-                                <span>
+                            <a class="sidebar-link" href="{{ route('logaktivitas') }}" aria-expanded="false">
+                                <span style="width: 30px">
                                     <i class="fa-solid fa-timeline fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Log Aktivitas</span>
@@ -170,9 +176,9 @@
             </header>
             <!--  Header End -->
             <!-- Page Content -->
-            <main>
-                <br><br><br>
-                {{ $slot }}
+            <main class="col-lg-12 px-3">
+                <br><br><br><br>
+                @yield('container')
             </main>
         </div>
     </div>

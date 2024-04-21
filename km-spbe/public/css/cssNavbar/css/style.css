@@ -1,5 +1,5 @@
 body {
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     background-color: #fff;
     height: 200vh;
     position: relative;
@@ -58,7 +58,10 @@ a:hover {
 }
 
 .hero {
-    height: 7%;
+    min-height: 15vh;
+    /* Tinggi minimum */
+    height: auto;
+    /* Set tinggi menjadi auto agar menyesuaikan konten */
     width: 100%;
     background: #02923e;
 }
