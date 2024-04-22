@@ -58,7 +58,7 @@ a:hover {
 }
 
 .hero {
-    min-height: 15vh;
+    min-height: 5rem;
     /* Tinggi minimum */
     height: auto;
     /* Set tinggi menjadi auto agar menyesuaikan konten */

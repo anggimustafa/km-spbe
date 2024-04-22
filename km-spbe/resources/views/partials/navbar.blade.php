@@ -1,25 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/cssNavbar/css/owl.carousel.min.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/cssNavbar/css/bootstrap.min.css">
-
-    <!-- Style -->
-    <link rel="stylesheet" href="css/cssNavbar/css/style.css">
-
-    <title>Website Menu #2</title>
-</head>
-
-<body>
+<nav>
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
@@ -28,19 +7,19 @@
         </div>
         <div class="site-mobile-menu-body"></div>
     </div>
-    <header class="site-navbar site-navbar-target" role="banner">
+    <header class="site-navbar site-navbar-target p-2" role="banner">
 
         <div class="container-fluid">
             <div class="row align-items-center position-relative">
 
                 <div class="col-1">
                     <div class="site-logo ms-5">
-                        <img src="/img/akcaya2.png" alt="" width="50px">
+                        <img src="/img/akcaya2.png" alt="" width="40px">
                     </div>
                 </div>
 
                 <div class="col-2 d-none d-xl-block text-light">
-                    <span style="font-size: 25px"><strong>SPBE</strong></span><br>
+                    <span style="font-size: 15px"><strong>SPBE</strong></span><br>
                     <span>Manajemen Pengetahuan </span>
                 </div>
 
@@ -52,11 +31,11 @@
 
                     <nav class="site-navigation text-right ml-auto d-none d-lg-block" role="navigation">
                         <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                            <li class="active"><a href="#" class="nav-link">Beranda</a></li>
-                            <li><a href="#" class="nav-link">Artikel</a></li>
-                            <li><a href="#" class="nav-link">Kategori Pengetahuan</a></li>
-                            <li><a href="#" class="nav-link">Tentang</a></li>
-                            <li><a href="#" class="nav-link">Kontak</a></li>
+                            <li class="active"><a href="#" class="nav-link py-2">Beranda</a></li>
+                            <li><a href="#" class="nav-link  py-2">Artikel</a></li>
+                            <li><a href="#" class="nav-link  py-2">Kategori Pengetahuan</a></li>
+                            <li><a href="#" class="nav-link  py-2">Tentang</a></li>
+                            <li><a href="#" class="nav-link  py-2">Kontak</a></li>
                             <li>
                                 <div class="px-5 d-flex justify-content-between">
                                     @if (Route::has('login'))
@@ -84,12 +63,4 @@
     </header>
 
     <div class="hero"></div>
-
-    <script src="js/jsNavbar/js/jquery-3.3.1.min.js"></script>
-    <script src="js/jsNavbar/js/popper.min.js"></script>
-    <script src="js/jsNavbar/js/bootstrap.min.js"></script>
-    <script src="js/jsNavbar/js/jquery.sticky.js"></script>
-    <script src="js/jsNavbar/js/main.js"></script>
-</body>
-
-</html>
+</nav>
