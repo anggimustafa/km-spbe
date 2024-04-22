@@ -8,26 +8,14 @@
                     <div class="owl-carousel owl-banner">
                         <div class="item item-1">
                             <div class="header-text">
-                                <span class="category">Our Courses</span>
-                                <h2>With Scholar Teachers, Everything Is Easier</h2>
-                                <p>Scholar is free CSS template designed by TemplateMo for online educational related
-                                    websites. This layout is based on the famous Bootstrap v5.3.0 framework.</p>
+                                <span class="category">Artikel Pengetahuan</span>
+                                <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus saepe earum nisi
+                                    doloribus minus magnam! Delectus totam ex sit error accusantium, quam incidunt
+                                    assumenda, repudiandae, dolorem laudantium beatae vel. Animi!p>
                                 <div class="buttons">
                                     <div class="main-button">
-                                        @if (Route::has('login'))
-                                            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                                                @auth
-                                                    <a href="{{ url('/dashboard') }}" class="btn btn-secondary">Dashboard</a>
-                                                    {{-- @else
-                                                        <a href="{{ route('login') }}" class="btn btn-outline-danger">Log
-                                                            in</a>
-
-                                                        @if (Route::has('register'))
-                                                            <a href="{{ route('register') }}" class="btn btn-info">Register</a>
-                                                        @endif --}}
-                                                @endauth
-                                            </div>
-                                        @endif
+                                        <a href="#">Request Demo</a>
                                     </div>
                                     <div class="icon-button">
                                         <a href="#"><i class="fa fa-play"></i> What's Scholar?</a>
