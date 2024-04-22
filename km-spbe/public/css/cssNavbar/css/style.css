@@ -58,12 +58,12 @@ a:hover {
 }
 
 .hero {
-    min-height: 5rem;
+    min-height: 85px;
     /* Tinggi minimum */
     height: auto;
     /* Set tinggi menjadi auto agar menyesuaikan konten */
     width: 100%;
-    background: #02923e;
+    background: #1baf59a9;
 }
 
 .site-navbar {

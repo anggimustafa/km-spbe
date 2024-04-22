@@ -1,7 +1,55 @@
-@extends('layouts.main')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('body')
-    <div class="main-banner" id="top">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <title>Scholar - Online School HTML5 Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-scholar.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <!--
+
+TemplateMo 586 Scholar
+
+https://templatemo.com/tm-586-scholar
+
+-->
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    {{-- Header --}}
+    @include('partials.header')
+
+    {{-- Main Body --}}
+    @yield('body')
+    {{-- <div class="main-banner" id="top">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -14,20 +62,7 @@
                                     websites. This layout is based on the famous Bootstrap v5.3.0 framework.</p>
                                 <div class="buttons">
                                     <div class="main-button">
-                                        @if (Route::has('login'))
-                                            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                                                @auth
-                                                    <a href="{{ url('/dashboard') }}" class="btn btn-secondary">Dashboard</a>
-                                                    {{-- @else
-                                                        <a href="{{ route('login') }}" class="btn btn-outline-danger">Log
-                                                            in</a>
-
-                                                        @if (Route::has('register'))
-                                                            <a href="{{ route('register') }}" class="btn btn-info">Register</a>
-                                                        @endif --}}
-                                                @endauth
-                                            </div>
-                                        @endif
+                                        <a href="#">Request Demo</a>
                                     </div>
                                     <div class="icon-button">
                                         <a href="#"><i class="fa fa-play"></i> What's Scholar?</a>
@@ -164,12 +199,13 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    data-bs-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
                                     Why SCHOLAR is the best?
                                 </button>
                             </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample">
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
                                     There are more than one hundred responsive HTML templates to choose from
                                     <strong>Template</strong>Mo website. You can browse by different tags or categories.
@@ -179,7 +215,8 @@
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    data-bs-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
                                     Do we get the best support?
                                 </button>
                             </h2>
@@ -607,8 +644,8 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <fieldset>
-                                        <input type="name" name="name" id="name" placeholder="Your Name..."
-                                            autocomplete="on" required>
+                                        <input type="name" name="name" id="name"
+                                            placeholder="Your Name..." autocomplete="on" required>
                                     </fieldset>
                                 </div>
                                 <div class="col-lg-12">
@@ -634,5 +671,20 @@
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    </div> --}}
+
+    {{-- Footer --}}
+    @include('partials.footer')
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/isotope.min.js"></script>
+    <script src="assets/js/owl-carousel.js"></script>
+    <script src="assets/js/counter.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-<nav>
+<nav class="fixed-top navbar-transparent">
     <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
             <div class="site-mobile-menu-close mt-3">
@@ -7,23 +7,23 @@
         </div>
         <div class="site-mobile-menu-body"></div>
     </div>
-    <header class="site-navbar site-navbar-target p-2" role="banner">
+    <header class="site-navbar site-navbar-target p-2 mt-1" role="banner">
 
         <div class="container-fluid">
-            <div class="row align-items-center position-relative">
+            <div class="row align-items-center d-flex justify-content-evenly position-relative">
 
-                <div class="col-1">
+                <div class="col-1 d-none d-xl-block">
                     <div class="site-logo ms-5">
                         <img src="/img/akcaya2.png" alt="" width="40px">
                     </div>
                 </div>
 
-                <div class="col-2 d-none d-xl-block text-light">
+                <div class="col-4 text-light">
                     <span style="font-size: 15px"><strong>SPBE</strong></span><br>
                     <span>Manajemen Pengetahuan </span>
                 </div>
 
-                <div class="col-9  text-right">
+                <div class="col-7 text-right">
                     <span class="d-inline-block d-lg-none"><a href="#"
                             class="text-primary site-menu-toggle js-menu-toggle py-5"><span
                                 class="icon-menu h3 text-white"></span></a></span>
@@ -35,7 +35,6 @@
                             <li><a href="#" class="nav-link  py-2">Artikel</a></li>
                             <li><a href="#" class="nav-link  py-2">Kategori Pengetahuan</a></li>
                             <li><a href="#" class="nav-link  py-2">Tentang</a></li>
-                            <li><a href="#" class="nav-link  py-2">Kontak</a></li>
                             <li>
                                 <div class="px-5 d-flex justify-content-between">
                                     @if (Route::has('login'))
