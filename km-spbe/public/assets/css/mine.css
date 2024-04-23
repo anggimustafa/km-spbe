@@ -1,0 +1,30 @@
+#search-carousel {
+    position: relative;
+    width: 60vw;
+}
+
+#search-carousel input {
+    background-color: rgba(255, 255, 255, 0.452);
+    height: 44px;
+    width: 60vw;
+    border-radius: 23px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 0px 20px 0px;
+}
+
+#search-carousel input::placeholder {
+    color: rgba(250, 250, 250, 0.75);
+}
+
+#search-carousel button {
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    color: #fff;
+    right: 15px;
+    top: 12px;
+    font-size: 20px;
+    border: 0;
+}

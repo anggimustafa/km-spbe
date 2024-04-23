@@ -8,49 +8,48 @@
                     <div class="owl-carousel owl-banner">
                         <div class="item item-1">
                             <div class="header-text">
-                                <span class="category">Artikel Pengetahuan</span>
-                                <h2>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus saepe earum nisi
-                                    doloribus minus magnam! Delectus totam ex sit error accusantium, quam incidunt
-                                    assumenda, repudiandae, dolorem laudantium beatae vel. Animi!p>
-                                <div class="buttons">
-                                    <div class="main-button">
-                                        <a href="#">Request Demo</a>
-                                    </div>
-                                    <div class="icon-button">
-                                        <a href="#"><i class="fa fa-play"></i> What's Scholar?</a>
-                                    </div>
+                                <h2>Selamat datang di Manajemen Pengetahuan SPBE.</h2>
+                                <p>Mari selami dan temukan pengetahuan yang tak terbatas di dunia Manajemen
+                                    Pengetahuan
+                                    SPBE, tempat di mana setiap pencarian adalah petualangan baru!</p>
+                                <div class="search-input mt-3">
+                                    <form id="search-carousel" action="#">
+                                        <input type="text" placeholder="Type Something" id='searchText'
+                                            name="searchKeyword" onkeypress="handle" />
+                                        <button type="submit" class="fa-solid fa-magnifying-glass"></button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                         <div class="item item-2">
                             <div class="header-text">
-                                <span class="category">Best Result</span>
-                                <h2>Get the best result out of your effort</h2>
-                                <p>You are allowed to use this template for any educational or commercial purpose. You
-                                    are not allowed to re-distribute the template ZIP file on any other website.</p>
+                                <span class="category"></span>
+                                <h2>Identifikasi Pengetahuan</h2>
+                                <p>Temukan beragam pengetahuan seputar Tata Kelola, Manajemen, Layanan, Infrastruktur,
+                                    Aplikasi, Keamanan, dan Audit dalam entitas SPBE melalui artikel-artikel kami.</p>
                                 <div class="buttons">
                                     <div class="main-button">
-                                        <a href="#">Request Demo</a>
-                                    </div>
-                                    <div class="icon-button">
-                                        <a href="#"><i class="fa fa-play"></i> What's the best result?</a>
+                                        <a href="#">Tata Kelola SPBE</a>
+                                        <a href="#">Manajemen SPBE</a>
+                                        <a href="#">Layanan SPBE</a>
+                                        <a href="#">Infrastruktur SPBE</a>
+                                        <a href="#">Aplikasi SPBE</a>
+                                        <a href="#">Keamanan SPBE</a>
+                                        <a href="#">Audit TIK SPBE</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="item item-3">
                             <div class="header-text">
-                                <span class="category">Online Learning</span>
-                                <h2>Online Learning helps you save the time</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporious
-                                    incididunt ut labore et dolore magna aliqua suspendisse.</p>
+                                <span class="category"></span>
+                                <h2>Pendukung Pengetahuan</h2>
+                                <p>Jelajahi pengetahuan dalam artikel-artikel kami yang didukung oleh berbagai macam sumber
+                                    pendukung, berupa infografis, pedoman, video, hingga presentasi untuk memberikan
+                                    pemahaman yang komprehensif dan mendalam.</p>
                                 <div class="buttons">
                                     <div class="main-button">
-                                        <a href="#">Request Demo</a>
-                                    </div>
-                                    <div class="icon-button">
-                                        <a href="#"><i class="fa fa-play"></i> What's Online Course?</a>
+                                        <a href="#">Go...</a>
                                     </div>
                                 </div>
                             </div>
@@ -64,16 +63,24 @@
     <div class="services section" id="services">
         <div class="container">
             <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h2>Kategori Pengetahuan</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="service-item">
                         <div class="icon">
-                            <img src="assets/images/service-01.png" alt="online degrees">
+                            <img src="assets/images/policy.png" alt="online degrees">
                         </div>
                         <div class="main-content">
-                            <h4>Online Degrees</h4>
-                            <p>Whenever you need free templates in HTML CSS, you just remember TemplateMo website.</p>
+                            <h4>Tata Kelola SPBE</h4>
+                            <p>Terkait tata cara penyusunan peta rencana, arsitektur, dan penetapan kebijakan, pedoman dan
+                                prosedur serta contoh pengalaman dalam tata kelola SPBE.</p>
                             <div class="main-button">
-                                <a href="#">Read More</a>
+                                <a href="#">Go...</a>
                             </div>
                         </div>
                     </div>
@@ -81,13 +88,14 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-item">
                         <div class="icon">
-                            <img src="assets/images/service-02.png" alt="short courses">
+                            <img src="assets/images/project-management.png" alt="short courses">
                         </div>
                         <div class="main-content">
-                            <h4>Short Courses</h4>
-                            <p>You can browse free templates based on different tags such as digital marketing, etc.</p>
+                            <h4>Manajemen SPBE</h4>
+                            <p>Terkait penerapan aspek-aspek manajemen SPBE secara efisien dan terpadu serta best practices
+                                pengembangan kompetensi SDM terkait SPBE.</p>
                             <div class="main-button">
-                                <a href="#">Read More</a>
+                                <a href="#">Go...</a>
                             </div>
                         </div>
                     </div>
@@ -95,13 +103,221 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="service-item">
                         <div class="icon">
-                            <img src="assets/images/service-03.png" alt="web experts">
+                            <img src="assets/images/vehicle.png" alt="web experts">
                         </div>
                         <div class="main-content">
-                            <h4>Web Experts</h4>
-                            <p>You can start learning HTML CSS by modifying free templates from our website too.</p>
+                            <h4>Layanan SPBE</h4>
+                            <p>Terkait penanganan masalah yang timbul dalam penyediaan atau penggunaan layanan SPBE serta
+                                mengukur tingkat layanan SPBE.</p>
                             <div class="main-button">
-                                <a href="#">Read More</a>
+                                <a href="#">Go...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item">
+                        <div class="icon">
+                            <img src="assets/images/infrastucture.png" alt="web experts">
+                        </div>
+                        <div class="main-content">
+                            <h4>Infrastruktur SPBE</h4>
+                            <p>Terkait tahapan dalam mengelola, memelihara, atau mengembangkan infrastruktur jaringan intra
+                                pemerintah serta dalam proses interaksi perangkat SPBE.</p>
+                            <div class="main-button">
+                                <a href="#">Go...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item">
+                        <div class="icon">
+                            <img src="assets/images/data.png" alt="web experts">
+                        </div>
+                        <div class="main-content">
+                            <h4>Aplikasi SPBE</h4>
+                            <p>Terkait cara menangani masalah dalam implementasi aplikasi umum SPBE serta perencanaan dan
+                                pengembangan aplikasi khusus SPBE.</p>
+                            <div class="main-button">
+                                <a href="#">Go...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item">
+                        <div class="icon">
+                            <img src="assets/images/encrypted.png" alt="web experts">
+                        </div>
+                        <div class="main-content">
+                            <h4>Keamanan</h4>
+                            <p>Terkait cara mengidentifikasi potensi kelemahan keamanan serta mengatasi permasalahan
+                                keamanan informasi dalam penerapan SPBE.
+                            </p>
+                            <div class="main-button">
+                                <a href="#">Go...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="service-item">
+                        <div class="icon">
+                            <img src="assets/images/search.png" alt="web experts">
+                        </div>
+                        <div class="main-content">
+                            <h4>Audit TIK</h4>
+                            <p>Terkait tahapan dalam menyusun perencanaan dan pelaksanaan audit TIK serta langkah dalam
+                                menindaklanjuti hasil audit TIK.</p>
+                            <div class="main-button">
+                                <a href="#">Go...</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section events" id="events">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-heading">
+                        <h6>Artikel</h6>
+                        <h2>Postingan Terkini</h2>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-6">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="image">
+                                    <img src="assets/images/event-01.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <ul>
+                                    <li>
+                                        <span class="category">Tata Kelola SPBE</span>
+                                        <h4>Panduan Praktis Penyusunan Peta Rencana Strategis</h4>
+                                    </li>
+                                    <li>
+                                        <span>Email:</span>
+                                        <h6>latep@email.com</h6>
+                                    </li>
+                                    <li>
+                                        <span>Author:</span>
+                                        <h6>Latep</h6>
+                                    </li>
+                                    <li>
+                                        <span>Date:</span>
+                                        <h6>16 Feb 2036</h6>
+                                    </li>
+                                </ul>
+                                <a href="#"><i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-6">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="image">
+                                    <img src="assets/images/event-02.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <ul>
+                                    <li>
+                                        <span class="category">Keamanan SPBE</span>
+                                        <h4>New Design Trend</h4>
+                                    </li>
+                                    <li>
+                                        <span>Email:</span>
+                                        <h6>mael@email.com</h6>
+                                    </li>
+                                    <li>
+                                        <span>Author:</span>
+                                        <h6>Mael</h6>
+                                    </li>
+                                    <li>
+                                        <span>Date:</span>
+                                        <h6>24 Feb 2036</h6>
+                                    </li>
+                                </ul>
+                                <a href="#"><i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-6">
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="image">
+                                    <img src="assets/images/event-03.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <ul>
+                                    <li>
+                                        <span class="category">Layanan SPBE</span>
+                                        <h4>Web Programming</h4>
+                                    </li>
+                                    <li>
+                                        <span>Email:</span>
+                                        <h6>ucup@email.com</h6>
+                                    </li>
+                                    <li>
+                                        <span>Author:</span>
+                                        <h6>Ucup</h6>
+                                    </li>
+                                    <li>
+                                        <span>Date:</span>
+                                        <h6>12 Mar 2036</h6>
+                                    </li>
+                                </ul>
+                                <a href="#"><i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section fun-facts">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="wrapper">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="counter">
+                                    <h2 class="timer count-title count-number" data-to="150" data-speed="1000"></h2>
+                                    <p class="count-text ">Total Postingan Pengetahuan</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="counter">
+                                    <h2 class="timer count-title count-number" data-to="50" data-speed="1000"></h2>
+                                    <p class="count-text ">Total Author</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="counter">
+                                    <h2 class="timer count-title count-number" data-to="70" data-speed="1000"></h2>
+                                    <p class="count-text ">Total Users</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="counter end">
+                                    <h2 class="timer count-title count-number" data-to="190" data-speed="1000"></h2>
+                                    <p class="count-text ">Total Pengunjung</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -197,7 +413,7 @@
         </div>
     </div>
 
-    <section class="section courses" id="courses">
+    {{-- <section class="section courses" id="courses">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -227,7 +443,7 @@
                         <div class="thumb">
                             <a href="#"><img src="assets/images/course-01.jpg" alt=""></a>
                             <span class="category">Webdesign</span>
-                            <span class="price">
+                            <span class="Email">
                                 <h6><em>$</em>160</h6>
                             </span>
                         </div>
@@ -314,46 +530,9 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <div class="section fun-facts">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="wrapper">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-6">
-                                <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="150" data-speed="1000"></h2>
-                                    <p class="count-text ">Happy Students</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="804" data-speed="1000"></h2>
-                                    <p class="count-text ">Course Hours</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="50" data-speed="1000"></h2>
-                                    <p class="count-text ">Employed Students</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-3 col-md-6">
-                                <div class="counter end">
-                                    <h2 class="timer count-title count-number" data-to="15" data-speed="1000"></h2>
-                                    <p class="count-text ">Years Experience</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="team section" id="team">
+    {{-- <div class="team section" id="team">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">
@@ -414,7 +593,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="section testimonials">
         <div class="container">
@@ -463,116 +642,7 @@
         </div>
     </div>
 
-    <div class="section events" id="events">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-heading">
-                        <h6>Schedule</h6>
-                        <h2>Upcoming Events</h2>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-01.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Web Design</span>
-                                        <h4>UI Best Practices</h4>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>16 Feb 2036</h6>
-                                    </li>
-                                    <li>
-                                        <span>Duration:</span>
-                                        <h6>22 Hours</h6>
-                                    </li>
-                                    <li>
-                                        <span>Price:</span>
-                                        <h6>$120</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-02.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Front End</span>
-                                        <h4>New Design Trend</h4>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>24 Feb 2036</h6>
-                                    </li>
-                                    <li>
-                                        <span>Duration:</span>
-                                        <h6>30 Hours</h6>
-                                    </li>
-                                    <li>
-                                        <span>Price:</span>
-                                        <h6>$320</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-03.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Full Stack</span>
-                                        <h4>Web Programming</h4>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>12 Mar 2036</h6>
-                                    </li>
-                                    <li>
-                                        <span>Duration:</span>
-                                        <h6>48 Hours</h6>
-                                    </li>
-                                    <li>
-                                        <span>Price:</span>
-                                        <h6>$440</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="contact-us section" id="contact">
+    {{-- <div class="contact-us section" id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6  align-self-center">
@@ -622,5 +692,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
