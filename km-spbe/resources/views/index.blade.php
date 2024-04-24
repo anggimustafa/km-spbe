@@ -600,7 +600,7 @@
         </div>
     </div> --}}
 
-    <div class="section testimonials">
+    <div class="section testimonials mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 align-self-center">
