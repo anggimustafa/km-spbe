@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <div class="services section" id="services">
+    <div class="services section" id="kategori">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -233,7 +233,7 @@
                                 <ul>
                                     <li>
                                         <span class="category">Keamanan SPBE</span>
-                                        <h4>New Design Trend</h4>
+                                        <h4>Judul artikel disini....</h4>
                                     </li>
                                     <li>
                                         <span>Email:</span>
@@ -265,7 +265,7 @@
                                 <ul>
                                     <li>
                                         <span class="category">Layanan SPBE</span>
-                                        <h4>Web Programming</h4>
+                                        <h4>Judul artikel disini....</h4>
                                     </li>
                                     <li>
                                         <span>Email:</span>
@@ -297,25 +297,25 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="150" data-speed="1000"></h2>
+                                    <h2 class="timer count-title count-number" data-to="150" data-speed="5000"></h2>
                                     <p class="count-text ">Total Postingan Pengetahuan</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="50" data-speed="1000"></h2>
+                                    <h2 class="timer count-title count-number" data-to="50" data-speed="5000"></h2>
                                     <p class="count-text ">Total Author</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="70" data-speed="1000"></h2>
+                                    <h2 class="timer count-title count-number" data-to="70" data-speed="5000"></h2>
                                     <p class="count-text ">Total Users</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter end">
-                                    <h2 class="timer count-title count-number" data-to="190" data-speed="1000"></h2>
+                                    <h2 class="timer count-title count-number" data-to="190" data-speed="5000"></h2>
                                     <p class="count-text ">Total Pengunjung</p>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@
         </div>
     </div>
 
-    <div class="section about-us">
+    <div class="section about-us" id="about">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 offset-lg-1">
@@ -335,16 +335,16 @@
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Where shall we begin?
+                                    Apa itu SPBE?
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Dolor <strong>almesit amet</strong>, consectetur adipiscing elit, sed doesn't
-                                    eiusmod tempor incididunt ut labore consectetur <code>adipiscing</code> elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
-                                    ultrices gravida.
+                                    <strong>SPBE</strong> merupakan singkatan dari Sistem Pemerintahan Berbasis Elektronik,
+                                    Sistem Pemerintahan Berbasis Elektronik (SPBE) adalah penyelenggaraan pemerintahan yang
+                                    memanfaatkan teknologi informasi dan komunikasi untuk memberikan layanan kepada Pengguna
+                                    SPBE.
                                 </div>
                             </div>
                         </div>
@@ -352,16 +352,16 @@
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How do we work together?
+                                    Siapa yang mengelola website Manajemen Pengetahuan ini?
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Dolor <strong>almesit amet</strong>, consectetur adipiscing elit, sed doesn't
-                                    eiusmod tempor incididunt ut labore consectetur <code>adipiscing</code> elit, sed do
-                                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
-                                    ultrices gravida.
+                                    Website Manajemen Pengetahuan ini dikelola oleh Aparatur Sipil Negara (ASN) di setiap
+                                    Organisasi Perangkat Daerah (OPD) di Kalimantan Barat. Sedangkan pengelolaan aplikasinya
+                                    dipegang oleh Bidang Aplikasi Informatika (Aptika) Dinas Komunikasi dan Informatika
+                                    (Diskominfo) Kalimantan Barat.
                                 </div>
                             </div>
                         </div>
@@ -369,14 +369,17 @@
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Why SCHOLAR is the best?
+                                    Pengetahuan apa saja yang di sediakan?
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    There are more than one hundred responsive HTML templates to choose from
-                                    <strong>Template</strong>Mo website. You can browse by different tags or categories.
+                                    Berbagai macam pengetahuan disediakan di website ini, tetapi tidak terbatas pada Tata
+                                    Kelola SPBE, Manajemen SPBE, Layanan SPBE, Infrastruktur SPBE, Aplikasi SPBE, Keamanan
+                                    SPBE, dan Audit TIK SPBE. Setiap kategori pengetahuan ini menyajikan artikel, panduan,
+                                    dan informasi penting lainnya untuk mendukung pemahaman seputar SPBE di Kalimantan
+                                    Barat.
                                 </div>
                             </div>
                         </div>
@@ -384,15 +387,15 @@
                             <h2 class="accordion-header" id="headingFour">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    Do we get the best support?
+                                    Siapa saja yang bisa mengakses website ini?
                                 </button>
                             </h2>
                             <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                                 data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    You can also search on Google with specific keywords such as <code>templatemo
-                                        business templates, templatemo gallery templates, admin dashboard templatemo,
-                                        3-column templatemo, etc.</code>
+                                    Website ini dapat diakses oleh seluruh Aparatur Sipil Negara (ASN) di setiap Organisasi
+                                    Perangkat Daerah (OPD) di Kalimantan Barat serta masyarakat umum yang tertarik untuk
+                                    memperdalam pemahaman terkait SPBE.
                                 </div>
                             </div>
                         </div>
@@ -400,12 +403,14 @@
                 </div>
                 <div class="col-lg-5 align-self-center">
                     <div class="section-heading">
-                        <h6>About Us</h6>
-                        <h2>What make us the best academy online?</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravid risus commodo.</p>
+                        <h6>About</h6>
+                        <h2>Apa itu Manajemen Pengetahuan?</h2>
+                        <p>Manajemen Pengetahuan adalah proses merencanakan, mengorganisir, mengelola, dan membagikan
+                            pengetahuan di dalam suatu organisasi untuk meningkatkan kinerja dan inovasi.</p>
                         <div class="main-button">
-                            <a href="#">Discover More</a>
+                            <a href="https://www.google.com/search?q=Manajemen+Pengetahuan&sca_esv=c0c76b5fc7789c73&sca_upv=1&ei=n3koZqXyE-_CjuMP2ZSk0AQ&ved=0ahUKEwjlvb3O8dmFAxVvoWMGHVkKCUoQ4dUDCBA&uact=5&oq=Manajemen+Pengetahuan&gs_lp=Egxnd3Mtd2l6LXNlcnAiFU1hbmFqZW1lbiBQZW5nZXRhaHVhbjIKEAAYgAQYQxiKBTIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABEi1XlCdI1iFXHAHeAGQAQGYAbIBoAHQD6oBBDE4Lja4AQPIAQD4AQGYAh6gApcPqAITwgIKEAAYsAMY1gQYR8ICDRAAGIAEGLADGEMYigXCAhMQABiABBhDGLQCGIoFGOoC2AEBwgIUEAAYgAQY4wQYtAIY6QQY6gLYAQHCAhYQABgDGLQCGOUCGOoCGIwDGI8B2AECwgIWEC4YAxi0AhjlAhjqAhiMAxiPAdgBAsICEBAAGIAEGLEDGEMYgwEYigXCAgsQABiABBixAxiDAcICChAuGIAEGEMYigXCAgsQLhiABBixAxiDAcICDRAAGIAEGLEDGEMYigXCAggQABiABBixA8ICBRAuGIAEwgIKEAAYgAQYsQMYCsICBxAAGIAEGArCAgsQABiABBixAxiKBcICBxAAGIAEGA2YAwqIBgGQBgm6BgQIARgHugYGCAIQARgKkgcEMjQuNqAH9pMB&sclient=gws-wiz-serp"
+                                target="_blank">Discover
+                                More</a>
                         </div>
                     </div>
                 </div>
@@ -598,44 +603,52 @@
     <div class="section testimonials">
         <div class="container">
             <div class="row">
+                <div class="col-lg-5 align-self-center">
+                    <div class="section-heading">
+                        <h6>Definisi</h6>
+                        <h2>Definisi Manajemen Pengetahuan menurut para ahli.</h2>
+                    </div>
+                </div>
                 <div class="col-lg-7">
                     <div class="owl-carousel owl-testimonials">
                         <div class="item">
-                            <p>“Please tell your friends or collegues about TemplateMo website. Anyone can access the
-                                website to download free templates. Thank you for visiting.”</p>
+                            <p>“Performing the activities involved in
+                                discovering, capturing, sharing, and
+                                applying knowledge to enhance, in a
+                                cost-effective fashion, the impact of
+                                knowledge on the unit’s goal
+                                achievement.
+                                ”</p>
                             <div class="author">
-                                <img src="assets/images/testimonial-author.jpg" alt="">
-                                <span class="category">Full Stack Master</span>
-                                <h4>Claude David</h4>
+                                <img src="assets/images/becerafernandez.jpg" alt="">
+                                <span class="category">Knowledge Management : System and Process</span>
+                                <h4>Becerra-Fernandez(2015)</h4>
                             </div>
                         </div>
                         <div class="item">
-                            <p>“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravid.”
+                            <p>“Manajemen Pengetahuan adalah sebuah koordinasi sitematis
+                                dalam sebuah organisasi yang mengatur sumber daya manusia, teknologi, proses dan
+                                struktur organisasi dalam rangka meningkatkan value melalui penggunaan ulang dan
+                                inovasi. Koordinasi ini bisa dicapai melalui menciptakan, membagi dan
+                                mengaplikasikan pengetahuan dengan menggunakan pengalaman dan tindakan yang
+                                telah diambil perusahaan demi kelangsungan pembelajaran organisasi.”
                             </p>
                             <div class="author">
-                                <img src="assets/images/testimonial-author.jpg" alt="">
-                                <span class="category">UI Expert</span>
-                                <h4>Thomas Jefferson</h4>
+                                <img src="assets/images/dalkir.jpg" alt="">
+                                <span class="category">Knowledge Management in Theory and Practice</span>
+                                <h4>Dalkir(2011)</h4>
                             </div>
                         </div>
                         <div class="item">
-                            <p>“Scholar is free website template provided by TemplateMo for educational related
-                                websites. This CSS layout is based on Bootstrap v5.3.0 framework.”</p>
+                            <p>“Knowledge Management is the process of capturing, distributing, and effectively using
+                                knowledge.” <br> “Manajemen Pengetahuan adalah proses menangkap, mendistribusikan, dan
+                                menggunakan pengetahuan secara efektif.”</p>
                             <div class="author">
-                                <img src="assets/images/testimonial-author.jpg" alt="">
-                                <span class="category">Digital Animator</span>
-                                <h4>Stella Blair</h4>
+                                <img src="assets/images/davenport.jpg" alt="">
+                                <span class="category">Working Knowledge</span>
+                                <h4>Davenport(1994)</h4>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 align-self-center">
-                    <div class="section-heading">
-                        <h6>TESTIMONIALS</h6>
-                        <h2>What they say about us?</h2>
-                        <p>You can search free CSS templates on Google using different keywords such as templatemo
-                            portfolio, templatemo gallery, templatemo blue color, etc.</p>
                     </div>
                 </div>
             </div>

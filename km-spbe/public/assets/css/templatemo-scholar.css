@@ -768,6 +768,14 @@ Banner Style
     padding: 170px 0px 120px 0px;
 }
 
+.main-banner-artikel {
+    background-image: url(../images/banner-bg.jpg);
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 130px 0px 50px 0px;
+}
+
 .main-banner .item-1 {
     background-image: url(../images/banner-item-01.jpg);
 }
@@ -1315,7 +1323,7 @@ Testimonials Style
     margin-top: 150px;
 }
 
-.testimonials:before {
+/* .testimonials:before {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -1327,6 +1335,20 @@ Testimonials Style
     content: '';
     border-top-left-radius: 500px;
     border-bottom-left-radius: 500px;
+} */
+
+.testimonials:before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 65%;
+    height: 100%;
+    background-color: #f1f0fe;
+    content: '';
+    border-top-right-radius: 500px;
+    border-bottom-right-radius: 500px;
 }
 
 .testimonials .section-heading {
@@ -1355,7 +1377,7 @@ Testimonials Style
 }
 
 .testimonials .item img {
-    border-radius: 50%;
+    border-radius: 10px;
     max-width: 100px;
     float: left;
     margin-right: 25px;

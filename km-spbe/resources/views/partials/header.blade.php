@@ -19,10 +19,10 @@
                         <!-- ***** Serach Start ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#services">Articles</a></li>
-                            <li class="scroll-to-section"><a href="#courses">Forum</a></li>
-                            <li class="scroll-to-section"><a href="#team">About</a></li>
+                            <li class="scroll-to-section"><a href="/" class="active">Beranda</a></li>
+                            <li class="scroll-to-section"><a href="/artikel" class="active">Artikel</a></li>
+                            <li class="scroll-to-section"><a href="/#kategori" class="active">Kategori</a></li>
+                            <li class="scroll-to-section"><a href="/#about" class="active">Tentang</a></li>
                             <li class="scroll-to-section">
                                 <div class="main-button">
                                     @if (Route::has('login'))
