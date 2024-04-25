@@ -32,6 +32,9 @@ Route::get('/', function () {
 Route::get('/artikel', function () {
     return view('artikel');
 });
+Route::get('/artikel-details', function () {
+    return view('artikel-details');
+});
 
 // ============ Route untuk Dashboard ====================
 Route::get('/dashboard', function () {

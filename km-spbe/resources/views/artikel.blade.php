@@ -50,7 +50,7 @@
                                         <h6>16 Feb 2036</h6>
                                     </li>
                                 </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
+                                <a href="artikel-details"><i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
