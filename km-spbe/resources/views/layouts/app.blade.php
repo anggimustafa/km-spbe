@@ -8,8 +8,8 @@
 
     <title>Manajemen Pengetahuan</title>
 
+    {{-- Data Tabel --}}
     <link href="https://cdn.datatables.net/2.0.5/css/dataTables.dataTables.css" rel="stylesheet">
-
 
     {{-- Trix Editor --}}
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
@@ -111,19 +111,23 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('indiscussion') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-regular fa-comments fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">In Discussion</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('verified') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-solid fa-square-check fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Verified Post</span>
+                            </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Forum</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('indiscussion') }}" aria-expanded="false">
+                                <span style="width: 30px">
+                                    <i class="fa-regular fa-comments fa-xl"></i>
+                                </span>
+                                <span class="hide-menu">In Discussion</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">

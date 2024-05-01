@@ -74,6 +74,16 @@ Route::get('/dashboard/verified', function () {
         'rute' => 'Verified Post'
     ]);
 })->middleware(['auth', 'verified'])->name('verified');
+Route::get('/dashboard/detail', function () {
+    return view('dashboard.detailpost.index',[
+        'rute' => 'Detail Post'
+    ]);
+})->middleware(['auth', 'verified'])->name('detail');
+Route::get('/dashboard/thread', function () {
+    return view('dashboard.thread.index',[
+        'rute' => 'Thread'
+    ]);
+})->middleware(['auth', 'verified'])->name('thread');
 
 
 // ============ Route untuk Dashboard Users ====================
