@@ -6,18 +6,17 @@ use App\Models\Post;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Qna extends Model
+class Logpost extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'post_id',
-        'judul',
-        'question',
-        'answer'
+        'action',
+        'desc',
     ];
 
-    // Definisikan relasi Many to One. QnA ke Post
+    // Definisikan relasi Many to One. Logpost ke Post
     public function post()
     {
         return $this->belongsTo(Post::class);

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Log;
-use App\Http\Requests\StoreLogRequest;
-use App\Http\Requests\UpdateLogRequest;
+use App\Models\Logpost;
+use App\Http\Requests\StoreLogpostRequest;
+use App\Http\Requests\UpdateLogpostRequest;
 
-class LogController extends Controller
+class LogpostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class LogController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLogRequest $request)
+    public function store(StoreLogpostRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class LogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Log $log)
+    public function show(Logpost $logpost)
     {
         //
     }
@@ -43,7 +43,7 @@ class LogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Log $log)
+    public function edit(Logpost $logpost)
     {
         //
     }
@@ -51,7 +51,7 @@ class LogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLogRequest $request, Log $log)
+    public function update(UpdateLogpostRequest $request, Logpost $logpost)
     {
         //
     }
@@ -59,7 +59,7 @@ class LogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Log $log)
+    public function destroy(Logpost $logpost)
     {
         //
     }

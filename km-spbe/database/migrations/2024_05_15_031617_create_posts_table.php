@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('judul');
+            $table->string('slug');
             $table->text('body');
             $table->boolean('is_public');
             $table->string('kategori');
             $table->text('kasus');
-            $table->boolean('veryfied');
+            $table->boolean('verified');
             $table->timestamps();
         });
     }

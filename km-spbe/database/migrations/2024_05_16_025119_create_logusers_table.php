@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logs', function (Blueprint $table) {
+        Schema::create('logusers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('post_id');
-            $table->string('kategori');
+            $table->string('action');
+            $table->text('desc');
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logs');
+        Schema::dropIfExists('logusers');
     }
 };

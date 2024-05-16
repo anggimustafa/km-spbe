@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,17 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('main', function () {
-//     return view('layouts.containerPage');
-// });
-
-// Route::get('/dash', function () {
-//     return view('html.index');
-// });
-
-// Route::get('/dash/button', function () {
-//     return view('html.ui-buttons');
-// });
+Route::get('/test', function () {
+    $users = User::all();
+    return $users;
+});
 
 Route::get('/', function () {
     return view('index');
@@ -116,5 +110,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+
+
 
 require __DIR__.'/auth.php';

@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Logact;
+use App\Models\Loguser;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class LogactPolicy
+class LoguserPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class LogactPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Logact $logact): bool
+    public function view(User $user, Loguser $loguser): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class LogactPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Logact $logact): bool
+    public function update(User $user, Loguser $loguser): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class LogactPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Logact $logact): bool
+    public function delete(User $user, Loguser $loguser): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class LogactPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Logact $logact): bool
+    public function restore(User $user, Loguser $loguser): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class LogactPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Logact $logact): bool
+    public function forceDelete(User $user, Loguser $loguser): bool
     {
         //
     }
