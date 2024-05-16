@@ -17,7 +17,16 @@ class OpdFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'nama_opd' => fake()->randomElement([
+                'Dinas Pendidikan',
+                'Dinas Kesehatan',
+                'Dinas Sosial',
+                'Dinas Perhubungan',
+                'Dinas Pariwisata',
+                'Dinas Pertanian',
+                'Dinas Komunikasi dan Informatika',
+                'Dinas Kebudayaan'
+            ]),
         ];
     }
 }

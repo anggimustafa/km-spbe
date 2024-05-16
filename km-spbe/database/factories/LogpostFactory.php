@@ -17,7 +17,9 @@ class LogpostFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'post_id' => fake()->randomDigit(),
+            'action' => fake()->randomElement(['Create', 'Update', 'Delete', 'Verify']),
+            'desc' => fake()->text()
         ];
     }
 }

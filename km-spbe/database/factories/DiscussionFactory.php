@@ -17,7 +17,9 @@ class DiscussionFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'thread_id' => fake()->randomDigit(),
+            'user_id' => fake()->randomDigit(),
+            'role' => fake()->randomElement(['admin', 'verifikator', 'author']),
         ];
     }
 }

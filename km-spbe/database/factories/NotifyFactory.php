@@ -17,7 +17,9 @@ class NotifyFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => fake()->randomDigit(),
+            'body' => fake()->text(),
+            'link' => fake()->url()
         ];
     }
 }

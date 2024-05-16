@@ -17,7 +17,10 @@ class QnaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'post_id' => fake()->randomDigit(),
+            'judul' => fake()->word(),
+            'question' => fake()->text(),
+            'answer'=> fake()->text()
         ];
     }
 }

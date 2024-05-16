@@ -17,7 +17,8 @@ class ThreadFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'post_id' => fake()->randomDigit(),
+            'body' => fake()->text()
         ];
     }
 }

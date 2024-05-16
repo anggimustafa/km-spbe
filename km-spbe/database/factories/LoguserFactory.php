@@ -17,7 +17,9 @@ class LoguserFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'user_id' => fake()->randomDigit(),
+            'action' => fake()->randomElement(['Login', 'Logout']),
+            'desc' => fake()->text()
         ];
     }
 }

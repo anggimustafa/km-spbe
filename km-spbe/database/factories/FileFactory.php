@@ -17,7 +17,17 @@ class FileFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'post_id' => fake()->randomDigit(),
+            'kategori' => fake()->randomElement([
+                'Pedoman',
+                'E-Book',
+                'Presentasi',
+                'Regulasi',
+                'Infografis',
+                'Video'
+            ]),
+            'judul' => fake()->word(),
+            'url' => fake()->url()
         ];
     }
 }

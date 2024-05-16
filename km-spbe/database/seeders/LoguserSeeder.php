@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Loguser;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,6 @@ class LoguserSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        Loguser::factory(30)->create();
     }
 }

@@ -16,8 +16,6 @@ class OpdSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert([
-            'nama_opd' => Str::random(10),
-        ]);
+        Opd::factory(7)->create();
     }
 }
