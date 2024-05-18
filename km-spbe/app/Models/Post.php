@@ -7,6 +7,7 @@ use App\Models\File;
 use App\Models\User;
 use App\Models\Thread;
 use App\Models\Logpost;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,11 +17,11 @@ class Post extends Model
 
     protected $fillable = [
         'user_id',
+        'kategori_id',
         'judul',
         'slug',
         'body',
         'is_public',
-        'kategori',
         'kasus',
         'verified'
     ];
@@ -30,6 +31,12 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    // Definisikan relasi Many to One. Post ke Kategori
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     // Definisikan relasi One to One . Post ke Thread

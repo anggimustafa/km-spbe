@@ -1,8 +1,11 @@
 <?php
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +24,17 @@ Route::get('/test', function () {
 });
 
 Route::get('/', function () {
-    return view('index');
+    return view('index',[
+        'posts' => Post::latest()->take(3)->get(),
+    ]);
 });
-Route::get('/artikel', function () {
-    return view('artikel');
-});
-Route::get('/artikel-details', function () {
-    return view('artikel-details');
+Route::get('/artikel', [ArtikelController::class, 'index']);
+Route::get('/artikel/{post:slug}', [ArtikelController::class, 'show']);
+Route::get('/categories/{category:slug}', function(Category $category){
+    return view('artikel',[
+        'posts' => Post::where('category_id',$category->id)->paginate(3),
+        'categories'=> Category::all(),
+    ]);
 });
 
 // ============ Route untuk Dashboard ====================

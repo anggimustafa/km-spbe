@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             QnaSeeder::class,
             ThreadSeeder::class,
             UserSeeder::class,
+            CategorySeeder::class
             // Tambahkan seeder lain di sini
         ]);
     }

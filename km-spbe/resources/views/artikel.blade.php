@@ -5,15 +5,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="text-light text-center mb-4">Artikel</h1>
-                    <div class="main-button">
-                        <a href="#" class="mb-2">Tata Kelola SPBE</a>
-                        <a href="#" class="mb-2">Manajemen SPBE</a>
-                        <a href="#" class="mb-2">Layanan SPBE</a>
-                        <a href="#" class="mb-2">Infrastruktur SPBE</a>
-                        <a href="#" class="mb-2">Aplikasi SPBE</a>
-                        <a href="#" class="mb-2">Keamanan SPBE</a>
-                        <a href="#" class="mb-2">Audit TIK SPBE</a>
+                    <h1 class="text-light text-center mb-4">
+                        @if (request()->is('artikel'))
+                            Artikel
+                        @elseif (request()->is('categories/*'))
+                            Artikel
+                            <small>
+                                Terkait {{ ucwords(str_replace('-', ' ', last(explode('/', request()->path())))) }}</small>
+                        @else
+                            Artikel
+                        @endif
+                    </h1>
+                    <div class="main-button d-flex justify-content-center">
+                        @foreach ($categories as $category)
+                            <a href="/categories/{{ $category->slug }}" class="mb-2 mx-3">{{ $category->nama_kategori }}</a>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -23,228 +29,44 @@
     <div class="section events" id="events">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-01.jpg" alt="">
+                @foreach ($posts as $post)
+                    <div class="col-lg-12 col-md-6">
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="image">
+                                        <img src="../assets/images/event-01.jpg" alt="">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Tata Kelola SPBE</span>
-                                        <h4>Panduan Praktis Penyusunan Peta Rencana Strategis</h4>
-                                    </li>
-                                    <li>
-                                        <span>Email:</span>
-                                        <h6>latep@email.com</h6>
-                                    </li>
-                                    <li>
-                                        <span>Author:</span>
-                                        <h6>Latep</h6>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>16 Feb 2036</h6>
-                                    </li>
-                                </ul>
-                                <a href="artikel-details"><i class="fa fa-angle-right"></i></a>
+                                <div class="col-lg-9">
+                                    <ul>
+                                        <li>
+                                            <span class="category">{{ $post->category->nama_kategori }}</span>
+                                            <h4>{{ $post->judul }}</h4>
+                                        </li>
+                                        <li>
+                                            <span>Email:</span>
+                                            <h6><small>{{ $post->user->email }}</small></h6>
+                                        </li>
+                                        <li>
+                                            <span>Author:</span>
+                                            <h6><small>{{ $post->user->name }}</small></h6>
+                                        </li>
+                                        <li>
+                                            <span>Date:</span>
+                                            <h6><small>{{ $post->created_at->format('d M Y') }}</small></h6>
+                                        </li>
+                                    </ul>
+                                    <a href="/artikel/{{ $post->slug }}"><i class="fa fa-angle-right"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-02.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Keamanan SPBE</span>
-                                        <h4>Judul artikel disini....</h4>
-                                    </li>
-                                    <li>
-                                        <span>Email:</span>
-                                        <h6>mael@email.com</h6>
-                                    </li>
-                                    <li>
-                                        <span>Author:</span>
-                                        <h6>Mael</h6>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>24 Feb 2036</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-02.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Keamanan SPBE</span>
-                                        <h4>Judul artikel disini....</h4>
-                                    </li>
-                                    <li>
-                                        <span>Email:</span>
-                                        <h6>mael@email.com</h6>
-                                    </li>
-                                    <li>
-                                        <span>Author:</span>
-                                        <h6>Mael</h6>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>24 Feb 2036</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-02.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Keamanan SPBE</span>
-                                        <h4>Judul artikel disini....</h4>
-                                    </li>
-                                    <li>
-                                        <span>Email:</span>
-                                        <h6>mael@email.com</h6>
-                                    </li>
-                                    <li>
-                                        <span>Author:</span>
-                                        <h6>Mael</h6>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>24 Feb 2036</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-02.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Keamanan SPBE</span>
-                                        <h4>Judul artikel disini....</h4>
-                                    </li>
-                                    <li>
-                                        <span>Email:</span>
-                                        <h6>mael@email.com</h6>
-                                    </li>
-                                    <li>
-                                        <span>Author:</span>
-                                        <h6>Mael</h6>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>24 Feb 2036</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-02.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Keamanan SPBE</span>
-                                        <h4>Judul artikel disini....</h4>
-                                    </li>
-                                    <li>
-                                        <span>Email:</span>
-                                        <h6>mael@email.com</h6>
-                                    </li>
-                                    <li>
-                                        <span>Author:</span>
-                                        <h6>Mael</h6>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>24 Feb 2036</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-12 col-md-6">
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="image">
-                                    <img src="assets/images/event-03.jpg" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-9">
-                                <ul>
-                                    <li>
-                                        <span class="category">Layanan SPBE</span>
-                                        <h4>Judul artikel disini....</h4>
-                                    </li>
-                                    <li>
-                                        <span>Email:</span>
-                                        <h6>ucup@email.com</h6>
-                                    </li>
-                                    <li>
-                                        <span>Author:</span>
-                                        <h6>Ucup</h6>
-                                    </li>
-                                    <li>
-                                        <span>Date:</span>
-                                        <h6>12 Mar 2036</h6>
-                                    </li>
-                                </ul>
-                                <a href="#"><i class="fa fa-angle-right"></i></a>
-                            </div>
-                        </div>
+                @endforeach
+
+                <div class="d-flex justify-content-center">
+                    <div class="pagination">
+                        {{ $posts->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
             </div>

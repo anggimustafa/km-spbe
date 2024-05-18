@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
 
-    <link rel="icon" href="img/spbe.png">
+    <link rel="icon" href="../img/spbe.png">
 
     {{-- Font Nunito --}}
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -29,11 +29,11 @@
 
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-scholar.css">
-    <link rel="stylesheet" href="assets/css/mine.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+    <link rel="stylesheet" href="../assets/css/templatemo-scholar.css">
+    <link rel="stylesheet" href="../assets/css/mine.css">
+    <link rel="stylesheet" href="../assets/css/owl.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
     <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <!--
 
@@ -70,12 +70,12 @@ https://templatemo.com/tm-586-scholar
 
     <!-- Scripts -->
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/isotope.min.js"></script>
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/counter.js"></script>
-    <script src="assets/js/custom.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/js/isotope.min.js"></script>
+    <script src="../assets/js/owl-carousel.js"></script>
+    <script src="../assets/js/counter.js"></script>
+    <script src="../assets/js/custom.js"></script>
 
     {{-- CDN Bootstrap 5.3 --}}
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

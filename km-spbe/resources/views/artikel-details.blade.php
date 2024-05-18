@@ -3,12 +3,12 @@
 @section('body')
     <div class="artikel-details">
         <div class="hero">
-            <img src="assets/images/event-01.jpg" alt="">
+            <img src="../assets/images/event-01.jpg" alt="">
             <div class="gambar-hero">
                 <div class="judul text-center">
-                    <h1 class="text-light mb-2">Judul disiniiii</h1>
-                    <small class="text-light">Author : Ucup &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Date : 24 Desember
-                        2036</small>
+                    <h1 class="text-light mb-2">{{ $post->judul }}</h1>
+                    <small class="text-light">Author : {{ $post->user->name }} &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Date :
+                        {{ $post->created_at->format('d M Y') }}</small>
                 </div>
             </div>
         </div>

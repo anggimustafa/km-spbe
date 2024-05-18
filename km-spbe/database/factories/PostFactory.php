@@ -17,20 +17,12 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => fake()->randomDigit(),
+            'user_id' => fake()->numberBetween(1,9),
+            'category_id' => fake()->numberBetween(1,7),
             'judul' => fake()->word(),
-            'slug' => fake()->text(),
+            'slug' => fake()->word(),
             'body' => fake()->text(),
             'is_public' => fake()->boolean(),
-            'kategori' => fake()->randomElement([
-                'Tata Kelola',
-                'Manajemen',
-                'Layanan',
-                'Arsitektur',
-                'Keamanan',
-                'Aplikasi',
-                'Audit TIK'
-            ]),
             'kasus' => fake()->text(),
             'verified' => fake()->boolean()
         ];
