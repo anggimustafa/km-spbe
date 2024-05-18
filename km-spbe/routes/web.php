@@ -26,16 +26,12 @@ Route::get('/test', function () {
 Route::get('/', function () {
     return view('index',[
         'posts' => Post::latest()->take(3)->get(),
-    ]);
-});
-Route::get('/artikel', [ArtikelController::class, 'index']);
-Route::get('/artikel/{post:slug}', [ArtikelController::class, 'show']);
-Route::get('/categories/{category:slug}', function(Category $category){
-    return view('artikel',[
-        'posts' => Post::where('category_id',$category->id)->paginate(3),
         'categories'=> Category::all(),
     ]);
 });
+
+Route::get('/artikel', [ArtikelController::class, 'index']);
+Route::get('/artikel/{post:slug}', [ArtikelController::class, 'show']);
 
 // ============ Route untuk Dashboard ====================
 Route::get('/dashboard', function () {

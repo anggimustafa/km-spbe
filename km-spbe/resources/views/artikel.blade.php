@@ -16,10 +16,18 @@
                             Artikel
                         @endif
                     </h1>
-                    <div class="main-button d-flex justify-content-center">
+                    <div class="main-button text-center">
                         @foreach ($categories as $category)
-                            <a href="/categories/{{ $category->slug }}" class="mb-2 mx-3">{{ $category->nama_kategori }}</a>
+                            <a href="/artikel?category={{ $category->slug }}"
+                                class="mb-2">{{ $category->nama_kategori }}</a>
                         @endforeach
+                    </div>
+                    <div class="d-flex justify-content-center mt-3">
+                        <form id="search-carousel" action="/artikel">
+                            <input type="text" placeholder="Type Something" id='searchText' name="search"
+                                onkeypress="handle" value="{{ request('searchKeyword') }}" />
+                            <button type="submit" class="fa-solid fa-magnifying-glass"></button>
+                        </form>
                     </div>
                 </div>
             </div>

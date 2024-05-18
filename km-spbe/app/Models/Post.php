@@ -26,6 +26,34 @@ class Post extends Model
         'verified'
     ];
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function($query, $search) {
+            return $query->where('judul', 'like', '%' . $search . '%')
+                        ->orWhere('body', 'like', '%' . $search . '%')
+                        ->orWhere('kasus', 'like', '%' . $search . '%');
+        });
+
+        $query->when($filters['category'] ?? false, function($query, $category) {
+            return $query->whereHas('category', function($query) use ($category) {
+                $query->where('slug', $category);
+            });
+        });
+
+        // $query->when($filters['author'] ?? false, fn($query, $author) =>
+        //     $query->whereHas('author', fn($query) =>
+        //         $query->where('email', $author)
+        //     )
+        // );
+    }
+
+    public function scopeValidated($query){
+        return $query->where('validated', true);
+    }
+
+    public function scopePublic($query){
+        return $query->where('is_public', true);
+    }
 
     // Definisikan relasi Many to One. Post ke User
     public function user()

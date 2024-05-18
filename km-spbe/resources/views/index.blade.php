@@ -13,9 +13,10 @@
                                     Pengetahuan
                                     SPBE, tempat di mana setiap pencarian adalah petualangan baru!</p>
                                 <div class="search-input mt-3">
-                                    <form id="search-carousel" action="#">
+                                    <form id="search-carousel" action="/artikel">
                                         <input type="text" placeholder="Type Something" id='searchText'
-                                            name="searchKeyword" onkeypress="handle" />
+                                            name="searchKeyword" onkeypress="handle"
+                                            value="{{ request('searchKeyword') }}" />
                                         <button type="submit" class="fa-solid fa-magnifying-glass"></button>
                                     </form>
                                 </div>
@@ -29,13 +30,10 @@
                                     Aplikasi, Keamanan, dan Audit dalam entitas SPBE melalui artikel-artikel kami.</p>
                                 <div class="buttons">
                                     <div class="main-button">
-                                        <a href="#">Tata Kelola SPBE</a>
-                                        <a href="#">Manajemen SPBE</a>
-                                        <a href="#">Layanan SPBE</a>
-                                        <a href="#">Infrastruktur SPBE</a>
-                                        <a href="#">Aplikasi SPBE</a>
-                                        <a href="#">Keamanan SPBE</a>
-                                        <a href="#">Audit TIK SPBE</a>
+                                        @foreach ($categories as $category)
+                                            <a href="/artikel?category={{ $category->slug }}"
+                                                class="">{{ $category->nama_kategori }} SPBE</a>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +47,7 @@
                                     pemahaman yang komprehensif dan mendalam.</p>
                                 <div class="buttons">
                                     <div class="main-button">
-                                        <a href="#">Go...</a>
+                                        <a href="/artikel">Go...</a>
                                     </div>
                                 </div>
                             </div>
@@ -80,7 +78,7 @@
                             <p>Terkait tata cara penyusunan peta rencana, arsitektur, dan penetapan kebijakan, pedoman dan
                                 prosedur serta contoh pengalaman dalam tata kelola SPBE.</p>
                             <div class="main-button">
-                                <a href="#">Go...</a>
+                                <a href="/artikel?category=tata-kelola">Go...</a>
                             </div>
                         </div>
                     </div>
@@ -95,7 +93,7 @@
                             <p>Terkait penerapan aspek-aspek manajemen SPBE secara efisien dan terpadu serta best practices
                                 pengembangan kompetensi SDM terkait SPBE.</p>
                             <div class="main-button">
-                                <a href="#">Go...</a>
+                                <a href="/artikel?category=manajemen">Go...</a>
                             </div>
                         </div>
                     </div>
@@ -110,7 +108,7 @@
                             <p>Terkait penanganan masalah yang timbul dalam penyediaan atau penggunaan layanan SPBE serta
                                 mengukur tingkat layanan SPBE.</p>
                             <div class="main-button">
-                                <a href="#">Go...</a>
+                                <a href="/artikel?category=layanan">Go...</a>
                             </div>
                         </div>
                     </div>
@@ -125,7 +123,7 @@
                             <p>Terkait tahapan dalam mengelola, memelihara, atau mengembangkan infrastruktur jaringan intra
                                 pemerintah serta dalam proses interaksi perangkat SPBE.</p>
                             <div class="main-button">
-                                <a href="#">Go...</a>
+                                <a href="/artikel?category=infrastruktur">Go...</a>
                             </div>
                         </div>
                     </div>
@@ -140,7 +138,7 @@
                             <p>Terkait cara menangani masalah dalam implementasi aplikasi umum SPBE serta perencanaan dan
                                 pengembangan aplikasi khusus SPBE.</p>
                             <div class="main-button">
-                                <a href="#">Go...</a>
+                                <a href="/artikel?category=aplikasi">Go...</a>
                             </div>
                         </div>
                     </div>
@@ -156,7 +154,7 @@
                                 keamanan informasi dalam penerapan SPBE.
                             </p>
                             <div class="main-button">
-                                <a href="#">Go...</a>
+                                <a href="/artikel?category=keamanan">Go...</a>
                             </div>
                         </div>
                     </div>
@@ -171,7 +169,7 @@
                             <p>Terkait tahapan dalam menyusun perencanaan dan pelaksanaan audit TIK serta langkah dalam
                                 menindaklanjuti hasil audit TIK.</p>
                             <div class="main-button">
-                                <a href="#">Go...</a>
+                                <a href="/artikel?category=audit-tik">Go...</a>
                             </div>
                         </div>
                     </div>
