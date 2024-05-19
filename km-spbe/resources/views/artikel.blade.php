@@ -25,7 +25,7 @@
                     <div class="d-flex justify-content-center mt-3">
                         <form id="search-carousel" action="/artikel">
                             <input type="text" placeholder="Type Something" id='searchText' name="search"
-                                onkeypress="handle" value="{{ request('searchKeyword') }}" />
+                                onkeypress="handle" value="{{ request('search') }}" />
                             <button type="submit" class="fa-solid fa-magnifying-glass"></button>
                         </form>
                     </div>

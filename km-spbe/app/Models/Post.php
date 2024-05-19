@@ -26,26 +26,44 @@ class Post extends Model
         'verified'
     ];
 
+    // public function scopeFilter($query, array $filters)
+    // {
+    //     $query->when($filters['search'] ?? false, function($query, $search) {
+    //         return $query->where(function($query) use ($search) {
+    //             $query->where('judul', 'like', '%' . $search . '%')
+    //                     ->orWhere('body', 'like', '%' . $search . '%');
+    //         });
+    //     });
+
+    //     $query->when($filters['category'] ?? false, function($query, $category) {
+    //         return $query->whereHas('category', function($query) use ($category) {
+    //             $query->where('slug', $category);
+    //         });
+    //     });
+    // }
+
     public function scopeFilter($query, array $filters)
-    {
-        $query->when($filters['search'] ?? false, function($query, $search) {
-            return $query->where('judul', 'like', '%' . $search . '%')
-                        ->orWhere('body', 'like', '%' . $search . '%')
-                        ->orWhere('kasus', 'like', '%' . $search . '%');
-        });
+{
+    $query->when($filters['search'] ?? false, function($query, $search) {
+        $keywords = explode(' ', $search); // Pisahkan kata kunci menjadi array
 
-        $query->when($filters['category'] ?? false, function($query, $category) {
-            return $query->whereHas('category', function($query) use ($category) {
-                $query->where('slug', $category);
-            });
+        $query->where(function($query) use ($keywords) {
+            foreach ($keywords as $keyword) {
+                $query->orWhere(function($query) use ($keyword) {
+                    $query->where('judul', 'like', '%' . $keyword . '%')
+                        ->orWhere('body', 'like', '%' . $keyword . '%');
+                });
+            }
         });
+    });
 
-        // $query->when($filters['author'] ?? false, fn($query, $author) =>
-        //     $query->whereHas('author', fn($query) =>
-        //         $query->where('email', $author)
-        //     )
-        // );
-    }
+    $query->when($filters['category'] ?? false, function($query, $category) {
+        return $query->whereHas('category', function($query) use ($category) {
+            $query->where('slug', $category);
+        });
+    });
+}
+
 
     public function scopeValidated($query){
         return $query->where('validated', true);

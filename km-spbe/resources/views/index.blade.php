@@ -14,9 +14,8 @@
                                     SPBE, tempat di mana setiap pencarian adalah petualangan baru!</p>
                                 <div class="search-input mt-3">
                                     <form id="search-carousel" action="/artikel">
-                                        <input type="text" placeholder="Type Something" id='searchText'
-                                            name="searchKeyword" onkeypress="handle"
-                                            value="{{ request('searchKeyword') }}" />
+                                        <input type="text" placeholder="Type Something" id='searchText' name="search"
+                                            onkeypress="handle" value="{{ request('search') }}" />
                                         <button type="submit" class="fa-solid fa-magnifying-glass"></button>
                                     </form>
                                 </div>
