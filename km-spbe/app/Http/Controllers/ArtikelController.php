@@ -14,20 +14,24 @@ class ArtikelController extends Controller
     public function index()
     {
         // DB::enableQueryLog();
-
-        $posts = Post::latest()->filter((request(['search','category','page'])))->public()->paginate(3)->withQueryString();
-
         $categories = Category::all();
 
-        // Dump the query log
-    // dd(DB::getQueryLog());
+        $judul = Category::where('slug', request('category'))->get();
 
-        return view('artikel', compact('posts', 'categories'));
+        // Dump the query log
+        // dd(DB::getQueryLog());
+
+        if(Auth::check()){
+            $posts = Post::latest()->filter((request(['search','category','page'])))->paginate(3)->withQueryString();
+        }else{
+            $posts = Post::latest()->filter((request(['search','category','page'])))->public()->paginate(3)->withQueryString();
+        }
+
+        return view('artikel', compact('posts', 'categories', 'judul'));
     }
 
     public function show(Post $post)
     {
-
         return view('artikel-details', compact('post'));
     }
 }

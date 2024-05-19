@@ -6,12 +6,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="text-light text-center mb-4">
-                        @if (request()->is('artikel'))
-                            Artikel
-                        @elseif (request()->is('categories/*'))
-                            Artikel
-                            <small>
-                                Terkait {{ ucwords(str_replace('-', ' ', last(explode('/', request()->path())))) }}</small>
+                        @if (request()->has('category'))
+                            Artikel {{ 'Terkait ' . $judul->first()->nama_kategori }}
                         @else
                             Artikel
                         @endif
