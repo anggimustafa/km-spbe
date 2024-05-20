@@ -15,6 +15,12 @@
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 
+    <style>
+        trix-toolbar [data-trix-button-group="file-tools"] {
+            display: none;
+        }
+    </style>
+
     {{-- Template Dashboard --}}
     <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="../assets/css/styles.min.css" />
@@ -79,7 +85,7 @@
                             <span class="hide-menu">Artikel</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('create') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('dashboard.create') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-regular fa-square-plus fa-xl"></i>
                                 </span>
@@ -87,7 +93,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('update') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('dashboard.update') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-regular fa-pen-to-square fa-xl"></i>
                                 </span>
@@ -95,15 +101,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('delete') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-solid fa-trash-can fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">Delete Post</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('unverify') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('dashboard.unverify') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-solid fa-clock-rotate-left fa-xl"></i>
                                 </span>
@@ -111,11 +109,19 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('verified') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('dashboard.verified') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-solid fa-square-check fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Verified Post</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('dashboard.delete') }}" aria-expanded="false">
+                                <span style="width: 30px">
+                                    <i class="fa-solid fa-trash-can fa-xl"></i>
+                                </span>
+                                <span class="hide-menu">Delete Post</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">
@@ -123,7 +129,8 @@
                             <span class="hide-menu">Forum</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('indiscussion') }}" aria-expanded="false">
+                            <a class="sidebar-link" href="{{ route('dashboard.indiscussion') }}"
+                                aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-regular fa-comments fa-xl"></i>
                                 </span>

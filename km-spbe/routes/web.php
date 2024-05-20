@@ -4,6 +4,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 
@@ -38,50 +39,62 @@ Route::get('/dashboard', function () {
     return view('dashboard.index',[
         'rute' => 'Dashboard'
     ]);
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+// // ============ Route untuk Dashboard Artikel ====================
+// Route::get('/dashboard/create', function () {
+//     return view('dashboard.createpost.index',[
+//         'rute' => 'Create Post'
+//     ]);
+// })->middleware(['auth', 'verified'])->name('create');
+// Route::get('/dashboard/update', function () {
+//     return view('dashboard.updatepost.index',[
+//         'rute' => 'Update Post'
+//     ]);
+// })->middleware(['auth', 'verified'])->name('update');
+// Route::get('/dashboard/delete', function () {
+//     return view('dashboard.deletepost.index',[
+//         'rute' => 'Delete Post'
+//     ]);
+// })->middleware(['auth', 'verified'])->name('delete');
+// Route::get('/dashboard/unverify', function () {
+//     return view('dashboard.unverifypost.index',[
+//         'rute' => 'Unverify Post'
+//     ]);
+// })->middleware(['auth', 'verified'])->name('unverify');
+// Route::get('/dashboard/indiscussion', function () {
+//     return view('dashboard.indiscussionpost.index',[
+//         'rute' => 'In Discussion Post'
+//     ]);
+// })->middleware(['auth', 'verified'])->name('indiscussion');
+// Route::get('/dashboard/verified', function () {
+//     return view('dashboard.verifiedpost.index',[
+//         'rute' => 'Verified Post'
+//     ]);
+// })->middleware(['auth', 'verified'])->name('verified');
+// Route::get('/dashboard/detail', function () {
+//     return view('dashboard.detailpost.index',[
+//         'rute' => 'Detail Post'
+//     ]);
+// })->middleware(['auth', 'verified'])->name('detail');
+// Route::get('/dashboard/thread', function () {
+//     return view('dashboard.thread.index',[
+//         'rute' => 'Thread'
+//     ]);
+// })->middleware(['auth', 'verified'])->name('thread');
 
 // ============ Route untuk Dashboard Artikel ====================
-})->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/dashboard/create', function () {
-    return view('dashboard.createpost.index',[
-        'rute' => 'Create Post'
-    ]);
-})->middleware(['auth', 'verified'])->name('create');
-Route::get('/dashboard/update', function () {
-    return view('dashboard.updatepost.index',[
-        'rute' => 'Update Post'
-    ]);
-})->middleware(['auth', 'verified'])->name('update');
-Route::get('/dashboard/delete', function () {
-    return view('dashboard.deletepost.index',[
-        'rute' => 'Delete Post'
-    ]);
-})->middleware(['auth', 'verified'])->name('delete');
-Route::get('/dashboard/unverify', function () {
-    return view('dashboard.unverifypost.index',[
-        'rute' => 'Unverify Post'
-    ]);
-})->middleware(['auth', 'verified'])->name('unverify');
-Route::get('/dashboard/indiscussion', function () {
-    return view('dashboard.indiscussionpost.index',[
-        'rute' => 'In Discussion Post'
-    ]);
-})->middleware(['auth', 'verified'])->name('indiscussion');
-Route::get('/dashboard/verified', function () {
-    return view('dashboard.verifiedpost.index',[
-        'rute' => 'Verified Post'
-    ]);
-})->middleware(['auth', 'verified'])->name('verified');
-Route::get('/dashboard/detail', function () {
-    return view('dashboard.detailpost.index',[
-        'rute' => 'Detail Post'
-    ]);
-})->middleware(['auth', 'verified'])->name('detail');
-Route::get('/dashboard/thread', function () {
-    return view('dashboard.thread.index',[
-        'rute' => 'Thread'
-    ]);
-})->middleware(['auth', 'verified'])->name('thread');
-
+Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
+    Route::get('/create', [PostController::class, 'create'])->name('dashboard.create');
+    Route::post('/create', [PostController::class, 'store'])->name('dashboard.store');
+    Route::get('/update', [PostController::class, 'update'])->name('dashboard.update');
+    Route::get('/delete', [PostController::class, 'delete'])->name('dashboard.delete');
+    Route::get('/unverify', [PostController::class, 'unverify'])->name('dashboard.unverify');
+    Route::get('/indiscussion', [PostController::class, 'indiscussion'])->name('dashboard.indiscussion');
+    Route::get('/verified', [PostController::class, 'verified'])->name('dashboard.verified');
+    Route::get('/detail', [PostController::class, 'detail'])->name('dashboard.detail');
+    Route::get('/thread', [PostController::class, 'thread'])->name('dashboard.thread');
+});
 
 // ============ Route untuk Dashboard Users ====================
 Route::get('/dashboard/dataauthor', function () {
