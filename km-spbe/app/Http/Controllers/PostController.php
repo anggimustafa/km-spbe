@@ -32,7 +32,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $validatedData = $request->validate([
+            "judul" => 'required|max:255',
+            "slug" => 'required',
+            "category_id" => 'required',
+            "fileUtama" => 'required',
+            "tipeObjekUtama" => 'required',
+            "filePendukung1" => 'required',
+            "tipeObjekPendukung1" => 'required',
+            "body" => 'required',
+            "kasus" => 'required',
+            "question" => 'required',
+            "answer" => 'required',
+            "is_public" => 'required'
+        ]);
     }
 
     // /**
