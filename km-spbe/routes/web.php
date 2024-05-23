@@ -87,12 +87,12 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
     Route::get('/create', [PostController::class, 'create'])->name('dashboard.create');
     Route::post('/create', [PostController::class, 'store'])->name('dashboard.store');
-    Route::get('/update', [PostController::class, 'update'])->name('dashboard.update');
-    Route::get('/delete', [PostController::class, 'delete'])->name('dashboard.delete');
     Route::get('/unverify', [PostController::class, 'unverify'])->name('dashboard.unverify');
     Route::get('/indiscussion', [PostController::class, 'indiscussion'])->name('dashboard.indiscussion');
     Route::get('/verified', [PostController::class, 'verified'])->name('dashboard.verified');
-    Route::get('/detail', [PostController::class, 'detail'])->name('dashboard.detail');
+    Route::get('/unverify/{post:slug}', [PostController::class, 'detail'])->name('dashboard.unverify.detail');
+    Route::get('/verified/{post:slug}', [PostController::class, 'detail'])->name('dashboard.verified.detail');
+    Route::get('/indiscussion/{post:slug}', [PostController::class, 'detail'])->name('dashboard.indiscussion.detail');
     Route::get('/thread', [PostController::class, 'thread'])->name('dashboard.thread');
 });
 

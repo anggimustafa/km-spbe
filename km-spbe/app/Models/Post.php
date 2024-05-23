@@ -97,12 +97,6 @@ class Post extends Model
         return $this->hasMany(File::class);
     }
 
-    // Definisikan relasi One to One . Post ke QnA
-    public function qna()
-    {
-        return $this->hasOne(Qna::class);
-    }
-
     // Definisikan relasi One to Many . Post ke Logpost
     public function logposts()
     {

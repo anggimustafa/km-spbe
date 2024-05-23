@@ -22,10 +22,10 @@
     </style>
 
     {{-- Template Dashboard --}}
-    <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
-    <link rel="stylesheet" href="../assets/css/styles.min.css" />
+    <link rel="shortcut icon" type="image/png" href="../../assets/images/logos/favicon.png" />
+    <link rel="stylesheet" href="../../assets/css/styles.min.css" />
 
-    <link rel="stylesheet" href="../assets/css/dash.css" />
+    <link rel="stylesheet" href="../../assets/css/dash.css" />
 
     {{-- Bootstrap CSS  --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -38,6 +38,9 @@
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/32e58e3754.js" crossorigin="anonymous"></script>
+
+    {{-- Sweet Alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -93,15 +96,8 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('dashboard.update') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-regular fa-pen-to-square fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">Update Post</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('dashboard.unverify') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ request()->is('dashboard/unverify/*') ? 'active' : '' }}"
+                                href="{{ route('dashboard.unverify') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-solid fa-clock-rotate-left fa-xl"></i>
                                 </span>
@@ -109,19 +105,12 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('dashboard.verified') }}" aria-expanded="false">
+                            <a class="sidebar-link {{ request()->is('dashboard/verified/*') ? 'active' : '' }}"
+                                href="{{ route('dashboard.verified') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-solid fa-square-check fa-xl"></i>
                                 </span>
                                 <span class="hide-menu">Verified Post</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('dashboard.delete') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-solid fa-trash-can fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">Delete Post</span>
                             </a>
                         </li>
                         <li class="nav-small-cap">
@@ -129,8 +118,8 @@
                             <span class="hide-menu">Forum</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('dashboard.indiscussion') }}"
-                                aria-expanded="false">
+                            <a class="sidebar-link {{ request()->is('dashboard/indiscussion/*') ? 'active' : '' }}"
+                                href="{{ route('dashboard.indiscussion') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-regular fa-comments fa-xl"></i>
                                 </span>
@@ -223,13 +212,13 @@
             }
         });
     </script>
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/sidebarmenu.js"></script>
-    <script src="../assets/js/app.min.js"></script>
-    <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
-    <script src="../assets/js/dashboard.js"></script>
+    <script src="../../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../assets/js/sidebarmenu.js"></script>
+    <script src="../../assets/js/app.min.js"></script>
+    <script src="../../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="../../assets/libs/simplebar/dist/simplebar.js"></script>
+    <script src="../../assets/js/dashboard.js"></script>
     {{-- Script Pooper and JS --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

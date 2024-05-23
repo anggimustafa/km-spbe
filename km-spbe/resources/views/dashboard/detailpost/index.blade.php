@@ -5,7 +5,7 @@
         <div class="col-lg-11 shadow rounded" style="margin:auto">
             <div class="hero">
                 <div class="container-gambar">
-                    <img src="../assets/images/event-01.jpg" alt="">
+                    <img src="../../assets/images/event-01.jpg" alt="">
                     <div class="image-overlay"></div>
                     <div class="judul text-center">
                         <h1 class="text-light mb-2">Judul disiniiii</h1>

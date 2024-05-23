@@ -3,7 +3,7 @@
 @section('container')
     <div class="container-fluid">
         <div class="col-lg-11 shadow p-5 rounded" style="margin:auto">
-            <form action="{{ route('dashboard.store') }}" method="post">
+            <form id="myForm" action="{{ route('dashboard.store') }}" method="post">
                 @csrf
                 <div class="mb-5 bg-info bg-opacity-10 border border-top-0 border-info rounded p-3">
                     <label for="judul" class="form-label">Judul</label>
@@ -109,20 +109,6 @@
                     <trix-editor input="kasus"></trix-editor>
                     <div id="emailHelp" class="form-text">Berikan contoh kasus yang berkaitan.</div>
                 </div>
-                <div class="row mb-5 bg-secondary bg-opacity-10 border border-dark rounded p-3">
-                    <strong class="col-lg-12 text-center fs-4">QnA / FAQ</strong>
-                    <div class="col-lg-6 text-center">
-                        <label for="question" class="form-label">Pertanyaan</label>
-                        <textarea class="form-control" id="question" rows="4" name="question">{{ old('question') }}</textarea>
-                    </div>
-                    <div class="col-lg-6 text-center">
-                        <label for="answer" class="form-label">Jawaban</label>
-                        <textarea class="form-control" id="answer" rows="4" name="answer">{{ old('answer') }}</textarea>
-                    </div>
-                    <div id="Help" class="form-text text-center">Berikan QnA atau FAQ yang berkaitan dengan
-                        pengetahuan (Optional).
-                    </div>
-                </div>
                 <div class="mb-3 bg-info bg-opacity-10 border border-bottom-0 border-info rounded p-3">
                     <Label>Sifat Postingan : </Label>
                     <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -144,8 +130,25 @@
                 <small>Background <span class="badge text-bg-secondary">Abu</span> = Optional</small>
                 <button type="submit" class="btn btn-primary col-12 mt-3">Submit</button>
             </form>
+            <script>
+                document.getElementById('myForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    Swal.fire({
+                        title: "Are you sure you want to submit?",
+                        showCancelButton: true,
+                        confirmButtonText: "Yes, submit it!",
+                        cancelButtonText: "Cancel",
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            this.submit();
+                        }
+                    });
+                });
+            </script>
         </div>
     </div>
+
+
 
     <script>
         const title = document.querySelector("#judul");

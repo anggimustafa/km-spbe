@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             NotifySeeder::class,
             OpdSeeder::class,
             PostSeeder::class,
-            QnaSeeder::class,
             ThreadSeeder::class,
             UserSeeder::class,
             CategorySeeder::class

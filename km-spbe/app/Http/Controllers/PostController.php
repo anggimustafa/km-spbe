@@ -42,10 +42,14 @@ class PostController extends Controller
             "tipeObjekPendukung1" => 'required',
             "body" => 'required',
             "kasus" => 'required',
-            "question" => 'required',
-            "answer" => 'required',
             "is_public" => 'required'
         ]);
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Post::create($validatedData);
+
+        return redirect('dashboard.unverify')->with('success', 'Postingan baru telah ditambahkan');
     }
 
     // /**
@@ -87,34 +91,36 @@ class PostController extends Controller
         return view('dashboard.createpost.index', compact('rute', 'categories'));
     }
 
-    public function update()
-    {
-        return view('dashboard.updatepost.index', ['rute' => 'Update Post']);
-    }
-
-    public function delete()
-    {
-        return view('dashboard.deletepost.index', ['rute' => 'Delete Post']);
-    }
-
     public function unverify()
     {
-        return view('dashboard.unverifypost.index', ['rute' => 'Unverify Post']);
+        $rute = 'Unverify Post';
+        $posts = Post::where('verified',false)->get();
+        return view('dashboard.unverifypost.index', compact('rute','posts'));
     }
 
     public function indiscussion()
     {
-        return view('dashboard.indiscussionpost.index', ['rute' => 'In Discussion Post']);
+        $rute = 'Indiscussion Post';
+        $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
+        ->whereNull('threads.post_id')
+        ->select('posts.*')
+        ->where('verified',false)
+        ->get();
+        return view('dashboard.indiscussionpost.index', compact('rute','posts'));
     }
 
     public function verified()
     {
-        return view('dashboard.verifiedpost.index', ['rute' => 'Verified Post']);
+        $rute = 'Verified Post';
+        $posts = Post::where('verified',true)->get();
+        return view('dashboard.verifiedpost.index', compact('rute','posts'));
     }
 
-    public function detail()
+    public function detail(Post $post)
     {
-        return view('dashboard.detailpost.index', ['rute' => 'Detail Post']);
+        $posts = Post::where('slug',$post);
+        $rute = 'Detail Post';
+        return view('dashboard.detailpost.index', compact('rute','posts'));
     }
 
     public function thread()
