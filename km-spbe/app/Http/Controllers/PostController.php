@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use App\Models\Category;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller
@@ -34,8 +35,8 @@ class PostController extends Controller
     {
         $validatedData = $request->validate([
             "judul" => 'required|max:255',
-            "slug" => 'required',
-            "category_id" => 'required',
+            "slug" => 'required||string|unique:posts,slug',
+            "category_id" => 'required|integer',
             "fileUtama" => 'required',
             "tipeObjekUtama" => 'required',
             "filePendukung1" => 'required',
@@ -46,10 +47,15 @@ class PostController extends Controller
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
+        if ($validatedData['is_public'] === 'true') {
+            $validatedData['is_public'] = true;
+        } else {
+            $validatedData['is_public'] = false;
+        }
 
         Post::create($validatedData);
 
-        return redirect('dashboard.unverify')->with('success', 'Postingan baru telah ditambahkan');
+        return redirect()->route('dashboard.unverify')->with('success', 'Postingan baru telah ditambahkan');
     }
 
     // /**
@@ -118,8 +124,10 @@ class PostController extends Controller
 
     public function detail(Post $post)
     {
-        $posts = Post::where('slug',$post);
+        $posts = Post::where('id',$post->id)->get();
         $rute = 'Detail Post';
+
+        // return $posts;
         return view('dashboard.detailpost.index', compact('rute','posts'));
     }
 

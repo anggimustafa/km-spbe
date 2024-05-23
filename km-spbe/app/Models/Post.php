@@ -17,7 +17,7 @@ class Post extends Model
 
     protected $fillable = [
         'user_id',
-        'kategori_id',
+        'category_id',
         'judul',
         'slug',
         'body',

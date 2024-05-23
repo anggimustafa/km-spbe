@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('body');
             $table->boolean('is_public');
             $table->text('kasus');
-            $table->boolean('verified');
+            $table->boolean('verified')->default(false);
             $table->timestamps();
         });
     }

@@ -3,19 +3,32 @@
 @section('container')
     <div class="container-fluid">
         <div class="col-lg-11 shadow rounded" style="margin:auto">
+            <a class="btn btn-info" title="Lihat" href=""><i class="fa-solid fa-arrow-left"></i></a>&nbsp;
+            @if (!request()->is('dashboard/verified/*'))
+                <a class="btn btn-warning" title="Edit" href=""><i class="fa-solid fa-pen-to-square"></i></a>&nbsp;
+                @if (!request()->is('dashboard/indiscussion/*'))
+                    <a class="btn btn-primary" title="Buat Diskusi" type="button" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" href=""><i class="fa-brands fa-rocketchat"></i></a>&nbsp;
+                @endif
+                <a class="btn btn-success" title="Verifikasi" href=""><i
+                        class="fa-solid fa-circle-check"></i></a>&nbsp;
+            @endif
+            <a class="btn btn-danger" title="Hapus" href=""><i class="fa-solid fa-delete-left"></i></a>
             <div class="hero">
                 <div class="container-gambar">
                     <img src="../../assets/images/event-01.jpg" alt="">
                     <div class="image-overlay"></div>
                     <div class="judul text-center">
-                        <h1 class="text-light mb-2">Judul disiniiii</h1>
+                        <h1 class="text-light mb-2">{{ $posts->first()->judul }}</h1>
                         <small class="text-light">Author : Ucup &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; Date : 24 Desember
                             2036</small>
                     </div>
-                    <h4 class="tombol d-flex justify-content-end m-1"><a href="thread" class="btn btn-info btn-sm">Ke
-                            Thread
-                            Diskusi</a>
-                    </h4>
+                    @if (request()->is('dashboard/indiscussion/*'))
+                        <h4 class="tombol d-flex justify-content-end m-1"><a href="thread" class="btn btn-info btn-sm">Ke
+                                Thread
+                                Diskusi</a>
+                        </h4>
+                    @endif
                 </div>
             </div>
             <div class="main-area py-2 px-5">
