@@ -69,10 +69,25 @@ class PostController extends Controller
     // /**
     //  * Show the form for editing the specified resource.
     //  */
-    // public function edit(Post $post)
-    // {
-    //     //
-    // }
+    public function verify(Request $request)
+    {
+        // return $request->id . 'verif';
+         // Validasi untuk memastikan bahwa ID ada dalam request
+        $request->validate([
+            'id' => 'required|integer|exists:posts,id',
+        ]);
+
+        // Ambil post berdasarkan ID dari request
+        $post = Post::findOrFail($request->id);
+
+        // Ubah nilai atribut verified menjadi true
+        $post->verified = true;
+
+        // Simpan perubahan ke database
+        $post->save();
+        return redirect()->route('dashboard.verified')->with('verifikasi', 'Postingan telah diverifikasi');
+        //
+    }
 
     // /**
     //  * Update the specified resource in storage.
@@ -85,10 +100,23 @@ class PostController extends Controller
     // /**
     //  * Remove the specified resource from storage.
     //  */
-    // public function destroy(Post $post)
-    // {
-    //     //
-    // }
+    public function destroy(Request $request, $from)
+    {
+        // return $request->id . 'destroy';
+        Post::destroy($request->id);
+
+        switch ($from) {
+            case 'unverify':
+                return redirect()->route('dashboard.unverify')->with('hapus', 'Postingan telah dihapus');
+                break;
+            case 'verified':
+                return redirect()->route('dashboard.verified')->with('hapus', 'Postingan telah dihapus');
+                break;
+            case 'indiscussion':
+                return redirect()->route('dashboard.indiscussion')->with('hapus', 'Postingan telah dihapus');
+                break;
+        }
+    }
 
     public function create()
     {
@@ -107,10 +135,9 @@ class PostController extends Controller
     public function indiscussion()
     {
         $rute = 'Indiscussion Post';
-        $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
-        ->whereNull('threads.post_id')
+        $posts = Post::join('threads', 'posts.id', '=', 'threads.post_id')
+        ->where('posts.verified', false)
         ->select('posts.*')
-        ->where('verified',false)
         ->get();
         return view('dashboard.indiscussionpost.index', compact('rute','posts'));
     }

@@ -3,7 +3,9 @@
 @section('container')
     <div class="container-fluid">
         <div class="col-lg-11 shadow rounded" style="margin:auto">
-            <a class="btn btn-info" title="Lihat" href=""><i class="fa-solid fa-arrow-left"></i></a>&nbsp;
+
+            <a class="btn btn-info" title="Lihat" href="javascript:history.go(-1);"><i
+                    class="fa-solid fa-arrow-left"></i></a>&nbsp;
             @if (!request()->is('dashboard/verified/*'))
                 <a class="btn btn-warning" title="Edit" href=""><i class="fa-solid fa-pen-to-square"></i></a>&nbsp;
                 @if (!request()->is('dashboard/indiscussion/*'))

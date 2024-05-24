@@ -87,6 +87,8 @@ Route::get('/dashboard', function () {
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
     Route::get('/create', [PostController::class, 'create'])->name('dashboard.create');
     Route::post('/create', [PostController::class, 'store'])->name('dashboard.store');
+    Route::delete('/destroy/{from}', [PostController::class, 'destroy'])->name('dashboard.destroy');
+    Route::post('/verif', [PostController::class, 'verify'])->name('dashboard.verif');
     Route::get('/unverify', [PostController::class, 'unverify'])->name('dashboard.unverify');
     Route::get('/indiscussion', [PostController::class, 'indiscussion'])->name('dashboard.indiscussion');
     Route::get('/verified', [PostController::class, 'verified'])->name('dashboard.verified');
