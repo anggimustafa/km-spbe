@@ -96,7 +96,7 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ request()->is('dashboard/unverify/*') ? 'active' : '' }}"
+                            <a class="sidebar-link {{ request()->is('dashboard/unverify/*') || request()->is('dashboard/edit/*') ? 'active' : '' }}"
                                 href="{{ route('dashboard.unverify') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-solid fa-clock-rotate-left fa-xl"></i>

@@ -20,6 +20,8 @@
                             <td>{{ $post->created_at->format('d-m-Y') }}</td>
                             <td><a title="Lihat" href="/dashboard/indiscussion/{{ $post->slug }}"><i
                                         class="fa-regular fa-eye"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a title="Edit" href="/dashboard/edit/{{ $post->slug }}"><i
+                                        class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <button class="verif-btn" data-id="{{ $post->id }}" title="Verifikasi"
                                     onclick="verifyPost({{ $post->id }}, '{{ $post->slug }}')"><i
                                         class="fa-solid fa-circle-check"></i></button>&nbsp;&nbsp;&nbsp;&nbsp;

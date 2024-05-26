@@ -524,7 +524,7 @@
                             <td>{{ $post->created_at->format('d-m-Y') }}</td>
                             <td><a title="Lihat" href="/dashboard/unverify/{{ $post->slug }}"><i
                                         class="fa-solid fa-eye"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a title="Edit" href=""><i
+                                <a title="Edit" href="/dashboard/edit/{{ $post->slug }}"><i
                                         class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a title="Buat Diskusi" type="button" data-bs-toggle="modal"
                                     data-bs-target="#staticBackdrop" href=""><i
@@ -610,6 +610,15 @@
             Swal.fire({
                 title: "Berhasil!",
                 text: "Postingan baru telah ditambahkan.",
+                icon: "success"
+            });
+        </script>
+    @endif
+    @if (session()->has('updated'))
+        <script>
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Postingan telah diperbarui.",
                 icon: "success"
             });
         </script>

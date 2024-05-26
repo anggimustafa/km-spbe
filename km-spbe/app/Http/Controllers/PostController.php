@@ -39,8 +39,6 @@ class PostController extends Controller
             "category_id" => 'required|integer',
             "fileUtama" => 'required',
             "tipeObjekUtama" => 'required',
-            "filePendukung1" => 'required',
-            "tipeObjekPendukung1" => 'required',
             "body" => 'required',
             "kasus" => 'required',
             "is_public" => 'required'
@@ -69,6 +67,50 @@ class PostController extends Controller
     // /**
     //  * Show the form for editing the specified resource.
     //  */
+    public function edit(Post $post){
+
+        // return $post;
+        $categories = Category::all();
+        $rute = 'Edit Post';
+        return view('dashboard.editpost.index', compact('post','rute', 'categories'));
+    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  */
+    public function update(Request $request, Post $post)
+    {
+
+        $rules=[
+            "judul" => 'required|max:255',
+            "category_id" => 'required|integer',
+            // "fileUtama" => 'required',
+            // "tipeObjekUtama" => 'required',
+            "body" => 'required',
+            "kasus" => 'required',
+            "is_public" => 'required'
+        ];
+
+        if ($request->slug != $post->slug){
+            $rules["slug"] = 'required||string|unique:posts,slug';
+        }
+
+        $validatedData = $request->validate($rules);
+
+
+        $validatedData['user_id'] = auth()->user()->id;
+        if ($validatedData['is_public'] === 'true') {
+            $validatedData['is_public'] = true;
+        } else {
+            $validatedData['is_public'] = false;
+        }
+
+        // return $validatedData;
+
+        Post::where('id', $post->id)->update($validatedData);
+
+        return redirect()->route('dashboard.unverify')->with('updated', 'Postingan telah diperbarui');
+    }
+
     public function verify(Request $request)
     {
         // return $request->id . 'verif';
@@ -89,13 +131,6 @@ class PostController extends Controller
         //
     }
 
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(UpdatePostRequest $request, Post $post)
-    // {
-    //     //
-    // }
 
     // /**
     //  * Remove the specified resource from storage.

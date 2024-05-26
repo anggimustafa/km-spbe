@@ -86,7 +86,9 @@ Route::get('/dashboard', function () {
 // ============ Route untuk Dashboard Artikel ====================
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
     Route::get('/create', [PostController::class, 'create'])->name('dashboard.create');
-    Route::post('/create', [PostController::class, 'store'])->name('dashboard.store');
+    Route::post('/store', [PostController::class, 'store'])->name('dashboard.store');
+    Route::get('/edit/{post:slug}', [PostController::class, 'edit'])->name('dashboard.edit');
+    Route::put('/update/{post:slug}', [PostController::class, 'update'])->name('dashboard.update');
     Route::delete('/destroy/{from}', [PostController::class, 'destroy'])->name('dashboard.destroy');
     Route::post('/verif', [PostController::class, 'verify'])->name('dashboard.verif');
     Route::get('/unverify', [PostController::class, 'unverify'])->name('dashboard.unverify');
