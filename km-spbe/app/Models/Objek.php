@@ -6,7 +6,7 @@ use App\Models\Post;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class File extends Model
+class Objek extends Model
 {
     use HasFactory;
 

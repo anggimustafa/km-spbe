@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\File;
+use App\Models\Objek;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class FilePolicy
+class ObjekPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class FilePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, File $file): bool
+    public function view(User $user, Objek $file): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class FilePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, File $file): bool
+    public function update(User $user, Objek $file): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class FilePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, File $file): bool
+    public function delete(User $user, Objek $file): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class FilePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, File $file): bool
+    public function restore(User $user, Objek $file): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class FilePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, File $file): bool
+    public function forceDelete(User $user, Objek $file): bool
     {
         //
     }

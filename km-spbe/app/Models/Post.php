@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Qna;
-use App\Models\File;
+use App\Models\Objek;
 use App\Models\User;
 use App\Models\Thread;
 use App\Models\Logpost;
@@ -92,9 +92,9 @@ class Post extends Model
     }
 
     // Definisikan relasi One to Many . Post ke File
-    public function files()
+    public function objeks()
     {
-        return $this->hasMany(File::class);
+        return $this->hasMany(Objek::class);
     }
 
     // Definisikan relasi One to Many . Post ke Logpost

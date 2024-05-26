@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('objeks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('post_id');
             $table->string('kategori');

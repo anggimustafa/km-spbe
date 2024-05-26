@@ -6,8 +6,12 @@ use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\StorePostRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Objek;
+use Yaza\LaravelGoogleDriveStorage\Gdrive;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class PostController extends Controller
@@ -37,7 +41,7 @@ class PostController extends Controller
             "judul" => 'required|max:255',
             "slug" => 'required||string|unique:posts,slug',
             "category_id" => 'required|integer',
-            "fileUtama" => 'required',
+            "fileUtama" => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
             "tipeObjekUtama" => 'required',
             "body" => 'required',
             "kasus" => 'required',
@@ -51,7 +55,26 @@ class PostController extends Controller
             $validatedData['is_public'] = false;
         }
 
-        Post::create($validatedData);
+        $post = Post::create($validatedData);
+
+        if ($request->hasFile('fileUtama')) {
+
+            // return $validatedData['fileUtama'];
+
+            $file = $request->file('fileUtama');
+            $filename = $file->getClientOriginalName();
+            $path = 'posts/' . $post->id . '/' . $filename;
+            Gdrive::put($path, $file);
+
+            // return $path;
+
+            Objek::create([
+                'post_id' => $post->id,
+                'kategori' => $validatedData['tipeObjekUtama'],
+                'judul' => $filename,
+                'url' => $path,
+            ]);
+        }
 
         return redirect()->route('dashboard.unverify')->with('success', 'Postingan baru telah ditambahkan');
     }

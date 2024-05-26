@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use App\Http\Requests\StoreFileRequest;
 use App\Http\Requests\UpdateFileRequest;
+use App\Models\Objek;
 
-class FileController extends Controller
+class ObjekController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +36,7 @@ class FileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(File $file)
+    public function show(Objek $file)
     {
         //
     }
@@ -43,7 +44,7 @@ class FileController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(File $file)
+    public function edit(Objek $file)
     {
         //
     }
@@ -51,7 +52,7 @@ class FileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFileRequest $request, File $file)
+    public function update(UpdateFileRequest $request, Objek $file)
     {
         //
     }
@@ -59,7 +60,7 @@ class FileController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(File $file)
+    public function destroy(Objek $file)
     {
         //
     }

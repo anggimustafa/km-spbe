@@ -3,7 +3,7 @@
 @section('container')
     <div class="container-fluid">
         <div class="col-lg-11 shadow p-5 rounded" style="margin:auto">
-            <form id="myForm" action="{{ route('dashboard.store') }}" method="post">
+            <form id="myForm" action="{{ route('dashboard.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-5 bg-info bg-opacity-10 border border-top-0 border-info rounded p-3">
                     <label for="judul" class="form-label">Judul</label>

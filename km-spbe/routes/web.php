@@ -2,11 +2,12 @@
 
 use App\Models\Post;
 use App\Models\User;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ArtikelController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProfileController;
 use App\Models\Category;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\GdriveController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,8 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::get('/indiscussion/{post:slug}', [PostController::class, 'detail'])->name('dashboard.indiscussion.detail');
     Route::get('/thread', [PostController::class, 'thread'])->name('dashboard.thread');
 });
+
+Route::get('/upload', [GdriveController::class, 'upload']);
 
 // ============ Route untuk Dashboard Users ====================
 Route::get('/dashboard/dataauthor', function () {

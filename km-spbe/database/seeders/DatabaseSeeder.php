@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CommentSeeder::class,
             DiscussionSeeder::class,
-            FileSeeder::class,
+            ObjekSeeder::class,
             LogpostSeeder::class,
             LoguserSeeder::class,
             NotifySeeder::class,
