@@ -63,10 +63,56 @@
     position: relative;
     /* z-index: 99999; */
     /* top: 45vh; */
-    width: 70%;
-    margin-left: 15%;
-    margin-right: 15%;
+    width: 82%;
+    margin-left: 9%;
+    margin-right: 9%;
     padding: 3% 7%;
     background-color: #fff;
     margin-bottom: 50px;
+}
+
+.isi {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 3% 7%;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.main-area .container-objek-utama {
+    background-color: #7a6ad8;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.main-area .container-objek-pendukung {
+    background-color: #b7b5c465;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.main-area .container-studi-kasus {
+    background-color: #b4afd4;
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.main-area .container-objek-utama h5 {
+    background-color: #9386d8;
+    padding: 2px;
+    border-radius: 5px;
+
+}
+
+.main-area .container-studi-kasus h5 {
+    background-color: #7a67d6;
+    padding: 2px;
+    border-radius: 5px;
+
+}
+
+.main-area .isi p {
+    text-align: justify;
 }

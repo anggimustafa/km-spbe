@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Thread;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreThreadRequest;
 use App\Http\Requests\UpdateThreadRequest;
 
@@ -11,9 +12,10 @@ class ThreadController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // return 'oioi';/
+        return view('dashboard.thread.index', ['rute' => 'Thread']);
     }
 
     /**

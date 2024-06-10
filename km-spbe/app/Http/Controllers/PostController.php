@@ -215,9 +215,4 @@ class PostController extends Controller
         // return $posts;
         return view('dashboard.detailpost.index', compact('rute','posts'));
     }
-
-    public function thread()
-    {
-        return view('dashboard.thread.index', ['rute' => 'Thread']);
-    }
 }
