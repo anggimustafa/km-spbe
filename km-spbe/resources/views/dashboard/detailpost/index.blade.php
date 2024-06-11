@@ -22,7 +22,7 @@
         <div class="col-lg-11 shadow rounded" style="margin:auto">
             <div class="hero">
                 <div class="container-gambar">
-                    <img src="../../assets/images/event-01.jpg" alt="" style="border-radius: 10px;">
+                    <img src="https://picsum.photos/900/200" alt="" style="border-radius: 10px;">
                     <div class="image-overlay"></div>
                     <div class="judul text-center">
                         <h1 class="text-light mb-2">{{ $posts->first()->judul }}</h1>

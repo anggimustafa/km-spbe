@@ -1,9 +1,20 @@
 @extends('layouts.main')
 
 @section('body')
+    {{-- <!-- Tampilkan gambar jika data_utama adalah gambar -->
+    @if ($ext === 'png' || $ext === 'jpeg' || $ext === 'jpg')
+        <img src="{{ $data_utama }}" alt="Gambar Utama">
+        <!-- Tampilkan file PDF jika data_utama adalah PDF -->
+    @elseif ($ext === 'pdf')
+
+        <!-- Tampilkan pesan kesalahan jika ekstensi file tidak didukung -->
+    @else
+        <p>{{ $error }}</p>
+    @endif --}}
+
     <div class="artikel-details">
         <div class="hero">
-            <img src="../assets/images/event-01.jpg" alt="">
+            <img src="https://picsum.photos/900/200" alt="">
             <div class="gambar-hero">
                 <div class="judul text-center">
                     <h1 class="text-light mb-2">{{ $post->judul }}</h1>
@@ -23,7 +34,11 @@
         <div class="main-area">
             <div class="container-objek-utama mb-3">
                 <h5 class="text-light mb-3">Objek Pengetahuan Utama</h5>
-                <img src="../assets/images/banner-item-03.jpg" alt="" style="border-radius:10px">
+                @if ($ext == 'pdf')
+                    {!! $data_utama !!}
+                @else
+                    <img src="{{ $data_utama }}" alt="" width="100%" height="600px" style="border-radius:10px">
+                @endif
             </div>
             <div class="isi">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi alias accusamus quod in, rerum provident

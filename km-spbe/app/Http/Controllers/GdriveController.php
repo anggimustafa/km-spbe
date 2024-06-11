@@ -18,8 +18,8 @@ class GdriveController extends Controller
         $data = Gdrive::get($path->url);
 
         return response($data->file, 200)
-            ->header('Content-Type', $data->ext);
+            ->header('Content-Type', 'application/pdf');
 
-        return response()->json(['success' => true]);
+        // return response()->json(['success' => true]);
     }
 }

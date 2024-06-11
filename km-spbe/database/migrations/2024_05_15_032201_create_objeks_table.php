@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('objeks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('post_id');
+            $table->boolean('utama');
             $table->string('kategori');
             $table->string('judul');
             $table->string('url');

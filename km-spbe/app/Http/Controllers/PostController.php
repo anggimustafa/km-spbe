@@ -41,8 +41,9 @@ class PostController extends Controller
             "judul" => 'required|max:255',
             "slug" => 'required||string|unique:posts,slug',
             "category_id" => 'required|integer',
-            "fileUtama" => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
+            "fileUtama" => 'required|file|mimes:jpg,jpeg,png,pdf',
             "tipeObjekUtama" => 'required',
+            "filePendukung1" => 'file|mimes:jpg,jpeg,png,pdf',
             "body" => 'required',
             "kasus" => 'required',
             "is_public" => 'required'
@@ -70,7 +71,28 @@ class PostController extends Controller
 
             Objek::create([
                 'post_id' => $post->id,
+                'utama' => 1,
                 'kategori' => $validatedData['tipeObjekUtama'],
+                'judul' => $filename,
+                'url' => $path,
+            ]);
+        }
+
+        if ($request->hasFile('filePendukung1')) {
+
+            // return $validatedData['fileUtama'];
+
+            $file = $request->file('filePendukung1');
+            $filename = $file->getClientOriginalName();
+            $path = 'posts/' . $post->id . '/' . $filename;
+            Gdrive::put($path, $file);
+
+            // return $path;
+
+            Objek::create([
+                'post_id' => $post->id,
+                'utama' => 0,
+                'kategori' => $request['tipeObjekPendukung1'],
                 'judul' => $filename,
                 'url' => $path,
             ]);

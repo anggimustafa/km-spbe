@@ -12,6 +12,7 @@ class Objek extends Model
 
     protected $fillable = [
         'post_id',
+        'utama',
         'kategori',
         'judul',
         'url'
