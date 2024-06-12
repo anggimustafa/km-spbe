@@ -16,6 +16,36 @@ class OpdSeeder extends Seeder
      */
     public function run(): void
     {
-        Opd::factory(7)->create();
+        Opd::create([
+            'nama_opd' => 'Dinas Pendidikan'
+        ]);
+
+        Opd::create([
+            'nama_opd' => 'Dinas Kesehatan'
+        ]);
+
+        Opd::create([
+            'nama_opd' => 'Dinas Sosial'
+        ]);
+
+        Opd::create([
+            'nama_opd' => 'Dinas Perhubungan'
+        ]);
+
+        Opd::create([
+            'nama_opd' => 'Dinas Pariwisata'
+        ]);
+
+        Opd::create([
+            'nama_opd' => 'Dinas Pertanian'
+        ]);
+
+        Opd::create([
+            'nama_opd' => 'Dinas Komunikasi dan Informatika'
+        ]);
+
+        Opd::create([
+            'nama_opd' => 'Dinas Kebudayaan'
+        ]);
     }
 }

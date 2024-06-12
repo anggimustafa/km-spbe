@@ -107,11 +107,13 @@ Route::get('/upload', [GdriveController::class, 'upload']);
 // ============ Route untuk Dashboard Users ====================
 Route::get('/dashboard/dataauthor', function () {
     return view('dashboard.dataauthor.index',[
+        'users' => User::where('opd_id', auth()->user()->opd_id)->where('id', '!=', auth()->user()->id)->withCount('posts')->get(),
         'rute' => 'Data Author'
     ]);
 })->middleware(['auth', 'verified'])->name('dataauthor');
 Route::get('/dashboard/kelolarole', function () {
     return view('dashboard.kelolarole.index',[
+        'users' => User::where('id', '!=', auth()->user()->id)->get(),
         'rute' => 'Kelola Role'
     ]);
 })->middleware(['auth', 'verified'])->name('kelolarole');
