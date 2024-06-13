@@ -6,9 +6,10 @@ use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GdriveController;
+use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\DiscussionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 });
 
 Route::get('/upload', [GdriveController::class, 'upload']);
+Route::post('/dashboard/diskusi', [DiscussionController::class, 'store']);
 
 // ============ Route untuk Dashboard Users ====================
 Route::get('/dashboard/dataauthor', function () {

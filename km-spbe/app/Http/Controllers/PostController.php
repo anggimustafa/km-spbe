@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Models\Objek;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +12,6 @@ use Illuminate\Support\Facades\File;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdatePostRequest;
-use App\Models\Objek;
 use Yaza\LaravelGoogleDriveStorage\Gdrive;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -207,9 +208,14 @@ class PostController extends Controller
 
     public function unverify()
     {
+        $users = User::where('opd_id', auth()->user()->opd_id)->where('id', '!=', auth()->user()->id)->get();
         $rute = 'Unverify Post';
-        $posts = Post::where('verified',false)->get();
-        return view('dashboard.unverifypost.index', compact('rute','posts'));
+        $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
+            ->whereNull('threads.post_id')
+            ->where('posts.verified', false)
+            ->select('posts.*')
+            ->get();
+        return view('dashboard.unverifypost.index', compact('rute','posts','users'));
     }
 
     public function indiscussion()

@@ -205,6 +205,9 @@
     </script>
     <script>
         new DataTable('#example-modal', {
+            info: false,
+            searching: false,
+            paging: false,
             layout: {
                 bottomEnd: {
                     paging: {
