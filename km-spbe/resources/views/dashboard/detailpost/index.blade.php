@@ -39,7 +39,7 @@
                     </div>
                     @if (request()->is('dashboard/indiscussion/*'))
                         <h4 class="tombol d-flex justify-content-end m-1"><a
-                                href="/dashboard/thread/{{ $posts->first()->id }}" class="btn btn-info btn-sm">Ke
+                                href="/dashboard/thread/{{ $posts->first()->slug }}" class="btn btn-info btn-sm">Ke
                                 Thread
                                 Diskusi</a>
                         </h4>

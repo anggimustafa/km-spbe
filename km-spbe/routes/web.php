@@ -100,7 +100,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::get('/unverify/{post:slug}', [PostController::class, 'detail'])->name('dashboard.unverify.detail');
     Route::get('/verified/{post:slug}', [PostController::class, 'detail'])->name('dashboard.verified.detail');
     Route::get('/indiscussion/{post:slug}', [PostController::class, 'detail'])->name('dashboard.indiscussion.detail');
-    Route::get('/thread/{post:id}', [ThreadController::class, 'index'])->name('dashboard.thread');
+    Route::get('/thread/{post:slug}', [ThreadController::class, 'index'])->name('dashboard.thread');
 });
 
 Route::get('/upload', [GdriveController::class, 'upload']);
