@@ -34,8 +34,10 @@ class ThreadController extends Controller
         // dd($verifikator);
         $comments = Comment::where('thread_id', $threads->first()->id)
                                 ->join('users', 'comments.user_id', '=', 'users.id')
+                                ->orderBy('comments.created_at', 'desc')
                                 ->get();
         // dd($comments);
+
 
         return view('dashboard.thread.index', [
             'rute' => 'Thread',
@@ -58,9 +60,16 @@ class ThreadController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreThreadRequest $request)
+    public function store(Request $request)
     {
-        //
+        // dd($request);
+        Comment::create([
+            'thread_id' => $request->thread_id,
+            'user_id' => auth()->user()->id,
+            'body' => $request->komentar
+        ]);
+
+        return redirect()->route('dashboard.thread', ['post' => $request->thread_slug])->with('success', 'Postingan baru telah ditambahkan');
     }
 
     /**
@@ -90,8 +99,12 @@ class ThreadController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Thread $thread)
+    public function destroy(Request $request)
     {
-        //
+        // return $request;
+        Thread::destroy($request->id);
+        Comment::where('thread_id', $request->id)->delete();
+
+        return redirect()->route('dashboard.indiscussion')->with('successThread', 'Thread dan komentar terkait telah dihapus');
     }
 }

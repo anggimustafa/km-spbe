@@ -108,4 +108,13 @@
             });
         </script>
     @endif
+    @if (session()->has('successThread'))
+        <script>
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Thread beserta komentarnya telah dihapus.",
+                icon: "success"
+            });
+        </script>
+    @endif
 @endsection

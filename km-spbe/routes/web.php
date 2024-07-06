@@ -101,6 +101,8 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::get('/verified/{post:slug}', [PostController::class, 'detail'])->name('dashboard.verified.detail');
     Route::get('/indiscussion/{post:slug}', [PostController::class, 'detail'])->name('dashboard.indiscussion.detail');
     Route::get('/thread/{post:slug}', [ThreadController::class, 'index'])->name('dashboard.thread');
+    Route::post('/thread', [ThreadController::class, 'store'])->name('dashboard.thread.tambah');
+    Route::delete('/thread', [ThreadController::class, 'destroy'])->name('dashboard.thread.hapus');
 });
 
 Route::get('/upload', [GdriveController::class, 'upload']);
