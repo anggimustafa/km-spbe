@@ -66,7 +66,7 @@ class DiscussionController extends Controller
             }
 
         // Return a successful response, or redirect to another page
-        return response()->json(['success' => 'Discussion created successfully'], 200);
+        return redirect()->route('dashboard.indiscussion')->with('success', 'Thread dan komentar terkait telah dihapus');
 
     }
 

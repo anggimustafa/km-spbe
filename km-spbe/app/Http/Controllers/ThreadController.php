@@ -36,7 +36,7 @@ class ThreadController extends Controller
                                 ->join('users', 'comments.user_id', '=', 'users.id')
                                 ->orderBy('comments.created_at', 'desc')
                                 ->get();
-        // dd($comments);
+        // return $comments;
 
 
         return view('dashboard.thread.index', [
@@ -106,5 +106,14 @@ class ThreadController extends Controller
         Comment::where('thread_id', $request->id)->delete();
 
         return redirect()->route('dashboard.indiscussion')->with('successThread', 'Thread dan komentar terkait telah dihapus');
+    }
+
+    public function destroyKomen(Request $request)
+    {
+        // return $request;
+
+        Comment::where('body', $request->komen_body)->delete();
+
+        return back()->with('hapus', 'Komentar telah dihapus');
     }
 }

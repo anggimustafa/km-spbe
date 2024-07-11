@@ -221,10 +221,16 @@ class PostController extends Controller
     public function indiscussion()
     {
         $rute = 'Indiscussion Post';
+        $loggedInUserId = auth()->user()->id; // atau metode lain untuk mendapatkan user ID yang login
+
         $posts = Post::join('threads', 'posts.id', '=', 'threads.post_id')
-        ->where('posts.verified', false)
-        ->select('posts.*')
-        ->get();
+            ->join('discussions', 'threads.id', '=', 'discussions.thread_id')
+            ->where('posts.verified', false)
+            ->where('discussions.user_id', $loggedInUserId)
+            ->select('posts.*')
+            ->get();
+
+        // return $posts;
         return view('dashboard.indiscussionpost.index', compact('rute','posts'));
     }
 

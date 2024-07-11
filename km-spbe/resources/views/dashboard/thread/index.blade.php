@@ -75,6 +75,16 @@
                                         </span>
                                     </div>
                                 </div>
+                                @if ($komen->user_id == auth()->user()->id)
+                                    <div class="col-12 d-flex justify-content-end">
+                                        <form action="/dashboard/comment" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="hidden" name="komen_body" value="{{ $komen->body }}">
+                                            <button type="submit" class=" text-center text-danger">Hapus</button>
+                                        </form>
+                                    </div>
+                                @endif
                             </div>
                         @endforeach
                     </div>
@@ -89,6 +99,15 @@
             Swal.fire({
                 title: "Berhasil!",
                 text: "Komentar baru telah ditambahkan.",
+                icon: "success"
+            });
+        </script>
+    @endif
+    @if (session()->has('hapus'))
+        <script>
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Komentar berhasil dihapus.",
                 icon: "success"
             });
         </script>

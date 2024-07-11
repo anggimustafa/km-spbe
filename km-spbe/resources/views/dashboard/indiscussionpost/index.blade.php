@@ -117,4 +117,13 @@
             });
         </script>
     @endif
+    @if (session()->has('success'))
+        <script>
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Thread Diskusi baru telah ditambahkan.",
+                icon: "success"
+            });
+        </script>
+    @endif
 @endsection
