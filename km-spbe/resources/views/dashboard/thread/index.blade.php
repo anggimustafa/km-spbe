@@ -22,10 +22,18 @@
                                 </div>
                             </div>
                             <div class="bg-white d-flex justify-content-between">
-                                <div class="d-flex flex-row fs-12 my-2">
-                                    <a href="/dashboard/indiscussion/{{ $post->slug }}" class="btn btn-outline-info">Ke
-                                        Postingan Terkait</a>
-                                </div>
+                                @if ($verify == false)
+                                    <div class="d-flex flex-row fs-12 my-2">
+                                        <a href="/dashboard/indiscussion/{{ $post->slug }}"
+                                            class="btn btn-outline-info">Ke
+                                            Postingan Terkait</a>
+                                    </div>
+                                @else
+                                    <div class="d-flex flex-row fs-12 my-2">
+                                        <a href="/dashboard/verified/{{ $post->slug }}" class="btn btn-outline-primary">Ke
+                                            Postingan Terkait</a>
+                                    </div>
+                                @endif
                                 <div class="form-hapus">
                                     <button class="delete-btn btn btn-danger" data-id="{{ $threads->first()->id }}"
                                         title="Hapus" onclick="deletePost({{ $threads->first()->id }})"><i
@@ -37,20 +45,22 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="bg-light p-2">
-                                <form action="/dashboard/thread" method="post">
-                                    @csrf
-                                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                            src="https://avatar.iran.liara.run/public/{{ $verifikator->first()->id }}"
-                                            width="40">
-                                        <textarea class="form-control ml-1 shadow-none textarea" required name="komentar"></textarea>
-                                        <input type="hidden" value="{{ $threads->first()->id }}" name="thread_id">
-                                        <input type="hidden" value="{{ $post->slug }}" name="thread_slug">
-                                    </div>
-                                    <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none me-2"
-                                            type="submit">Tambah Komentar</button></div>
-                                </form>
-                            </div>
+                            @if ($verify == false)
+                                <div class="bg-light p-2">
+                                    <form action="/dashboard/thread" method="post">
+                                        @csrf
+                                        <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
+                                                src="https://avatar.iran.liara.run/public/{{ $verifikator->first()->id }}"
+                                                width="40">
+                                            <textarea class="form-control ml-1 shadow-none textarea" required name="komentar"></textarea>
+                                            <input type="hidden" value="{{ $threads->first()->id }}" name="thread_id">
+                                            <input type="hidden" value="{{ $post->slug }}" name="thread_slug">
+                                        </div>
+                                        <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none me-2"
+                                                type="submit">Tambah Komentar</button></div>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

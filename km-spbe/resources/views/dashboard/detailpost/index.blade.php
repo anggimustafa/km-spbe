@@ -44,6 +44,14 @@
                                 Diskusi</a>
                         </h4>
                     @endif
+                    @if (request()->is('dashboard/verified/*'))
+                        <h4 class="tombol d-flex justify-content-end m-1"><a
+                                href="/dashboard/threadVerify/{{ $posts->first()->slug }}"
+                                class="btn btn-primary btn-sm">Lihat
+                                Thread
+                                Diskusi</a>
+                        </h4>
+                    @endif
                 </div>
             </div>
             <div class="main-area">

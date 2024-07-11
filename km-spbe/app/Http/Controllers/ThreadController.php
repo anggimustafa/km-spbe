@@ -49,6 +49,43 @@ class ThreadController extends Controller
         ]);
     }
 
+
+    public function indexVerify(Post $post)
+    {
+        // dd($post);
+        // return $post->id;
+
+        $threads = Thread::where('post_id', $post->id)->get();
+        // dd($threads);
+        // return $thread->first()->id;
+
+        $authors = Discussion::where('thread_id', $threads->first()->id)
+                                ->where('role', 'author')->get();
+        // dd($author);
+        $verifikator = Discussion::where('thread_id', $threads->first()->id)
+                                    ->where('role', 'verifikator')
+                                    ->join('users', 'discussions.user_id', '=', 'users.id')
+                                    ->get();
+        // dd($verifikator);
+        $comments = Comment::where('thread_id', $threads->first()->id)
+                                ->join('users', 'comments.user_id', '=', 'users.id')
+                                ->orderBy('comments.created_at', 'desc')
+                                ->get();
+        $verify = true;
+        // return $comments;
+
+
+        return view('dashboard.thread.index', [
+            'rute' => 'Thread',
+            'threads' => $threads,
+            'authors' => $authors,
+            'verifikator' => $verifikator,
+            'post' => $post,
+            'comments' => $comments,
+            'verify' => $verify
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      */
