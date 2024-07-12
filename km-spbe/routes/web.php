@@ -88,12 +88,12 @@ Route::get('/dashboard', function () {
 
 // ============ Route untuk Dashboard Artikel ====================
 Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () {
-    Route::get('/create', [PostController::class, 'create'])->name('dashboard.create');
-    Route::post('/store', [PostController::class, 'store'])->name('dashboard.store');
-    Route::get('/edit/{post:slug}', [PostController::class, 'edit'])->name('dashboard.edit');
-    Route::put('/update/{post:slug}', [PostController::class, 'update'])->name('dashboard.update');
+    Route::get('/create', [PostController::class, 'create'])->middleware('role:author')->name('dashboard.create');
+    Route::post('/store', [PostController::class, 'store'])->middleware('role:author')->name('dashboard.store');
+    Route::get('/edit/{post:slug}', [PostController::class, 'edit'])->middleware('role:author')->name('dashboard.edit');
+    Route::put('/update/{post:slug}', [PostController::class, 'update'])->middleware('role:author')->name('dashboard.update');
     Route::delete('/destroy/{from}', [PostController::class, 'destroy'])->name('dashboard.destroy');
-    Route::post('/verif', [PostController::class, 'verify'])->name('dashboard.verif');
+    Route::post('/verif', [PostController::class, 'verify'])->middleware('role:verifikator')->name('dashboard.verif');
     Route::get('/unverify', [PostController::class, 'unverify'])->name('dashboard.unverify');
     Route::get('/indiscussion', [PostController::class, 'indiscussion'])->name('dashboard.indiscussion');
     Route::get('/verified', [PostController::class, 'verified'])->name('dashboard.verified');
@@ -105,24 +105,60 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::post('/thread', [ThreadController::class, 'store'])->name('dashboard.thread.tambah');
     Route::delete('/thread', [ThreadController::class, 'destroy'])->name('dashboard.thread.hapus');
     Route::delete('/comment', [ThreadController::class, 'destroyKomen'])->name('dashboard.komen.hapus');
+    Route::post('/dashboard/diskusi', [DiscussionController::class, 'store']);
 });
 
-Route::get('/upload', [GdriveController::class, 'upload']);
-Route::post('/dashboard/diskusi', [DiscussionController::class, 'store']);
+// Route::get('/upload', [GdriveController::class, 'upload']);
 
 // ============ Route untuk Dashboard Users ====================
 Route::get('/dashboard/dataauthor', function () {
-    return view('dashboard.dataauthor.index',[
-        'users' => User::where('opd_id', auth()->user()->opd_id)->where('id', '!=', auth()->user()->id)->withCount('posts')->get(),
-        'rute' => 'Data Author'
+    $query = User::query();
+
+    // Cek apakah pengguna yang login adalah admin
+    if (auth()->user()->hasRole('admin')) {
+        // Jika admin, ambil semua user tanpa filter opd_id
+        $users = User::join('opds', 'users.opd_id', '=', 'opds.id')
+        ->select('users.*', 'opds.nama_opd as opd_name')
+        ->where('users.id', '!=', auth()->user()->id) // Kecualikan user yang sedang login
+        ->withCount('posts')
+        ->get();
+
+        // Kelompokkan berdasarkan nama OPD
+        $groupedUsers = $users->groupBy('opd_name');
+
+    } else {
+        // Jika bukan admin, filter berdasarkan opd_id
+        $users = $query->where('opd_id', auth()->user()->opd_id)
+                        ->where('id', '!=', auth()->user()->id)
+                        ->withCount('posts')
+                        ->get();
+    }
+
+    return view('dashboard.dataauthor.index', [
+        'users' => $users,
+        'rute' => 'Data Author',
+        'grupUsers' => $groupedUsers
     ]);
-})->middleware(['auth', 'verified'])->name('dataauthor');
+})->middleware(['auth', 'verified', 'role:verifikator|admin'])->name('dataauthor');
 Route::get('/dashboard/kelolarole', function () {
     return view('dashboard.kelolarole.index',[
         'users' => User::where('id', '!=', auth()->user()->id)->get(),
         'rute' => 'Kelola Role'
     ]);
-})->middleware(['auth', 'verified'])->name('kelolarole');
+})->middleware(['auth', 'verified', 'role:admin'])->name('kelolarole');
+Route::post('/dashboard/users/{user}/change-role', function ($userId) {
+    $user = User::findOrFail($userId);
+
+    return $user;
+
+    // Ganti role
+    if ($user->hasRole('author')) {
+        $user->removeRole('author');
+        $user->assignRole('verifikator');
+    }
+
+    return redirect()->route('dataauthor')->with('success', 'Role updated successfully.');
+})->name('change.role');
 
 
 // ============ Route untuk Dashboard History ====================
@@ -130,12 +166,12 @@ Route::get('/dashboard/logusers', function () {
     return view('dashboard.logusers.index',[
         'rute' => 'Log Users'
     ]);
-})->middleware(['auth', 'verified'])->name('logusers');
+})->middleware(['auth', 'verified', 'role:admin'])->name('logusers');
 Route::get('/dashboard/logaktivitas', function () {
     return view('dashboard.logaktivitas.index',[
         'rute' => 'Log Aktivitas'
     ]);
-})->middleware(['auth', 'verified'])->name('logaktivitas');
+})->middleware(['auth', 'verified', 'role:admin'])->name('logaktivitas');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

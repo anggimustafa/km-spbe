@@ -89,14 +89,16 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Artikel</span>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('dashboard.create') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-regular fa-square-plus fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">Create Post</span>
-                            </a>
-                        </li>
+                        @role('author')
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('dashboard.create') }}" aria-expanded="false">
+                                    <span style="width: 30px">
+                                        <i class="fa-regular fa-square-plus fa-xl"></i>
+                                    </span>
+                                    <span class="hide-menu">Create Post</span>
+                                </a>
+                            </li>
+                        @endrole
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ request()->is('dashboard/unverify/*') || request()->is('dashboard/edit/*') ? 'active' : '' }}"
                                 href="{{ route('dashboard.unverify') }}" aria-expanded="false">
@@ -132,42 +134,46 @@
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Users</span>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('dataauthor') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-solid fa-users fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">Data Auhtor</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('kelolarole') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-solid fa-user-gear fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">Kelola Role</span>
-                            </a>
-                        </li>
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">History</span>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('logusers') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-regular fa-address-book fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">Log Users</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="{{ route('logaktivitas') }}" aria-expanded="false">
-                                <span style="width: 30px">
-                                    <i class="fa-solid fa-timeline fa-xl"></i>
-                                </span>
-                                <span class="hide-menu">Log Aktivitas</span>
-                            </a>
-                        </li>
+                        @hasanyrole('verifikator|admin')
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('dataauthor') }}" aria-expanded="false">
+                                    <span style="width: 30px">
+                                        <i class="fa-solid fa-users fa-xl"></i>
+                                    </span>
+                                    <span class="hide-menu">Data Auhtor</span>
+                                </a>
+                            </li>
+                        @endhasanyrole
+                        @role('admin')
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('kelolarole') }}" aria-expanded="false">
+                                    <span style="width: 30px">
+                                        <i class="fa-solid fa-user-gear fa-xl"></i>
+                                    </span>
+                                    <span class="hide-menu">Kelola Role</span>
+                                </a>
+                            </li>
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">History</span>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('logusers') }}" aria-expanded="false">
+                                    <span style="width: 30px">
+                                        <i class="fa-regular fa-address-book fa-xl"></i>
+                                    </span>
+                                    <span class="hide-menu">Log Users</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('logaktivitas') }}" aria-expanded="false">
+                                    <span style="width: 30px">
+                                        <i class="fa-solid fa-timeline fa-xl"></i>
+                                    </span>
+                                    <span class="hide-menu">Log Aktivitas</span>
+                                </a>
+                            </li>
+                        @endrole
                     </ul>
                     <br><br><br><br><br><br>
                 </nav>
