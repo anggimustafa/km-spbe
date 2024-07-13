@@ -2,6 +2,9 @@
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Notify;
+use App\Models\Logpost;
+use App\Models\Loguser;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -11,8 +14,6 @@ use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DiscussionController;
-use App\Models\Logpost;
-use App\Models\Loguser;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,11 +25,6 @@ use App\Models\Loguser;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/test', function () {
-    $users = User::all();
-    return $users;
-});
 
 Route::get('/', function () {
     return view('index',[
@@ -43,6 +39,7 @@ Route::get('/artikel/{post:slug}', [ArtikelController::class, 'show']);
 // ============ Route untuk Dashboard ====================
 Route::get('/dashboard', function () {
     return view('dashboard.index',[
+        'notifies' => Notify::where('user_id', auth()->user()->id)->get(),
         'rute' => 'Dashboard'
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');

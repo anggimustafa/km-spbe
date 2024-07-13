@@ -7,11 +7,6 @@
                     <i class="ti ti-menu-2"></i>
                 </a>
             </div>
-            <div class="nav-item">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                    <i class="ti ti-bell-ringing"></i>
-                </a>
-            </div>
         </div>
 
         <div class="flex">
