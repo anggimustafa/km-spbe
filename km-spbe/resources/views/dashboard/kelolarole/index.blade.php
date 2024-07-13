@@ -3,7 +3,7 @@
 @section('container')
     <div class="container-fluid">
         <div class="col-lg-11 shadow p-5 rounded" style="margin:auto">
-            <table id="example" class="table table-striped" style="width:100%">
+            <table id="example" class="table table-row-border" style="width:100%">
                 <thead>
                     <tr>
                         <th>Nama</th>
@@ -43,25 +43,40 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body d-flex justify-center">
-                                        <form action="{{ route('change.role', $user->id) }}" method="POST">
+                                    <form action="/dashboard/ubah-role" method="POST">
+                                        <div class="modal-body d-flex justify-center">
                                             @csrf
                                             <div class="d-flex justify-content-around">
-                                                <button name="role" value="author"
-                                                    class="btn btn-info text-light">Author</button>
-                                                <div class="btn"><i
-                                                        class="fa-solid fa-angles-right fa-beat-fade fa-2xl"></i></div>
-                                                <button name="role" value="verifikator"
-                                                    class="btn btn-success">Verifikator</button>
-                                                <div class=""><button type="submit" name="role"
-                                                        value="verifikator" class="btn btn-primary">Ubah</button></div>
+                                                @if ($user->getRoleNames()->join(', ') == 'author')
+                                                    <div class="btn btn-info text-light">
+                                                        Author
+                                                    </div>
+                                                    <div class="btn"><i
+                                                            class="fa-solid fa-angles-right fa-beat-fade fa-2xl"></i></div>
+                                                    <div class="btn btn-danger">
+                                                        Verifikator
+                                                    </div>
+                                                    <input type="hidden" name="role" value="verifikator">
+                                                @else
+                                                    <div class="btn btn-danger">
+                                                        Verifikator
+                                                    </div>
+                                                    <div class="btn"><i
+                                                            class="fa-solid fa-angles-right fa-beat-fade fa-2xl"></i></div>
+                                                    <div class="btn btn-info text-light">
+                                                        Author
+                                                    </div>
+                                                    <input type="hidden" name="role" value="author">
+                                                @endif
+                                                <input type="hidden" name="user_id" value="{{ $user->id }}">
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Close</button>
-                                    </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Ubah</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -79,4 +94,14 @@
             </table>
         </div>
     </div>
+
+    @if (session()->has('success'))
+        <script>
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Role telah diubah.",
+                icon: "success"
+            });
+        </script>
+    @endif
 @endsection

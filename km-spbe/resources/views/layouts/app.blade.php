@@ -122,7 +122,7 @@
                             <span class="hide-menu">Forum</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link {{ request()->is('dashboard/indiscussion/*') ? 'active' : '' }}"
+                            <a class="sidebar-link {{ request()->is('dashboard/indiscussion/*') || request()->is('dashboard/thread/*') ? 'active' : '' }}"
                                 href="{{ route('dashboard.indiscussion') }}" aria-expanded="false">
                                 <span style="width: 30px">
                                     <i class="fa-regular fa-comments fa-xl"></i>
@@ -162,7 +162,7 @@
                                     <span style="width: 30px">
                                         <i class="fa-regular fa-address-book fa-xl"></i>
                                     </span>
-                                    <span class="hide-menu">Log Users</span>
+                                    <span class="hide-menu">Log Aktivitas</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
@@ -170,7 +170,7 @@
                                     <span style="width: 30px">
                                         <i class="fa-solid fa-timeline fa-xl"></i>
                                     </span>
-                                    <span class="hide-menu">Log Aktivitas</span>
+                                    <span class="hide-menu">Log Artikel</span>
                                 </a>
                             </li>
                         @endrole

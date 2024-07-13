@@ -3,6 +3,7 @@
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GdriveController;
@@ -10,6 +11,8 @@ use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DiscussionController;
+use App\Models\Logpost;
+use App\Models\Loguser;
 
 /*
 |--------------------------------------------------------------------------
@@ -114,8 +117,10 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
 Route::get('/dashboard/dataauthor', function () {
     $query = User::query();
 
+    $userLogin =User::findOrFail(auth()->user()->id);
+
     // Cek apakah pengguna yang login adalah admin
-    if (auth()->user()->hasRole('admin')) {
+    if ($userLogin->hasRole('admin')) {
         // Jika admin, ambil semua user tanpa filter opd_id
         $users = User::join('opds', 'users.opd_id', '=', 'opds.id')
         ->select('users.*', 'opds.nama_opd as opd_name')
@@ -140,36 +145,53 @@ Route::get('/dashboard/dataauthor', function () {
         'grupUsers' => $groupedUsers
     ]);
 })->middleware(['auth', 'verified', 'role:verifikator|admin'])->name('dataauthor');
+
 Route::get('/dashboard/kelolarole', function () {
     return view('dashboard.kelolarole.index',[
         'users' => User::where('id', '!=', auth()->user()->id)->get(),
         'rute' => 'Kelola Role'
     ]);
 })->middleware(['auth', 'verified', 'role:admin'])->name('kelolarole');
-Route::post('/dashboard/users/{user}/change-role', function ($userId) {
-    $user = User::findOrFail($userId);
 
-    return $user;
+Route::post('/dashboard/ubah-role', function (Request $request) {
 
+    // return $request;
+
+    $user = User::findOrFail($request->user_id);
     // Ganti role
     if ($user->hasRole('author')) {
         $user->removeRole('author');
         $user->assignRole('verifikator');
+        return redirect('/dashboard/kelolarole')->with('success', 'Role updated successfully.');
     }
 
-    return redirect()->route('dataauthor')->with('success', 'Role updated successfully.');
+    if ($user->hasRole('verifikator')) {
+        $user->removeRole('verifikator');
+        $user->assignRole('author');
+        return redirect('/dashboard/kelolarole')->with('success', 'Role updated successfully.');
+    }
+
 })->name('change.role');
 
 
 // ============ Route untuk Dashboard History ====================
 Route::get('/dashboard/logusers', function () {
+    $logUser = Loguser::all();
+    // dd($logUser);
     return view('dashboard.logusers.index',[
-        'rute' => 'Log Users'
+        'logUser' => $logUser,
+        'rute' => 'Log Aktivitas'
     ]);
 })->middleware(['auth', 'verified', 'role:admin'])->name('logusers');
+
 Route::get('/dashboard/logaktivitas', function () {
+    $logposts = Logpost::all();
+
+    // return $logposts[3]->post->judul;
+
     return view('dashboard.logaktivitas.index',[
-        'rute' => 'Log Aktivitas'
+        'logposts' => $logposts,
+        'rute' => 'Log Artikel'
     ]);
 })->middleware(['auth', 'verified', 'role:admin'])->name('logaktivitas');
 

@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('action');
-            $table->text('desc');
             $table->timestamps();
         });
     }

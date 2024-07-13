@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('post_id');
             $table->string('action');
-            $table->text('desc');
             $table->timestamps();
         });
     }
