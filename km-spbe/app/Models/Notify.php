@@ -13,7 +13,8 @@ class Notify extends Model
     protected $fillable = [
         'user_id',
         'body',
-        'link',
+        'type',
+        'is_read'
     ];
 
     // Definisikan relasi Many to One. Notify ke User

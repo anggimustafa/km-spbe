@@ -45,7 +45,7 @@ class OpdSeeder extends Seeder
         ]);
 
         Opd::create([
-            'nama_opd' => 'Dinas Kebudayaan'
+            'nama_opd' => 'Dinas Lingkungan'
         ]);
     }
 }

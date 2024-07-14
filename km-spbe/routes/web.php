@@ -132,8 +132,11 @@ Route::get('/dashboard/dataauthor', function () {
         // Jika bukan admin, filter berdasarkan opd_id
         $users = $query->where('opd_id', auth()->user()->opd_id)
                         ->where('id', '!=', auth()->user()->id)
+                        ->where('id', '!=', 1)
                         ->withCount('posts')
                         ->get();
+
+        $groupedUsers = null;
     }
 
     return view('dashboard.dataauthor.index', [
@@ -164,12 +167,24 @@ Route::post('/dashboard/ubah-role', function (Request $request) {
     if ($user->hasRole('author')) {
         $user->removeRole('author');
         $user->assignRole('verifikator');
+
+        Notify::create([
+            'user_id' => $user->id,
+            'action' => 'Role anda sekarang menjadi Verifikator',
+            'type' => 'Role diubah'
+        ]);
+
         return redirect('/dashboard/kelolarole')->with('success', 'Role updated successfully.');
     }
 
     if ($user->hasRole('verifikator')) {
         $user->removeRole('verifikator');
         $user->assignRole('author');
+        Notify::create([
+            'user_id' => $user->id,
+            'body' => 'Role anda sekarang menjadi Auhtor',
+            'type' => 'Role diubah'
+        ]);
         return redirect('/dashboard/kelolarole')->with('success', 'Role updated successfully.');
     }
 

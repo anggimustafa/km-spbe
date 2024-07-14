@@ -140,7 +140,7 @@
                                     <span style="width: 30px">
                                         <i class="fa-solid fa-users fa-xl"></i>
                                     </span>
-                                    <span class="hide-menu">Data Auhtor</span>
+                                    <span class="hide-menu">Data Users</span>
                                 </a>
                             </li>
                         @endhasanyrole

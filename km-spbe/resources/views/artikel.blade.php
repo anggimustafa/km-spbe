@@ -39,7 +39,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="image">
-                                        <img src="../assets/images/event-01.jpg" alt="">
+                                        <img src="https://picsum.photos/id/{{ $post->id }}/400/300" alt="">
                                     </div>
                                 </div>
                                 <div class="col-lg-9">

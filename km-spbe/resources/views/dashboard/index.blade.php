@@ -19,9 +19,9 @@
                     <div class="modal-body">
                         @foreach ($notifies as $notify)
                             <div class="row border rounded py-2">
-                                <div class="col-2">Type</div>
+                                <div class="col-2">{{ $notify->type }}</div>
                                 <div class="col-8">{{ $notify->body }} </div>
-                                <div class="col-2">Dibaca</div>
+                                <div class="col-2">{{ $notify->is_read }}</div>
                             </div>
                         @endforeach
                     </div>

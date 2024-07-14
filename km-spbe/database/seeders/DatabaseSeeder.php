@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
             // PostSeeder::class,
             // ThreadSeeder::class,
             // UserSeeder::class,
-            CategorySeeder::class
+            CategorySeeder::class,
+            RolePermissionSeeder::class
             // Tambahkan seeder lain di sini
         ]);
     }

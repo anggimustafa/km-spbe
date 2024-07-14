@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Notify;
 use App\Models\Thread;
 use App\Models\Logpost;
 use App\Models\Loguser;
 use App\Models\Discussion;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreDiscussionRequest;
@@ -58,6 +60,14 @@ class DiscussionController extends Controller
                 'role' => 'verifikator'
             ]);
 
+            // record untuk pembuat postingan
+            $post = Post::where('id', $request->post_id)->get();
+            Discussion::create([
+                'thread_id' => $lastId,
+                'user_id' => $post->first()->user_id,
+                'role' => 'verifikator'
+            ]);
+
             // Membuat record di tabel discussions untuk setiap user_id yang dipilih
             foreach ($request->user_ids as $user_id) {
                 Discussion::create([
@@ -76,6 +86,28 @@ class DiscussionController extends Controller
                 'post_id' => $request->post_id,
                 'action' => 'Didiskusikan'
             ]);
+
+            Notify::create([
+                'user_id' => $post->first()->user_id,
+                'body' => 'Postingan yang berjudul' . $post->judul . ' telah dibuatkan Thread untuk didiskusikan.',
+                'type' => 'Thread Post'
+            ]);
+
+            Notify::create([
+                'user_id' => 1,
+                'body' => 'Telah dibuat Thread Diskusi pada postingan yang berjudul ' . $post->judul . '.',
+                'type' => 'Thread Post'
+            ]);
+
+
+            foreach ($request->user_ids as $user_id) {
+                Notify::create([
+                    'user_id' => $user_id,
+                    'body' => 'Anda telah dipilih untuk ikut berdiskusi pada postingan yang berjudul ' . $post->judul . '.',
+                    'type' => 'Thread Post'
+                ]);
+            }
+
 
         // Return a successful response, or redirect to another page
         return redirect()->route('dashboard.indiscussion')->with('success', 'Thread dan komentar terkait telah dihapus');

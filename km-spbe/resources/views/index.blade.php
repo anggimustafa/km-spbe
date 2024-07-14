@@ -192,7 +192,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <div class="image">
-                                        <img src="assets/images/event-01.jpg" alt="">
+                                        <img src="https://picsum.photos/id/{{ $post->id }}/400/300" alt="">
                                     </div>
                                 </div>
                                 <div class="col-lg-9">
@@ -250,8 +250,8 @@
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter end">
-                                    <h2 class="timer count-title count-number" data-to="190" data-speed="5000"></h2>
-                                    <p class="count-text ">Total Pengunjung</p>
+                                    <h2 class="timer count-title count-number" data-to="100" data-speed="5000"></h2>
+                                    <p class="count-text ">Total Thread Diskusi</p>
                                 </div>
                             </div>
                         </div>

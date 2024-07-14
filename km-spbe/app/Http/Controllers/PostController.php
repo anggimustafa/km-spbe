@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Objek;
+use App\Models\Notify;
 use App\Models\Logpost;
 use App\Models\Loguser;
 use App\Models\Category;
@@ -111,6 +112,22 @@ class PostController extends Controller
             'action' => 'Dibuat'
         ]);
 
+        $opdAuthor = auth()->user()->opd_id;
+
+        $verifikatorUsers = User::where('opd_id', $opdAuthor)
+            ->whereHas('roles', function ($query) {
+                 $query->where('name', 'verifikator'); // Ganti 'verifikator' dengan nama role sesuai
+            })
+            ->get();
+
+        foreach ($verifikatorUsers as $verifikator) {
+            Notify::create([
+                'user_id' => $verifikator->id, // Ganti dengan ID pengguna verifikator
+                'body' => 'Postingan baru telah dibuat dengan judul ' . $request->judul . '.',
+                'type' => 'Post'
+            ]);
+        }
+
         return redirect()->route('dashboard.unverify')->with('success', 'Postingan baru telah ditambahkan');
     }
 
@@ -205,6 +222,19 @@ class PostController extends Controller
             'post_id' => $post->id,
             'action' => 'Diverifikasi'
         ]);
+
+        Notify::create([
+            'user_id' => $post->user_id,
+            'body' => 'Postingan dengan judul ' . $post->judul . 'telah diverifikasi.',
+            'type' => 'Post Diverifikasi'
+        ]);
+
+        Notify::create([
+            'user_id' => 1,
+            'body' => 'Postingan baru telah diterbitkan dengan judul ' . $post->judul . '.',
+            'type' => 'Post'
+        ]);
+
         return redirect()->route('dashboard.verified')->with('verifikasi', 'Postingan telah diverifikasi');
         //
     }
@@ -228,14 +258,26 @@ class PostController extends Controller
             'action' => 'Dihapus'
         ]);
 
+        $post = Post::findOrFail($request->id);
+
         switch ($from) {
             case 'unverify':
                 return redirect()->route('dashboard.unverify')->with('hapus', 'Postingan telah dihapus');
                 break;
             case 'verified':
+                Notify::create([
+                    'user_id' => $post->user_id,
+                    'body' => 'Postingan dengan judul ' . $request->judul . 'telah dihapus oleh verifikator / admin.',
+                    'type' => 'Post Dihapus'
+                ]);
                 return redirect()->route('dashboard.verified')->with('hapus', 'Postingan telah dihapus');
                 break;
             case 'indiscussion':
+                Notify::create([
+                    'user_id' => $post->user_id,
+                    'body' => 'Postingan dengan judul ' . $request->judul . 'telah dihapus oleh verifikator / admin.',
+                    'type' => 'Post Dihapus'
+                ]);
                 return redirect()->route('dashboard.indiscussion')->with('hapus', 'Postingan telah dihapus');
                 break;
         }
