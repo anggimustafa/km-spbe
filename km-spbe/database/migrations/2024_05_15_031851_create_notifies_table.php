@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->text('body');
-            $table->string('link');
+            $table->string('type');
+            $table->boolean('is_read');
             $table->timestamps();
         });
     }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Thread;
+use App\Models\Logpost;
+use App\Models\Loguser;
 use App\Models\Discussion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -64,6 +66,16 @@ class DiscussionController extends Controller
                     'role' => 'author'
                 ]);
             }
+
+            Loguser::create([
+                'user_id' => auth()->user()->id,
+                'action' => 'Buat Diskusi/Thread'
+            ]);
+
+            Logpost::create([
+                'post_id' => $request->post_id,
+                'action' => 'Didiskusikan'
+            ]);
 
         // Return a successful response, or redirect to another page
         return redirect()->route('dashboard.indiscussion')->with('success', 'Thread dan komentar terkait telah dihapus');

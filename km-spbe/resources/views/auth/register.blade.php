@@ -12,11 +12,17 @@
 
         <!-- Opd Id -->
         <div class="mt-4">
-            <x-input-label for="opd_id" :value="__('Opd_id')" />
-            <x-text-input id="opd_id" class="block mt-1 w-full" type="text" name="opd_id" :value="old('opd_id')"
-                required autofocus autocomplete="opd_id" />
+            <x-input-label for="opd_id" :value="__('Nama OPD')" />
+            <select id="opd_id" name="opd_id" class="block mt-1 w-full" required autofocus>
+                @foreach ($opds as $opd)
+                    <option value="{{ $opd->id }}" {{ old('opd_id') == $opd->id ? 'selected' : '' }}>
+                        {{ $opd->nama_opd }}
+                    </option>
+                @endforeach
+            </select>
             <x-input-error :messages="$errors->get('opd_id')" class="mt-2" />
         </div>
+
 
         <!-- NIP -->
         <div class="mt-4">

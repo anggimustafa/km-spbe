@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Objek;
+use App\Models\Logpost;
+use App\Models\Loguser;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -99,6 +101,16 @@ class PostController extends Controller
             ]);
         }
 
+        Loguser::create([
+            'user_id' => auth()->user()->id,
+            'action' => 'Buat Post'
+        ]);
+
+        Logpost::create([
+            'post_id' => $post->id,
+            'action' => 'Dibuat'
+        ]);
+
         return redirect()->route('dashboard.unverify')->with('success', 'Postingan baru telah ditambahkan');
     }
 
@@ -154,6 +166,16 @@ class PostController extends Controller
 
         Post::where('id', $post->id)->update($validatedData);
 
+        Loguser::create([
+            'user_id' => auth()->user()->id,
+            'action' => 'Edit Post'
+        ]);
+
+        Logpost::create([
+            'post_id' => $post->id,
+            'action' => 'Diedit'
+        ]);
+
         return redirect()->route('dashboard.unverify')->with('updated', 'Postingan telah diperbarui');
     }
 
@@ -173,6 +195,16 @@ class PostController extends Controller
 
         // Simpan perubahan ke database
         $post->save();
+
+        Loguser::create([
+            'user_id' => auth()->user()->id,
+            'action' => 'Verifikasi Post'
+        ]);
+
+        Logpost::create([
+            'post_id' => $post->id,
+            'action' => 'Diverifikasi'
+        ]);
         return redirect()->route('dashboard.verified')->with('verifikasi', 'Postingan telah diverifikasi');
         //
     }
@@ -185,6 +217,16 @@ class PostController extends Controller
     {
         // return $request->id . 'destroy';
         Post::destroy($request->id);
+
+        Loguser::create([
+            'user_id' => auth()->user()->id,
+            'action' => 'Hapus Post'
+        ]);
+
+        Logpost::create([
+            'post_id' => $request->id,
+            'action' => 'Dihapus'
+        ]);
 
         switch ($from) {
             case 'unverify':

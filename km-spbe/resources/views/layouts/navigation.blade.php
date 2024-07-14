@@ -61,6 +61,7 @@
                     </form>
                 </x-slot>
             </x-dropdown>
+            <div class="ms-2 btn btn-info text-light">{{ ucfirst(auth()->user()->getRoleNames()->join(', ')) }}</div>
         </div>
 
         <!-- Hamburger -->

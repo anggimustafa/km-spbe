@@ -130,11 +130,11 @@
                                 <span class="hide-menu">In Discussion</span>
                             </a>
                         </li>
-                        <li class="nav-small-cap">
-                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Users</span>
-                        </li>
                         @hasanyrole('verifikator|admin')
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">Users</span>
+                            </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="{{ route('dataauthor') }}" aria-expanded="false">
                                     <span style="width: 30px">

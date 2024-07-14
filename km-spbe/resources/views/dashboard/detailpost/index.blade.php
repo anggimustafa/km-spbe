@@ -3,18 +3,22 @@
 @section('container')
     <div class="container-fluid">
         <div class="ms-5 mb-2">
-            <a class="btn btn-info" title="Lihat" href="javascript:history.go(-1);"><i
+            <a class="btn btn-info" title="Kembali" href="javascript:history.go(-1);"><i
                     class="fa-solid fa-arrow-left"></i></a>&nbsp;
             @if (!request()->is('dashboard/verified/*'))
                 <a class="btn btn-warning" title="Edit" href="/dashboard/edit/{{ $posts->first()->slug }}"><i
                         class="fa-solid fa-pen-to-square"></i></a>&nbsp;
                 @if (!request()->is('dashboard/indiscussion/*'))
-                    <a class="btn btn-primary" title="Buat Diskusi" type="button" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" href=""><i class="fa-brands fa-rocketchat"></i></a>&nbsp;
+                    @role('verifikator')
+                        <a class="btn btn-primary" title="Buat Diskusi" type="button" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" href=""><i class="fa-brands fa-rocketchat"></i></a>&nbsp;
+                    @endrole
                 @endif
-                <button class="verif-btn btn btn-success" data-id="{{ $posts->first()->id }}" title="Verifikasi"
-                    onclick="verifyPost({{ $posts->first()->id }}, '{{ $posts->first()->slug }}')"><i
-                        class="fa-solid fa-circle-check"></i></button>&nbsp;
+                @role('verifikator')
+                    <button class="verif-btn btn btn-success" data-id="{{ $posts->first()->id }}" title="Verifikasi"
+                        onclick="verifyPost({{ $posts->first()->id }}, '{{ $posts->first()->slug }}')"><i
+                            class="fa-solid fa-circle-check"></i></button>&nbsp;
+                @endrole
             @endif
             <button class="delete-btn btn btn-danger" data-id="{{ $posts->first()->id }}" title="Hapus"
                 onclick="deletePost({{ $posts->first()->id }})"><i class="fa-solid fa-delete-left"></i></button>

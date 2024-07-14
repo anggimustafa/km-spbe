@@ -155,6 +155,11 @@ Route::post('/dashboard/ubah-role', function (Request $request) {
     // return $request;
 
     $user = User::findOrFail($request->user_id);
+
+    Loguser::create([
+        'user_id' => auth()->user()->id,
+        'action' => 'Ubah Role'
+    ]);
     // Ganti role
     if ($user->hasRole('author')) {
         $user->removeRole('author');
