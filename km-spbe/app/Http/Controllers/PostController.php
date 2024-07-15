@@ -294,11 +294,40 @@ class PostController extends Controller
     {
         $users = User::where('opd_id', auth()->user()->opd_id)->where('id', '!=', auth()->user()->id)->get();
         $rute = 'Unverify Post';
-        $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
+
+        // return auth()->user()->getRoleNames()->join(', ');
+        //query untuk author
+        if(auth()->user()->getRoleNames()->join(', ') == 'author'){
+            $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
             ->whereNull('threads.post_id')
             ->where('posts.verified', false)
+            ->where('posts.user_id', auth()->user()->id)
             ->select('posts.*')
             ->get();
+        }
+
+        //query untuk varifikator
+        $opdId = auth()->user()->opd_id;
+        $userOpdIds = User::where('opd_id', $opdId)->pluck('id');
+
+        if(auth()->user()->getRoleNames()->contains('verifikator')){
+            $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
+                ->whereNull('threads.post_id')
+                ->where('posts.verified', false)
+                ->whereIn('posts.user_id', $userOpdIds)
+                ->select('posts.*')
+                ->get();
+        }
+
+        //query untuk varifikator
+        if(auth()->user()->getRoleNames() == 'admin'){
+            $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
+                ->whereNull('threads.post_id')
+                ->where('posts.verified', false)
+                ->select('posts.*')
+                ->get();
+            }
+
         return view('dashboard.unverifypost.index', compact('rute','posts','users'));
     }
 
@@ -307,12 +336,33 @@ class PostController extends Controller
         $rute = 'Indiscussion Post';
         $loggedInUserId = auth()->user()->id; // atau metode lain untuk mendapatkan user ID yang login
 
-        $posts = Post::join('threads', 'posts.id', '=', 'threads.post_id')
+        //query untuk author
+        if(auth()->user()->getRoleNames()->join(', ') == 'author'){
+            $posts = Post::join('threads', 'posts.id', '=', 'threads.post_id')
             ->join('discussions', 'threads.id', '=', 'discussions.thread_id')
             ->where('posts.verified', false)
             ->where('discussions.user_id', $loggedInUserId)
             ->select('posts.*')
             ->get();
+        }
+
+        //query untuk verifikator
+        if(auth()->user()->getRoleNames()->join(', ') == 'verifikator'){
+            $posts = Post::join('threads', 'posts.id', '=', 'threads.post_id')
+                ->join('discussions', 'threads.id', '=', 'discussions.thread_id')
+                ->where('posts.verified', false)
+                ->where('discussions.user_id', $loggedInUserId)
+                ->select('posts.*')
+                ->get();
+        }
+
+        //query untuk admin
+        if(auth()->user()->getRoleNames()->join(', ') == 'admin'){
+            $posts = Post::join('threads', 'posts.id', '=', 'threads.post_id')
+                ->where('posts.verified', false)
+                ->select('posts.*')
+                ->get();
+        }
 
         // return $posts;
         return view('dashboard.indiscussionpost.index', compact('rute','posts'));
@@ -321,7 +371,27 @@ class PostController extends Controller
     public function verified()
     {
         $rute = 'Verified Post';
-        $posts = Post::where('verified',true)->get();
+
+        //query untuk author
+        if(auth()->user()->getRoleNames()->join(', ') == 'author'){
+            $posts = Post::where('user_id', auth()->user()->id)
+                        ->where('verified',true)
+                        ->get();
+        }
+
+        //query untuk verifikator
+        $opdId = auth()->user()->opd_id;
+        $userOpdIds = User::where('opd_id', $opdId)->pluck('id');
+        if(auth()->user()->getRoleNames()->join(', ') == 'verifikator'){
+            $posts = Post::where('verified',true)
+                            ->whereIn('posts.user_id', $userOpdIds)
+                            ->get();
+        }
+
+        //query untuk admin
+        if(auth()->user()->getRoleNames()->join(', ') == 'admin'){
+            $posts = Post::where('verified',true)->get();
+        }
         return view('dashboard.verifiedpost.index', compact('rute','posts'));
     }
 

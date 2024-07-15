@@ -3,11 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notify;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreNotifyRequest;
 use App\Http\Requests\UpdateNotifyRequest;
 
 class NotifyController extends Controller
 {
+
+    public function markAllRead(Request $request)
+    {
+        $userId = Auth::id();
+
+        Notify::where('user_id', $userId)->update(['is_read' => true]);
+
+        return response()->json(['success' => 'All notifications marked as read']);
+    }
     /**
      * Display a listing of the resource.
      */

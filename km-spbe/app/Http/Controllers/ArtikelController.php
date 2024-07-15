@@ -24,9 +24,9 @@ class ArtikelController extends Controller
         // dd(DB::getQueryLog());
 
         if(Auth::check()){
-            $posts = Post::latest()->filter((request(['search','category','page'])))->paginate(3)->withQueryString();
+            $posts = Post::where('verified', true)->latest()->filter((request(['search','category','page'])))->paginate(3)->withQueryString();
         }else{
-            $posts = Post::latest()->filter((request(['search','category','page'])))->public()->paginate(3)->withQueryString();
+            $posts = Post::where('verified', true)->latest()->filter((request(['search','category','page'])))->public()->paginate(3)->withQueryString();
         }
 
         return view('artikel', compact('posts', 'categories', 'judul'));

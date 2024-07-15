@@ -16,16 +16,17 @@
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Notifikasi</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body ">
                         @foreach ($notifies as $notify)
-                            <div class="row border rounded py-2">
+                            <div class="row border rounded py-2 {{ $notify->is_read ? 'bg-light' : 'bg-info-subtle' }}">
                                 <div class="col-2">{{ $notify->type }}</div>
                                 <div class="col-8">{{ $notify->body }} </div>
-                                <div class="col-2">{{ $notify->is_read }}</div>
+                                <div class="col-2">{{ $notify->is_read ? 'Terbaca' : 'Belum dibaca' }}</div>
                             </div>
                         @endforeach
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="markAllRead">Tandai Semua Terbaca</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -441,4 +442,32 @@
                     href="https://themewagon.com">ThemeWagon</a></p>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#markAllRead').on('click', function() {
+                $.ajax({
+                    url: '{{ route('notifies.markAllRead') }}',
+                    type: 'POST',
+                    data: {
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        if (response.success) {
+                            $('.modal-body .row').each(function() {
+                                $(this).removeClass('bg-info-subtle').addClass(
+                                    'bg-light');
+                                $(this).find('.col-2:last').text('Terbaca');
+                            });
+                            alert('Semua notifikasi telah ditandai sebagai terbaca.');
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('Terjadi kesalahan. Silakan coba lagi.');
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

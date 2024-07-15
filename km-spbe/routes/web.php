@@ -7,9 +7,11 @@ use App\Models\Logpost;
 use App\Models\Loguser;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GdriveController;
+use App\Http\Controllers\NotifyController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProfileController;
@@ -27,8 +29,13 @@ use App\Http\Controllers\DiscussionController;
 */
 
 Route::get('/', function () {
+    if(Auth::check()){
+        $posts = Post::where('verified', true)->latest()->take(3)->get();
+    }else{
+        $posts = Post::where('verified', true)->latest()->public()->take(3)->get();
+    }
     return view('index',[
-        'posts' => Post::latest()->take(3)->get(),
+        'posts' => $posts,
         'categories'=> Category::all(),
     ]);
 });
@@ -43,6 +50,8 @@ Route::get('/dashboard', function () {
         'rute' => 'Dashboard'
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/notifies/mark-all-read', [NotifyController::class, 'markAllRead'])->middleware(['auth', 'verified'])->name('notifies.markAllRead');
 
 // // ============ Route untuk Dashboard Artikel ====================
 // Route::get('/dashboard/create', function () {
@@ -170,7 +179,7 @@ Route::post('/dashboard/ubah-role', function (Request $request) {
 
         Notify::create([
             'user_id' => $user->id,
-            'action' => 'Role anda sekarang menjadi Verifikator',
+            'body' => 'Role anda sekarang menjadi Verifikator',
             'type' => 'Role diubah'
         ]);
 
@@ -202,9 +211,11 @@ Route::get('/dashboard/logusers', function () {
 })->middleware(['auth', 'verified', 'role:admin'])->name('logusers');
 
 Route::get('/dashboard/logaktivitas', function () {
-    $logposts = Logpost::all();
+    // $logposts = Logpost::all();
+    $logposts = Logpost::join('posts', 'logposts.post_id', 'posts.id')->get();
 
-    // return $logposts[3]->post->judul;
+
+    // return $logposts;
 
     return view('dashboard.logaktivitas.index',[
         'logposts' => $logposts,
