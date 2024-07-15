@@ -61,7 +61,14 @@
                     </form>
                 </x-slot>
             </x-dropdown>
-            <div class="ms-2 btn btn-info text-light">{{ ucfirst(auth()->user()->getRoleNames()->join(', ')) }}</div>
+            @php
+                $role = auth()->user()->getRoleNames()->first(); // Ambil role pertama
+            @endphp
+
+            <div
+                class="ms-2 btn text-light {{ $role === 'author' ? 'bg-info' : ($role === 'verifikator' ? 'bg-danger' : ($role === 'admin' ? 'bg-dark' : '')) }}">
+                {{ ucfirst($role) }}
+            </div>
         </div>
 
         <!-- Hamburger -->

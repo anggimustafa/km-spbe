@@ -46,6 +46,7 @@ Route::get('/artikel/{post:slug}', [ArtikelController::class, 'show']);
 // ============ Route untuk Dashboard ====================
 Route::get('/dashboard', function () {
     return view('dashboard.index',[
+        'user' => auth()->user(),
         'notifies' => Notify::where('user_id', auth()->user()->id)->get(),
         'rute' => 'Dashboard'
     ]);
