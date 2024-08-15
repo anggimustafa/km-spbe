@@ -2,16 +2,20 @@
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Objek;
 use App\Models\Notify;
+use App\Models\Thread;
 use App\Models\Logpost;
 use App\Models\Loguser;
 use App\Models\Category;
+use App\Models\Discussion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GdriveController;
 use App\Http\Controllers\NotifyController;
+use App\Http\Controllers\streamController;
 use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProfileController;
@@ -37,6 +41,10 @@ Route::get('/', function () {
     return view('index',[
         'posts' => $posts,
         'categories'=> Category::all(),
+        'total_artikel' => Post::count(),
+        'total_user' => User::count(),
+        'total_thread' => Thread::count(),
+        'total_objek' => Objek::count()
     ]);
 });
 
@@ -48,7 +56,10 @@ Route::get('/dashboard', function () {
     return view('dashboard.index',[
         'user' => auth()->user(),
         'notifies' => Notify::where('user_id', auth()->user()->id)->get(),
-        'rute' => 'Dashboard'
+        'rute' => 'Dashboard',
+        'post_dibuat' => Post::where('user_id', auth()->user()->id)->count(),
+        'post_diskusi' => Discussion::where('user_id', auth()->user()->id)->count(),
+        'post_diverif' => Post::where('user_id', auth()->user()->id)->where('verified', true)->count(),
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -118,7 +129,8 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::post('/dashboard/diskusi', [DiscussionController::class, 'store']);
 });
 
-// Route::get('/upload', [GdriveController::class, 'upload']);
+Route::get('/view-file/{id}/{utama}', [PostController::class, 'viewFile']);
+
 
 // ============ Route untuk Dashboard Users ====================
 Route::get('/dashboard/dataauthor', function () {
@@ -203,7 +215,8 @@ Route::post('/dashboard/ubah-role', function (Request $request) {
 
 // ============ Route untuk Dashboard History ====================
 Route::get('/dashboard/logusers', function () {
-    $logUser = Loguser::all();
+    $logUser = Loguser::orderBy('created_at', 'desc')->get();
+
     // dd($logUser);
     return view('dashboard.logusers.index',[
         'logUser' => $logUser,

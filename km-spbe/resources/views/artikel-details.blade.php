@@ -23,24 +23,17 @@
         <div class="main-area">
             <div class="container-objek-utama mb-3">
                 <h5 class="text-light mb-3">Objek Pengetahuan Utama</h5>
-                @if ($ext_utama == 'pdf')
-                    {!! $data_utama !!}
-                @else
-                    <img src="{{ $data_utama }}" alt="" width="100%" height="400px" style="border-radius:10px">
-                @endif
+                <embed src="{{ url('/view-file/' . $posts->first()->id . '/' . true) }}" type="application/pdf"
+                    width="100%" height="500px">
             </div>
             <div class="isi">
                 {!! $post->body !!}
 
-                @if ($data_pendukung)
+                @if ($objek_pendukung)
                     <div class="container-objek-pendukung mb-3">
                         <h6 class=" mb-3">Objek Pengetahuan Pendukung</h6>
-                        @if ($ext_pendukung == 'pdf')
-                            {!! $data_pendukung !!}
-                        @else
-                            <img src="{{ $data_pendukung }}" alt="" width="100%" height="400px"
-                                style="border-radius:10px">
-                        @endif
+                        <embed src="{{ url('/view-file/' . $posts->first()->id . '/false') }}" type="application/pdf"
+                            width="100%" height="500px">
                     </div>
                 @endif
             </div>

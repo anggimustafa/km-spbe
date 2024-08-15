@@ -232,25 +232,29 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="150" data-speed="5000"></h2>
+                                    <h2 class="timer count-title count-number" data-to="{{ $total_artikel }}"
+                                        data-speed="5000"></h2>
                                     <p class="count-text ">Total Postingan Pengetahuan</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="50" data-speed="5000"></h2>
-                                    <p class="count-text ">Total Author</p>
+                                    <h2 class="timer count-title count-number" data-to="{{ $total_objek }}"
+                                        data-speed="5000"></h2>
+                                    <p class="count-text ">Total Objek Pengetahuan</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter">
-                                    <h2 class="timer count-title count-number" data-to="70" data-speed="5000"></h2>
-                                    <p class="count-text ">Total Users</p>
+                                    <h2 class="timer count-title count-number" data-to="{{ $total_user }}"
+                                        data-speed="5000"></h2>
+                                    <p class="count-text ">Total User</p>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="counter end">
-                                    <h2 class="timer count-title count-number" data-to="100" data-speed="5000"></h2>
+                                    <h2 class="timer count-title count-number" data-to="{{ $total_thread }}"
+                                        data-speed="5000"></h2>
                                     <p class="count-text ">Total Thread Diskusi</p>
                                 </div>
                             </div>

@@ -37,12 +37,98 @@
             <div class="col-lg-8 d-flex align-items-strech">
                 <div class="card w-100">
                     <div class="card-body">
-                        <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
-                            <div class="mb-3 mb-sm-0">
-                                <h2 class="card-title fw-semibold">Statistik Postingan</h2>
+                        @role('admin')
+                            <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                                <div class="mb-3 mb-sm-0">
+                                    <h2 class="card-title fw-semibold">Statistik Postingan</h2>
+                                </div>
                             </div>
-                        </div>
-                        <div id="chart"></div>
+                            <div id="chart"></div>
+                        @endrole
+                        @role('verifikator')
+                            <div class="container mt-4">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card text-white bg-dark mb-3">
+                                            <div class="card-header">
+                                                <i class="fas fa-user fa-xl py-3 pe-4"></i> Total Author
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">1</h5>
+                                                <p class="card-text">Jumlah author pada OPD yang sama.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="card text-white bg-warning mb-3">
+                                            <div class="card-header">
+                                                <i class="fas fa-comments fa-xl py-3 pe-3"></i> Total Postingan Didiskusikan
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">1</h5>
+                                                <p class="card-text">Jumlah total artikel yang sedang didiskusikan.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="card text-white bg-success mb-3">
+                                            <div class="card-header">
+                                                <i class="fas fa-check-circle fa-xl py-3 pe-4"></i> Total Postingan Diverifikasi
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">1</h5>
+                                                <p class="card-text">Jumlah total artikel yang telah diverifikasi.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endrole
+                        @role('author')
+                            <div class="container mt-4">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="card text-white bg-info mb-3">
+                                            <div class="card-header">
+                                                <i class="fas fa-pencil-alt fa-xl py-3 pe-4"></i> Total Postingan Dibuat
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $post_dibuat }}</h5>
+                                                <p class="card-text">Jumlah total artikel yang telah dibuat.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="card text-white bg-warning mb-3">
+                                            <div class="card-header">
+                                                <i class="fas fa-comments fa-xl py-3 pe-3"></i> Total Postingan Didiskusikan
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $post_diskusi }}</h5>
+                                                <p class="card-text">Jumlah total artikel yang sedang didiskusikan.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="card text-white bg-success mb-3">
+                                            <div class="card-header">
+                                                <i class="fas fa-check-circle fa-xl py-3 pe-4"></i> Total Postingan Diverifikasi
+                                            </div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $post_diverif }}</h5>
+                                                <p class="card-text">Jumlah total artikel yang telah diverifikasi.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        @endrole
                     </div>
                 </div>
             </div>
@@ -77,31 +163,35 @@
                                         <h6 class="card-title">{{ $user->name }}</h6>
                                         <p class="text-secondary mb-1">{{ $user->nip }}</p>
                                         <small class="text-muted font-size-sm">{{ $user->email }}</small>
+                                        <p class="fs-5 fw-bold mt-2">{{ $user->opd->nama_opd }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">
-                        <!-- Yearly Breakup -->
-                        <div class="card overflow-hidden">
-                            <div class="card-body p-4">
-                                <h5 class="card-title mb-9 fw-semibold">Postingan Kategori</h5>
-                                <div class="row align-items-center">
-                                    <div class="col-12">
-                                        <div class="d-flex justify-content-center">
-                                            <div id="breakup"></div>
+                    @role('admin')
+                        <div class="col-lg-12">
+                            <!-- Yearly Breakup -->
+                            <div class="card overflow-hidden">
+                                <div class="card-body p-4">
+                                    <h5 class="card-title mb-9 fw-semibold">Postingan Kategori</h5>
+                                    <div class="row align-items-center">
+                                        <div class="col-12">
+                                            <div class="d-flex justify-content-center">
+                                                <div id="breakup"></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endrole
                 </div>
             </div>
         </div>
-        <div class="py-6 px-6 text-center">
-            <p class="mb-0 fs-4">Developed by <a href="https://github.com/anggimustafa" target="_blank"
+        <div class="py-6 px-6 text-center mt-5">
+            <hr>
+            <p class="mb-0 fs-4 mt-2">Developed by <a href="https://github.com/anggimustafa" target="_blank"
                     class="pe-1 text-primary text-decoration-underline">Anggi Mustafa</a> Distributed by <a
                     href="https://themewagon.com">ThemeWagon</a></p>
         </div>
