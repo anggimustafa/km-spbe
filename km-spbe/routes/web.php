@@ -60,6 +60,8 @@ Route::get('/dashboard', function () {
         'post_dibuat' => Post::where('user_id', auth()->user()->id)->count(),
         'post_diskusi' => Discussion::where('user_id', auth()->user()->id)->count(),
         'post_diverif' => Post::where('user_id', auth()->user()->id)->where('verified', true)->count(),
+        'author_opd' => User::where('opd_id', auth()->user()->opd_id)->count(),
+        'post_opd' => Loguser::where('user_id', auth()->user()->id)->where('action', 'Verifikasi Post')->count()
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -126,7 +128,7 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::post('/thread', [ThreadController::class, 'store'])->name('dashboard.thread.tambah');
     Route::delete('/thread', [ThreadController::class, 'destroy'])->name('dashboard.thread.hapus');
     Route::delete('/comment', [ThreadController::class, 'destroyKomen'])->name('dashboard.komen.hapus');
-    Route::post('/dashboard/diskusi', [DiscussionController::class, 'store']);
+    Route::post('/diskusi', [DiscussionController::class, 'store']);
 });
 
 Route::get('/view-file/{id}/{utama}', [PostController::class, 'viewFile']);

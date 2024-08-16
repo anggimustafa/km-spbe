@@ -34,23 +34,25 @@
                                             Postingan Terkait</a>
                                     </div>
                                 @endif
-                                <div class="form-hapus">
-                                    <button class="delete-btn btn btn-danger" data-id="{{ $threads->first()->id }}"
-                                        title="Hapus" onclick="deletePost({{ $threads->first()->id }})"><i
-                                            class="fa-solid fa-trash-can"></i></button>
-                                    <form id="deleteForm" action="/dashboard/thread" method="POST" class="d-none">
-                                        @method('DELETE')
-                                        @csrf
-                                        <input type="hidden" name="id" id="delete-thread-id">
-                                    </form>
-                                </div>
+                                @role('verifikator')
+                                    <div class="form-hapus">
+                                        <button class="delete-btn btn btn-danger" data-id="{{ $threads->first()->id }}"
+                                            title="Hapus" onclick="deletePost({{ $threads->first()->id }})"><i
+                                                class="fa-solid fa-trash-can"></i></button>
+                                        <form id="deleteForm" action="/dashboard/thread" method="POST" class="d-none">
+                                            @method('DELETE')
+                                            @csrf
+                                            <input type="hidden" name="id" id="delete-thread-id">
+                                        </form>
+                                    </div>
+                                @endrole
                             </div>
                             @if ($verify == false)
                                 <div class="bg-light p-2">
                                     <form action="/dashboard/thread" method="post">
                                         @csrf
                                         <div class="d-flex flex-row align-items-start"><img class="rounded-circle"
-                                                src="https://avatar.iran.liara.run/public/{{ $verifikator->first()->id }}"
+                                                src="https://avatar.iran.liara.run/public/{{ auth()->user()->id }}"
                                                 width="40">
                                             <textarea class="form-control ml-1 shadow-none textarea" required name="komentar"></textarea>
                                             <input type="hidden" value="{{ $threads->first()->id }}" name="thread_id">

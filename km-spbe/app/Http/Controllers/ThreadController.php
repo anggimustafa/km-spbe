@@ -36,6 +36,8 @@ class ThreadController extends Controller
                                 ->join('users', 'comments.user_id', '=', 'users.id')
                                 ->orderBy('comments.created_at', 'desc')
                                 ->get();
+        $verify = false;
+
         // return $comments;
 
 
@@ -45,7 +47,8 @@ class ThreadController extends Controller
             'authors' => $authors,
             'verifikator' => $verifikator,
             'post' => $post,
-            'comments' => $comments
+            'comments' => $comments,
+            'verify' => $verify
         ]);
     }
 

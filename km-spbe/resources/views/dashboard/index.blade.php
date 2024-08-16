@@ -54,7 +54,7 @@
                                                 <i class="fas fa-user fa-xl py-3 pe-4"></i> Total Author
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="card-title">1</h5>
+                                                <h5 class="card-title">{{ $author_opd }}</h5>
                                                 <p class="card-text">Jumlah author pada OPD yang sama.</p>
                                             </div>
                                         </div>
@@ -66,7 +66,7 @@
                                                 <i class="fas fa-comments fa-xl py-3 pe-3"></i> Total Postingan Didiskusikan
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="card-title">1</h5>
+                                                <h5 class="card-title">{{ $post_diskusi }}</h5>
                                                 <p class="card-text">Jumlah total artikel yang sedang didiskusikan.</p>
                                             </div>
                                         </div>
@@ -78,7 +78,7 @@
                                                 <i class="fas fa-check-circle fa-xl py-3 pe-4"></i> Total Postingan Diverifikasi
                                             </div>
                                             <div class="card-body">
-                                                <h5 class="card-title">1</h5>
+                                                <h5 class="card-title">{{ $post_opd }}</h5>
                                                 <p class="card-text">Jumlah total artikel yang telah diverifikasi.</p>
                                             </div>
                                         </div>

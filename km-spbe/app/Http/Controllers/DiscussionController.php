@@ -38,6 +38,7 @@ class DiscussionController extends Controller
     public function store(Request $request)
     {
         // Validasi input
+        // return $request;
         $request->validate([
             'post_id' => 'required|integer',
             'topik_diskusi' => 'required|string',
@@ -89,7 +90,7 @@ class DiscussionController extends Controller
 
             Notify::create([
                 'user_id' => $post->first()->user_id,
-                'body' => 'Postingan yang berjudul' . $post->judul . ' telah dibuatkan Thread untuk didiskusikan.',
+                'body' => 'Postingan yang berjudul' . $post->first()->judul . ' telah dibuatkan Thread untuk didiskusikan.',
                 'type' => 'Thread Post'
             ]);
 

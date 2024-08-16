@@ -49,10 +49,13 @@ class PostController extends Controller
             "tipeObjekUtama" => 'required',
             "filePendukung1" => 'file|mimes:jpg,jpeg,png,pdf',
             "body" => 'required',
-            "kasus" => 'required',
+            "kasus" => '',
             "is_public" => 'required'
         ]);
 
+        if($validatedData['kasus']==''){
+            $validatedData['kasus'] = null;
+        }
         $validatedData['user_id'] = auth()->user()->id;
         if ($validatedData['is_public'] === 'true') {
             $validatedData['is_public'] = true;

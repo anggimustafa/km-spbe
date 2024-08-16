@@ -97,7 +97,7 @@
                     <trix-editor input="body"></trix-editor>
                     <div id="emailHelp" class="form-text">Paparkan pembahasan pengetahuan.</div>
                 </div>
-                <div class="mb-5 bg-info bg-opacity-10 border border-top-0 border-info rounded p-3">
+                <div class="mb-5 bg-secondary bg-opacity-10 border border-top-0 border-dark rounded p-3">
                     <label for="kasus" class="form-label">Contoh Kasus</label>
                     @error('kasus')
                         <p class="text-danger">

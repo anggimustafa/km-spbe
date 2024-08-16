@@ -130,7 +130,21 @@
                                 <span class="hide-menu">In Discussion</span>
                             </a>
                         </li>
-                        @hasanyrole('verifikator|admin')
+                        @role('verifikator')
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">Users</span>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('dataauthor') }}" aria-expanded="false">
+                                    <span style="width: 30px">
+                                        <i class="fa-solid fa-users fa-xl"></i>
+                                    </span>
+                                    <span class="hide-menu">Data Author</span>
+                                </a>
+                            </li>
+                        @endrole
+                        @role('admin')
                             <li class="nav-small-cap">
                                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                                 <span class="hide-menu">Users</span>
@@ -143,8 +157,6 @@
                                     <span class="hide-menu">Data Users</span>
                                 </a>
                             </li>
-                        @endhasanyrole
-                        @role('admin')
                             <li class="sidebar-item">
                                 <a class="sidebar-link" href="{{ route('kelolarole') }}" aria-expanded="false">
                                     <span style="width: 30px">

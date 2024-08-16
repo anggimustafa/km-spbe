@@ -6,8 +6,10 @@
             <a class="btn btn-info" title="Kembali" href="javascript:history.go(-1);"><i
                     class="fa-solid fa-arrow-left"></i></a>&nbsp;
             @if (!request()->is('dashboard/verified/*'))
-                <a class="btn btn-warning" title="Edit" href="/dashboard/edit/{{ $posts->first()->slug }}"><i
-                        class="fa-solid fa-pen-to-square"></i></a>&nbsp;
+                @role('author')
+                    <a class="btn btn-warning" title="Edit" href="/dashboard/edit/{{ $posts->first()->slug }}"><i
+                            class="fa-solid fa-pen-to-square"></i></a>&nbsp;
+                @endrole
                 @if (!request()->is('dashboard/indiscussion/*'))
                     @role('verifikator')
                         <a class="btn btn-primary" title="Buat Diskusi" type="button" data-bs-toggle="modal"
@@ -76,10 +78,12 @@
                     @endif
                 </div>
 
-                <div class="container-studi-kasus mb-3 shadow">
-                    <h5 class="text-light mb-3">Studi Kasus</h5>
-                    {!! $posts->first()->kasus !!}
-                </div>
+                @if ($posts->first()->kasus)
+                    <div class="container-studi-kasus mb-3 shadow">
+                        <h5 class="text-light mb-3">Studi Kasus</h5>
+                        {!! $posts->first()->kasus !!}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

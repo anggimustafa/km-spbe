@@ -20,9 +20,11 @@
                             <td>{{ $post->created_at->format('d-m-Y') }}</td>
                             <td><a title="Lihat" href="/dashboard/verified/{{ $post->slug }}"><i
                                         class="fa-regular fa-eye"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button class="delete-btn" data-id="{{ $post->id }}" title="Hapus"
-                                    onclick="deletePost({{ $post->id }})"><i
-                                        class="fa-solid fa-delete-left"></i></button>
+                                @hasanyrole('verifikator|admin')
+                                    <button class="delete-btn" data-id="{{ $post->id }}" title="Hapus"
+                                        onclick="deletePost({{ $post->id }})"><i
+                                            class="fa-solid fa-delete-left"></i></button>
+                                @endhasanyrole
                                 </form>
                             </td>
                         </tr>
