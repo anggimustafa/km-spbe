@@ -7,7 +7,7 @@ $(function () {
     var chart = {
         series: [
             { name: "Postingan dibuat:", data: [35, 39, 30, 35, 30, 10, 35, 30, 10, 22, 43, 42] },
-            { name: "Postingan terbit:", data: [28, 25, 20, 25, 25, 7, 20, 20, 10, 20, 10, 13] },
+            { name: "Postingan dipublish:", data: [28, 25, 20, 25, 25, 7, 20, 20, 10, 20, 10, 13] },
         ],
 
         chart: {
@@ -41,7 +41,7 @@ $(function () {
 
 
         legend: {
-            show: false,
+            show: true,
         },
 
 

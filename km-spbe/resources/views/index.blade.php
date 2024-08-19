@@ -199,6 +199,7 @@
                                     <ul>
                                         <li>
                                             <span class="category">{{ $post->category->nama_kategori }}</span>
+                                            <span class="category">{{ $post->opd->nama_opd }}</span>
                                             <h4>{{ $post->judul }}</h4>
                                         </li>
                                         <li>

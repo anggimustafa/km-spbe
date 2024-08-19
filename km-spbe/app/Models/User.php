@@ -87,4 +87,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
+
+    // Definisikan relasi One to Many . User ke riwayatopd
+    public function riwayatopds()
+    {
+        return $this->hasMany(Riwayatopd::class);
+    }
 }

@@ -19,4 +19,10 @@ class Opd extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    // Definisikan relasi One to Many. Opd ke Riwayatopd
+    public function riwayatopds()
+    {
+        return $this->hasMany(Riwayatopd::class);
+    }
 }

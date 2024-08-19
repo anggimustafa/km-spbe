@@ -20,6 +20,7 @@ use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DiscussionController;
+use App\Models\Riwayatopd;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,7 +62,12 @@ Route::get('/dashboard', function () {
         'post_diskusi' => Discussion::where('user_id', auth()->user()->id)->count(),
         'post_diverif' => Post::where('user_id', auth()->user()->id)->where('verified', true)->count(),
         'author_opd' => User::where('opd_id', auth()->user()->opd_id)->count(),
-        'post_opd' => Loguser::where('user_id', auth()->user()->id)->where('action', 'Verifikasi Post')->count()
+        'post_opd' => Loguser::where('user_id', auth()->user()->id)->where('action', 'Verifikasi Post')->count(),
+        'notif' => Notify::where('user_id', auth()->user()->id)->where('is_read', false)->count(),
+        'riwayatopds' => Riwayatopd::where('riwayatopds.user_id', auth()->user()->id)
+        ->join('opds', 'riwayatopds.opd_id', '=', 'opds.id')
+        ->select('riwayatopds.*', 'opds.nama_opd')
+        ->get()
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

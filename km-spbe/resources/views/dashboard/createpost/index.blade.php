@@ -25,6 +25,16 @@
                     @enderror
                 </div>
                 <div class="mb-5 bg-info bg-opacity-10 border border-start-0 border-info rounded p-3">
+                    <label for="kategori" class="form-label">OPD Pengetahuan</label>
+                    <select class="form-select" name="opd_id">
+                        <option value={{ auth()->user()->opd->id }}>{{ auth()->user()->opd->nama_opd }}</option>
+                        @foreach ($opds as $opd)
+                            <option value={{ $opd->id }}>{{ $opd->nama_opd }}</option>
+                        @endforeach
+                    </select>
+                    <div id="Help" class="form-text">Pilih salah satu OPD.</div>
+                </div>
+                <div class="mb-5 bg-info bg-opacity-10 border border-start-0 border-info rounded p-3">
                     <label for="kategori" class="form-label">Kategori Pengetahuan</label>
                     <select class="form-select" name="category_id">
                         @foreach ($categories as $category)

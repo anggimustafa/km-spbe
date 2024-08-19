@@ -16,6 +16,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
+        'opd_id',
         'user_id',
         'category_id',
         'judul',
@@ -83,6 +84,12 @@ class Post extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    // Definisikan relasi Many to One. Post ke Opd
+    public function opd()
+    {
+        return $this->belongsTo(Opd::class);
     }
 
     // Definisikan relasi One to One . Post ke Thread

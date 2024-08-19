@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Riwayatopd;
 use Yaza\LaravelGoogleDriveStorage\Gdrive;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -44,6 +45,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             "judul" => 'required|max:255',
             "slug" => 'required||string|unique:posts,slug',
+            "opd_id" => 'required|integer',
             "category_id" => 'required|integer',
             "fileUtama" => 'required|file|mimes:jpg,jpeg,png,pdf',
             "tipeObjekUtama" => 'required',
@@ -289,8 +291,12 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $opds = Riwayatopd::where('riwayatopds.user_id', auth()->user()->id)
+        ->join('opds', 'riwayatopds.opd_id', '=', 'opds.id')
+        ->select('riwayatopds.*', 'opds.nama_opd')
+        ->get();
         $rute = 'Create Post';
-        return view('dashboard.createpost.index', compact('rute', 'categories'));
+        return view('dashboard.createpost.index', compact('rute', 'categories','opds'));
     }
 
     public function unverify()
@@ -322,8 +328,8 @@ class PostController extends Controller
                 ->get();
         }
 
-        //query untuk varifikator
-        if(auth()->user()->getRoleNames() == 'admin'){
+        //query untuk admin
+        if(auth()->user()->getRoleNames()->contains('admin')){
             $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
                 ->whereNull('threads.post_id')
                 ->where('posts.verified', false)

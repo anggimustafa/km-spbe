@@ -147,6 +147,9 @@
                                             <div class="nav-item btn btn-outline-info">
                                                 <button type="button" class="nav-link nav-icon-hover"
                                                     data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    @if ($notif)
+                                                        <span class="badge text-bg-danger">{{ $notif }}</span>
+                                                    @endif
                                                     <i class="ti ti-bell-ringing"></i>
                                                 </button>
                                             </div>
@@ -164,6 +167,12 @@
                                         <p class="text-secondary mb-1">{{ $user->nip }}</p>
                                         <small class="text-muted font-size-sm">{{ $user->email }}</small>
                                         <p class="fs-5 fw-bold mt-2">{{ $user->opd->nama_opd }}</p>
+                                        <small>Riwayat OPD: <br>
+                                            @foreach ($riwayatopds as $opd)
+                                                {{ $opd['nama_opd'] }}
+                                                <br>
+                                            @endforeach
+                                        </small>
                                     </div>
                                 </div>
                             </div>

@@ -14,6 +14,8 @@
                         {{ $post->created_at->format('d M Y') }}
                         &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
                         <i class="fa-solid fa-layer-group"></i> : {{ $post->category->nama_kategori }}
+                        | &nbsp;&nbsp;&nbsp;
+                        <i class="fa-solid fa-city"></i> : {{ $post->opd->nama_opd }}
                         &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
                         <i class="fa-solid fa-key"></i> : {{ $post->is_public ? 'Public' : 'Private' }}
                     </small>
@@ -23,7 +25,7 @@
         <div class="main-area">
             <div class="container-objek-utama mb-3">
                 <h5 class="text-light mb-3">Objek Pengetahuan Utama</h5>
-                <embed src="{{ url('/view-file/' . $posts->first()->id . '/' . true) }}" type="application/pdf"
+                <embed src="{{ url('/view-file/' . $post->first()->id . '/' . true) }}" type="application/pdf"
                     width="100%" height="500px">
             </div>
             <div class="isi">
@@ -32,7 +34,7 @@
                 @if ($objek_pendukung)
                     <div class="container-objek-pendukung mb-3">
                         <h6 class=" mb-3">Objek Pengetahuan Pendukung</h6>
-                        <embed src="{{ url('/view-file/' . $posts->first()->id . '/false') }}" type="application/pdf"
+                        <embed src="{{ url('/view-file/' . $post->first()->id . '/false') }}" type="application/pdf"
                             width="100%" height="500px">
                     </div>
                 @endif

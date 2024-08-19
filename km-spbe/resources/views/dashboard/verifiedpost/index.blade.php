@@ -6,6 +6,9 @@
             <table id="example" class="table table-striped" style="width:100%">
                 <thead>
                     <tr>
+                        @hasanyrole('verifikator|admin')
+                            <th>Author</th>
+                        @endhasanyrole
                         <th>Judul</th>
                         <th>Kategori</th>
                         <th>Tanggal Upload</th>
@@ -15,6 +18,9 @@
                 <tbody>
                     @foreach ($posts as $post)
                         <tr>
+                            @hasanyrole('verifikator|admin')
+                                <td>{{ $post->user->name }}</td>
+                            @endhasanyrole
                             <td>{{ $post->judul }}</td>
                             <td>{{ $post->category->nama_kategori }}</td>
                             <td>{{ $post->created_at->format('d-m-Y') }}</td>
@@ -32,6 +38,9 @@
                 </tbody>
                 <tfoot>
                     <tr>
+                        @hasanyrole('verifikator|admin')
+                            <th>Author</th>
+                        @endhasanyrole
                         <th>Judul</th>
                         <th>Kategori</th>
                         <th>Tanggal Upload</th>

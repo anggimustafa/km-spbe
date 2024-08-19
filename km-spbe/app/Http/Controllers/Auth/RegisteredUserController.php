@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules;
 use App\Http\Controllers\Controller;
+use App\Models\Riwayatopd;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
@@ -33,6 +34,7 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
+        // return $request;
         // dd(request()->all());
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -50,6 +52,14 @@ class RegisteredUserController extends Controller
             'nip' => $request->nip,
             'password' => Hash::make($request->password),
         ]);
+
+        foreach ($request['riwayatopd_id'] as $opdId) {
+            Riwayatopd::create([
+                'opd_id' => $opdId,
+                'user_id' => $user->id
+                // Tambahkan kolom lain yang diperlukan untuk disimpan
+            ]);
+        }
 
         $user->assignRole('author');
 
