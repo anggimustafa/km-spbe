@@ -29,7 +29,7 @@
                     <select class="form-select" name="opd_id">
                         <option value={{ auth()->user()->opd->id }}>{{ auth()->user()->opd->nama_opd }}</option>
                         @foreach ($opds as $opd)
-                            <option value={{ $opd->id }}>{{ $opd->nama_opd }}</option>
+                            <option value={{ $opd->opd_id }}>{{ $opd->nama_opd }}</option>
                         @endforeach
                     </select>
                     <div id="Help" class="form-text">Pilih salah satu OPD.</div>

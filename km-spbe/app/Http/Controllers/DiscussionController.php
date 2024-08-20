@@ -66,7 +66,7 @@ class DiscussionController extends Controller
             Discussion::create([
                 'thread_id' => $lastId,
                 'user_id' => $post->first()->user_id,
-                'role' => 'verifikator'
+                'role' => 'author'
             ]);
 
             // Membuat record di tabel discussions untuk setiap user_id yang dipilih
@@ -96,7 +96,7 @@ class DiscussionController extends Controller
 
             Notify::create([
                 'user_id' => 1,
-                'body' => 'Telah dibuat Thread Diskusi pada postingan yang berjudul ' . $post->judul . '.',
+                'body' => 'Telah dibuat Thread Diskusi pada postingan yang berjudul ' . $post->first()->judul . '.',
                 'type' => 'Thread Post'
             ]);
 

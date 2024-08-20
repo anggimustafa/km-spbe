@@ -65,6 +65,8 @@ class PostController extends Controller
             $validatedData['is_public'] = false;
         }
 
+        dd($validatedData);
+
         $post = Post::create($validatedData);
 
         if ($request->hasFile('fileUtama')) {
@@ -316,14 +318,14 @@ class PostController extends Controller
         }
 
         //query untuk varifikator
-        $opdId = auth()->user()->opd_id;
-        $userOpdIds = User::where('opd_id', $opdId)->pluck('id');
+        // $opdId = auth()->user()->opd_id;
+        // $userOpdIds = User::where('opd_id', $opdId)->pluck('id');
 
         if(auth()->user()->getRoleNames()->contains('verifikator')){
             $posts = Post::leftJoin('threads', 'posts.id', '=', 'threads.post_id')
                 ->whereNull('threads.post_id')
                 ->where('posts.verified', false)
-                ->whereIn('posts.user_id', $userOpdIds)
+                ->where('posts.opd_id', auth()->user()->opd_id)
                 ->select('posts.*')
                 ->get();
         }
