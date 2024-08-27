@@ -6,16 +6,19 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Objek;
 use App\Models\Notify;
+use App\Models\Thread;
+use App\Models\Comment;
 use App\Models\Logpost;
 use App\Models\Loguser;
 use App\Models\Category;
+use App\Models\Discussion;
+use App\Models\Riwayatopd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdatePostRequest;
-use App\Models\Riwayatopd;
 use Yaza\LaravelGoogleDriveStorage\Gdrive;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -355,6 +358,16 @@ class PostController extends Controller
             ->where('discussions.user_id', $loggedInUserId)
             ->select('posts.*')
             ->get();
+
+            // Loop melalui setiap post dan hitung jumlah komentar
+            foreach ($posts as $post) {
+             // Lakukan query untuk menghitung jumlah komentar terkait thread ini
+                $commentCount = Comment::where('thread_id', $post->thread_id)
+                                    ->count();
+
+             // Simpan jumlah komentar dalam properti baru pada objek post
+                $post->comment_count = $commentCount;
+            }
         }
 
         //query untuk verifikator
@@ -365,6 +378,18 @@ class PostController extends Controller
                 ->where('discussions.user_id', $loggedInUserId)
                 ->select('posts.*')
                 ->get();
+
+                // Loop melalui setiap post dan hitung jumlah komentar
+            foreach ($posts as $post) {
+                $thread = Thread::where('post_id', $post->id)->get();
+                // Lakukan query untuk menghitung jumlah komentar terkait thread ini
+                $commentCount = Comment::where('thread_id', $thread->first()->id)
+                                        ->count();
+
+                // Simpan jumlah komentar dalam properti baru pada objek post
+                   $post->comment_count = $commentCount;
+               }
+            //    return $posts;
         }
 
         //query untuk admin

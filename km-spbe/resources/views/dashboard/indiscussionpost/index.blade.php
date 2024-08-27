@@ -10,6 +10,7 @@
                         <th>Kategori</th>
                         <th>Tanggal Upload</th>
                         <th>Aksi</th>
+                        <th>Respon</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +35,9 @@
                                         class="fa-solid fa-delete-left"></i></button>
                                 </form>
                             </td>
+                            <td>
+                                <div class="btn btn-danger">{{ $post->comment_count }} Tanggapan</div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -43,6 +47,7 @@
                         <th>Kategori</th>
                         <th>Tanggal Upload</th>
                         <th>Aksi</th>
+                        <th>Respon</th>
                     </tr>
                 </tfoot>
             </table>

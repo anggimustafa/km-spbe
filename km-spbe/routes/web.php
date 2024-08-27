@@ -56,7 +56,7 @@ Route::get('/artikel/{post:slug}', [ArtikelController::class, 'show']);
 Route::get('/dashboard', function () {
     return view('dashboard.index',[
         'user' => auth()->user(),
-        'notifies' => Notify::where('user_id', auth()->user()->id)->get(),
+        'notifies' => Notify::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get(),
         'rute' => 'Dashboard',
         'post_dibuat' => Post::where('user_id', auth()->user()->id)->count(),
         'post_diskusi' => Discussion::where('user_id', auth()->user()->id)->count(),

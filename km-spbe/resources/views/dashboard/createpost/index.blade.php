@@ -65,7 +65,6 @@
                             <option value="Presentasi">Presentasi</option>
                             <option value="Regulasi">Regulasi</option>
                             <option value="Infografis">Infografis</option>
-                            <option value="Video">Video</option>
                         </select>
                     </div>
                     <div id="Help" class="form-text text-center">Upload objek pengetahuan dan tentukan tipe

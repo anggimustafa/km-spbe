@@ -104,7 +104,7 @@ class DiscussionController extends Controller
             foreach ($request->user_ids as $user_id) {
                 Notify::create([
                     'user_id' => $user_id,
-                    'body' => 'Anda telah dipilih untuk ikut berdiskusi pada postingan yang berjudul ' . $post->judul . '.',
+                    'body' => 'Anda telah dipilih untuk ikut berdiskusi pada postingan yang berjudul ' . $post->first()->judul . '.',
                     'type' => 'Thread Post'
                 ]);
             }

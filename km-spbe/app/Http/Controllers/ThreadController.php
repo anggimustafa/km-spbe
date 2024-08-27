@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Notify;
 use App\Models\Thread;
 use App\Models\Comment;
 use App\Models\Discussion;
@@ -108,6 +109,26 @@ class ThreadController extends Controller
             'user_id' => auth()->user()->id,
             'body' => $request->komentar
         ]);
+
+        $discussion = Discussion::where('thread_id', $request->thread_id)->get();
+        $post = Thread::where('threads.id', $request->thread_id)
+        ->join('posts', 'threads.post_id', '=', 'posts.id')
+        ->get();
+        // return $post;
+
+        // Menggunakan pluck untuk mendapatkan array dari user_id
+        $userIds = $discussion->pluck('user_id')->toArray();
+        // return $userIds;
+
+        // Sekarang $userIds berisi array dari user_id yang bisa Anda loop
+        foreach ($userIds as $userId) {
+            Notify::create([
+                'user_id' => $userId,
+                'body' => 'Terdapat tanggapan terbaru pada diskusi dari artikel yang berjudul ' . $post->first()->judul . '.',
+                'type' => 'Diskusi'
+            ]);
+        }
+
 
         return redirect()->route('dashboard.thread', ['post' => $request->thread_slug])->with('success', 'Postingan baru telah ditambahkan');
     }
