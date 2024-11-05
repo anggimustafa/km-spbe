@@ -68,7 +68,7 @@ class PostController extends Controller
             $validatedData['is_public'] = false;
         }
 
-        dd($validatedData);
+        // dd($validatedData);
 
         $post = Post::create($validatedData);
 

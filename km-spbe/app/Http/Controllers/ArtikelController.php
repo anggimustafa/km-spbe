@@ -36,6 +36,7 @@ class ArtikelController extends Controller
     {
         $objek_pendukung = Objek::where('post_id', $post->id)->where('utama', false)->get();
 
+
         if($objek_pendukung->isEmpty()){
             $objek_pendukung = null;
         }
