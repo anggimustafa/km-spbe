@@ -223,7 +223,9 @@ Route::post('/dashboard/ubah-role', function (Request $request) {
 
 // ============ Route untuk Dashboard History ====================
 Route::get('/dashboard/logusers', function () {
-    $logUser = Loguser::orderBy('created_at', 'desc')->get();
+    $logUser = Loguser::join('users', 'logusers.user_id', 'users.id')->get();
+
+    // dd($logUser->first()->name);
 
     // dd($logUser);
     return view('dashboard.logusers.index',[

@@ -6,8 +6,8 @@ $(function () {
     // =====================================
     var chart = {
         series: [
-            { name: "Postingan dibuat:", data: [35, 39, 30, 35, 30, 10, 35, 30, 10, 22, 43, 42] },
-            { name: "Postingan dipublish:", data: [28, 25, 20, 25, 25, 7, 20, 20, 10, 20, 10, 13] },
+            { name: "Postingan dibuat:", data: [0, 0, 0, 0, 0, 0, 1, 5, 0, 0, 3, 0] },
+            { name: "Postingan dipublish:", data: [0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 3, 0] },
         ],
 
         chart: {
@@ -110,7 +110,7 @@ $(function () {
     // =====================================
     var breakup = {
         color: "#adb5bd",
-        series: [38, 40, 25, 20, 10, 30, 15],
+        series: [3, 2, 3, 0, 0, 1, 0],
         labels: ["Tata Kelola", "Manajemen", "Layanan", "Infrastruktur", "Aplikasi", "Keamanan", "Audit TIK"],
         chart: {
             width: 300,
