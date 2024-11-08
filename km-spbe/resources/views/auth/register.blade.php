@@ -44,7 +44,7 @@
         <div class="mt-4">
             <x-input-label for="nip" :value="__('Nip *')" />
             <x-text-input id="nip" class="block mt-1 w-full" type="text" name="nip" :value="old('nip')"
-                required autofocus autocomplete="nip" />
+                required autofocus autocomplete="nip" pattern="[0-9]*" inputmode="numeric" maxlength="18" />
             <x-input-error :messages="$errors->get('nip')" class="mt-2" />
         </div>
 

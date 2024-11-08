@@ -306,7 +306,22 @@ class PostController extends Controller
 
     public function unverify()
     {
-        $users = User::where('opd_id', auth()->user()->opd_id)->where('id', '!=', auth()->user()->id)->get();
+        // $users = User::where('opd_id', auth()->user()->opd_id)->where('id', '!=', auth()->user()->id)->get();
+        // Ambil pengguna dari tabel User dengan opd_id yang sama
+        $users = User::where('opd_id', auth()->user()->opd_id)
+        ->where('id', '!=', auth()->user()->id);
+
+        // Ambil user_id dari tabel riwayat_opd yang memiliki opd_id yang sama
+        $riwayatUsers = User::whereIn('id', function($query) {
+        $query->select('user_id')
+            ->from('riwayatopds')
+            ->where('opd_id', auth()->user()->opd_id);
+        });
+
+        // Gabungkan hasil keduanya
+        $users = $users->union($riwayatUsers)->get();
+
+        // dd($users);
         $rute = 'Unverify Post';
 
         // return auth()->user()->getRoleNames()->join(', ');

@@ -19,6 +19,10 @@
         trix-toolbar [data-trix-button-group="file-tools"] {
             display: none;
         }
+
+        trix-toolbar [data-trix-button-group='block-tools'] {
+            display: none;
+        }
     </style>
 
     {{-- Template Dashboard --}}

@@ -50,6 +50,8 @@
                 <div class="row mb-5 bg-info bg-opacity-10 border border-end-0 border-info rounded p-3">
                     <div class="col-lg-6">
                         <label for="formFile" class="form-label">Objek Pengetahuan (Utama)</label>
+                        <div id="Help" class="form-text text-center">Format file yang diterima PDF, JPEG, PNG dan JPG.
+                        </div>
                         <input class="form-control p-2 rounded" type="file" id="formFile" name="fileUtama">
                         @error('fileUtama')
                             <p class="text-danger">
@@ -74,6 +76,8 @@
                 <div class="row mb-5 bg-secondary bg-opacity-10 border border-end-0 border-dark rounded p-3">
                     <div class="col-lg-6">
                         <label for="formFile" class="form-label">Objek Pengetahuan (Pendukung 1)</label>
+                        <div id="Help" class="form-text text-center">Format file yang diterima PDF, JPEG, PNG dan JPG.
+                        </div>
                         <input class="form-control p-2 rounded" type="file" id="formFile" name="filePendukung1">
                         @error('filePendukung1')
                             <p class="text-danger">
@@ -115,7 +119,7 @@
                     @enderror
                     <input id="kasus" type="hidden" name="kasus" value="{{ old('kasus') }}">
                     <trix-editor input="kasus"></trix-editor>
-                    <div id="emailHelp" class="form-text">Berikan contoh kasus yang berkaitan.</div>
+                    <div id="emailHelp" class="form-text">Berikan contoh kasus yang berkaitan. (Optional)</div>
                 </div>
                 <div class="mb-3 bg-info bg-opacity-10 border border-bottom-0 border-info rounded p-3">
                     <Label>Sifat Postingan : </Label>
@@ -169,8 +173,8 @@
         });
 
 
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault();
-        });
+        // document.addEventListener('trix-file-accept', function(e) {
+        //     e.preventDefault();
+        // });
     </script>
 @endsection

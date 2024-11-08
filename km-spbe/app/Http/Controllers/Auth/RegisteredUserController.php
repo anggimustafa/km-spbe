@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'opd_id' => ['required'],
-            'nip' => ['required', 'string'],
+            'nip' => ['required', 'int'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -53,12 +53,14 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        foreach ($request['riwayatopd_id'] as $opdId) {
-            Riwayatopd::create([
-                'opd_id' => $opdId,
-                'user_id' => $user->id
-                // Tambahkan kolom lain yang diperlukan untuk disimpan
-            ]);
+        if ($request['riwayatopd_id']){
+            foreach ($request['riwayatopd_id'] as $opdId) {
+                Riwayatopd::create([
+                    'opd_id' => $opdId,
+                    'user_id' => $user->id
+                    // Tambahkan kolom lain yang diperlukan untuk disimpan
+                ]);
+            }
         }
 
         $user->assignRole('author');
