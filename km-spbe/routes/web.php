@@ -2,13 +2,16 @@
 
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Vote;
 use App\Models\Objek;
 use App\Models\Notify;
 use App\Models\Thread;
+use App\Models\Comment;
 use App\Models\Logpost;
 use App\Models\Loguser;
 use App\Models\Category;
 use App\Models\Discussion;
+use App\Models\Riwayatopd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +23,6 @@ use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DiscussionController;
-use App\Models\Riwayatopd;
 
 /*
 |--------------------------------------------------------------------------
@@ -140,6 +142,29 @@ Route::middleware(['auth', 'verified'])->prefix('dashboard')->group(function () 
     Route::delete('/comment', [ThreadController::class, 'destroyKomen'])->name('dashboard.komen.hapus');
     Route::post('/diskusi', [DiscussionController::class, 'store']);
 });
+
+Route::post('/dashboard/comment/vote', function (Request $request) {
+    // Cari komentar berdasarkan ID
+    $commentId = $request->komen_id;
+    $comment = Comment::findOrFail($commentId);
+    // Cek apakah user sudah memberi vote pada komentar ini
+    $existingVote = Vote::where('user_id', auth()->id())
+                        ->where('comment_id', $comment->id)
+                        ->first();
+
+    if ($existingVote) {
+        // Jika sudah ada vote, hapus vote tersebut (unvote)
+        $existingVote->delete();
+        return back()->with('message', 'Vote dibatalkan.');
+    } else {
+        // Jika belum ada vote, simpan vote baru
+        Vote::create([
+            'user_id' => auth()->id(),
+            'comment_id' => $comment->id,
+        ]);
+        return back()->with('message', 'Vote berhasil diberikan.');
+    }
+})->name('vote');
 
 Route::get('/view-file/{id}/{utama}', [PostController::class, 'viewFile']);
 

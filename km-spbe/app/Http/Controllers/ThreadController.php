@@ -34,9 +34,12 @@ class ThreadController extends Controller
                                     ->get();
         // dd($verifikator);
         $comments = Comment::where('thread_id', $threads->first()->id)
-                                ->join('users', 'comments.user_id', '=', 'users.id')
-                                ->orderBy('comments.created_at', 'desc')
-                                ->get();
+                            ->join('users', 'comments.user_id', '=', 'users.id')
+                            ->select('comments.*', 'users.name as user_name') // Pilih kolom comments.* agar kolom id yang diambil adalah dari comments
+                            ->orderBy('comments.created_at', 'desc')
+                            ->get();
+
+                                // dd($comments);
         $verify = false;
 
         // return $comments;

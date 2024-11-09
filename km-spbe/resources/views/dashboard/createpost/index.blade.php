@@ -108,7 +108,10 @@
                     @enderror
                     <input id="body" type="hidden" name="body" value="{{ old('body') }}">
                     <trix-editor input="body"></trix-editor>
-                    <div id="emailHelp" class="form-text">Paparkan pembahasan pengetahuan.</div>
+                    <div id="emailHelp" class="form-text">Paparkan pembahasan pengetahuan. <a
+                            href="https://drive.google.com/file/d/1nrAot4Tt-MCKJhNIF7wFNri9gw2lolkJ/view?usp=sharing"
+                            target="_BLANK" class="btn btn-outline-secondary"><small>Panduan </small></a></div>
+
                 </div>
                 <div class="mb-5 bg-secondary bg-opacity-10 border border-top-0 border-dark rounded p-3">
                     <label for="kasus" class="form-label">Contoh Kasus</label>

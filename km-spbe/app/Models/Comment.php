@@ -28,4 +28,15 @@ class Comment extends Model
     {
         return $this->belongsTo(Thread::class);
     }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
+
+    public function getTotalVotes()
+    {
+        // Menghitung jumlah total vote (hanya menghitung jumlah vote yang ada)
+        return $this->votes->count();
+    }
 }

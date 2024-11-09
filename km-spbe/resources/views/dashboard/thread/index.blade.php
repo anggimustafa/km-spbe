@@ -86,6 +86,7 @@
                                             <small class="font-weight-bold">{{ $komen->body }}</small>
                                         </span>
                                     </div>
+                                    <i class="fa-solid fa-heart"> {{ $komen->votes->count() }}</i>
                                 </div>
                                 @if ($komen->user_id == auth()->user()->id)
                                     <div class="col-12 d-flex justify-content-end">
@@ -94,6 +95,25 @@
                                             @method('DELETE')
                                             <input type="hidden" name="komen_body" value="{{ $komen->body }}">
                                             <button type="submit" class=" text-center text-danger">Hapus</button>
+                                        </form>
+                                    </div>
+                                @else
+                                    <div class="col-12 d-flex justify-content-end">
+                                        @php
+                                            $existingVote = $komen->votes->where('user_id', auth()->id())->first();
+                                        @endphp
+                                        <form action="/dashboard/comment/vote" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="komen_id" value="{{ $komen->id }}">
+                                            @if ($existingVote)
+                                                <!-- Jika user sudah memberi vote, tampilkan tombol Unvote -->
+                                                <button type="submit" title="Unvote"><i
+                                                        class="fa-solid fa-thumbs-up"></i></button>
+                                            @else
+                                                <!-- Jika user belum memberi vote, tampilkan tombol Upvote -->
+                                                <button type="submit" title="Vote"><i
+                                                        class="fa-regular fa-thumbs-up"></i></button>
+                                            @endif
                                         </form>
                                     </div>
                                 @endif
