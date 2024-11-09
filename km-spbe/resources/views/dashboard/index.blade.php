@@ -21,7 +21,30 @@
                             <div class="row border rounded py-2 {{ $notify->is_read ? 'bg-light' : 'bg-info-subtle' }}">
                                 <div class="col-2">{{ $notify->type }}</div>
                                 <div class="col-8">{{ $notify->body }} </div>
-                                <div class="col-2">{{ $notify->is_read ? 'Terbaca' : 'Belum dibaca' }}</div>
+                                @if ($notify->slug)
+                                    @if ($notify->type == 'Unverify Post')
+                                        <div class="col-2"><a
+                                                href="/dashboard/unverify/{{ $notify->slug }}?notifId={{ $notify->id }}">{{ $notify->is_read ? 'Terbaca' : 'Belum dibaca' }}</a>
+                                        </div>
+                                    @endif
+
+                                    @if ($notify->type == 'Verified Post')
+                                        <div class="col-2"><a
+                                                href="/dashboard/verified/{{ $notify->slug }}?notifId={{ $notify->id }}">{{ $notify->is_read ? 'Terbaca' : 'Belum dibaca' }}</a>
+                                        </div>
+                                    @endif
+
+                                    @if ($notify->type == 'Diskusi Post')
+                                        <div class="col-2"><a
+                                                href="/dashboard/indiscussion/{{ $notify->slug }}?notifId={{ $notify->id }}">{{ $notify->is_read ? 'Terbaca' : 'Belum dibaca' }}</a>
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="col-2"><a
+                                            href="/dashboard?notifId={{ $notify->id }}">{{ $notify->is_read ? 'Terbaca' : 'Belum dibaca' }}</a>
+                                    </div>
+                                @endif
+
                             </div>
                         @endforeach
                     </div>

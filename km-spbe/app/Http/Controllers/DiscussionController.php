@@ -91,13 +91,15 @@ class DiscussionController extends Controller
             Notify::create([
                 'user_id' => $post->first()->user_id,
                 'body' => 'Postingan yang berjudul' . $post->first()->judul . ' telah dibuatkan Thread untuk didiskusikan.',
-                'type' => 'Thread Post'
+                'slug' => $post->first()->slug,
+                'type' => 'Diskusi Post'
             ]);
 
             Notify::create([
                 'user_id' => 1,
                 'body' => 'Telah dibuat Thread Diskusi pada postingan yang berjudul ' . $post->first()->judul . '.',
-                'type' => 'Thread Post'
+                'slug' => $post->first()->slug,
+                'type' => 'Diskusi Post'
             ]);
 
 
@@ -105,7 +107,8 @@ class DiscussionController extends Controller
                 Notify::create([
                     'user_id' => $user_id,
                     'body' => 'Anda telah dipilih untuk ikut berdiskusi pada postingan yang berjudul ' . $post->first()->judul . '.',
-                    'type' => 'Thread Post'
+                    'slug' => $post->first()->slug,
+                    'type' => 'Diskusi Post'
                 ]);
             }
 

@@ -134,7 +134,8 @@ class PostController extends Controller
             Notify::create([
                 'user_id' => $verifikator->id, // Ganti dengan ID pengguna verifikator
                 'body' => 'Postingan baru telah dibuat dengan judul ' . $request->judul . '.',
-                'type' => 'Post'
+                'slug' => $request->slug,
+                'type' => 'Unverify Post'
             ]);
         }
 
@@ -236,13 +237,15 @@ class PostController extends Controller
         Notify::create([
             'user_id' => $post->user_id,
             'body' => 'Postingan dengan judul ' . $post->judul . 'telah diverifikasi.',
-            'type' => 'Post Diverifikasi'
+            'slug' => $post->slug,
+            'type' => 'Verified Post'
         ]);
 
         Notify::create([
             'user_id' => 1,
             'body' => 'Postingan baru telah diterbitkan dengan judul ' . $post->judul . '.',
-            'type' => 'Post'
+            'slug' => $post->slug,
+            'type' => 'Verified Post'
         ]);
 
         return redirect()->route('dashboard.verified')->with('verifikasi', 'Postingan telah diverifikasi');
@@ -474,6 +477,10 @@ class PostController extends Controller
 
     public function detail(Post $post)
     {
+        if(isset($_GET['notifId'])){
+            Notify::where('id', $_GET['notifId'])->update(['is_read' => true]);
+        }
+
         $posts = Post::where('id',$post->id)->get();
         $rute = 'Detail Post';
 

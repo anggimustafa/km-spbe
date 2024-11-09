@@ -125,7 +125,8 @@ class ThreadController extends Controller
             Notify::create([
                 'user_id' => $userId,
                 'body' => 'Terdapat tanggapan terbaru pada diskusi dari artikel yang berjudul ' . $post->first()->judul . '.',
-                'type' => 'Diskusi'
+                'slug' => $post->first()->slug,
+                'type' => 'Diskusi Post'
             ]);
         }
 

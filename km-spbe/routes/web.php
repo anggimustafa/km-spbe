@@ -54,6 +54,10 @@ Route::get('/artikel/{post:slug}', [ArtikelController::class, 'show']);
 
 // ============ Route untuk Dashboard ====================
 Route::get('/dashboard', function () {
+    if(isset($_GET['notifId'])){
+        Notify::where('id', $_GET['notifId'])->update(['is_read' => true]);
+        // dd($_GET['notifId']);
+    }
     return view('dashboard.index',[
         'user' => auth()->user(),
         'notifies' => Notify::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->get(),
