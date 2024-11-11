@@ -13,6 +13,7 @@ class Notify extends Model
     protected $fillable = [
         'user_id',
         'body',
+        'slug',
         'type',
         'is_read'
     ];

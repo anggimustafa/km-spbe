@@ -106,18 +106,20 @@ class ThreadController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $discussion = Discussion::where('thread_id', $request->thread_id)->get();
+        $post = Thread::where('threads.id', $request->thread_id)
+        ->join('posts', 'threads.post_id', '=', 'posts.id')
+        ->get();
+        // return $post->first()->slug;
+
         // dd($request);
         Comment::create([
             'thread_id' => $request->thread_id,
             'user_id' => auth()->user()->id,
             'body' => $request->komentar
         ]);
-
-        $discussion = Discussion::where('thread_id', $request->thread_id)->get();
-        $post = Thread::where('threads.id', $request->thread_id)
-        ->join('posts', 'threads.post_id', '=', 'posts.id')
-        ->get();
-        // return $post;
 
         // Menggunakan pluck untuk mendapatkan array dari user_id
         $userIds = $discussion->pluck('user_id')->toArray();
