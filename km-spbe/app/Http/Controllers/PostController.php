@@ -481,6 +481,10 @@ class PostController extends Controller
             Notify::where('id', $_GET['notifId'])->update(['is_read' => true]);
         }
 
+        // dd($post->slug);
+        Notify::where('slug', $post->slug)->where('user_id', auth()->user()->id)
+                ->update(['is_read' => true]);
+
         $posts = Post::where('id',$post->id)->get();
         $rute = 'Detail Post';
 
